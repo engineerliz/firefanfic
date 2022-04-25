@@ -4,6 +4,11 @@
   "private": true,
   "homepage": "http://demo.getfirefly.org",
   "dependencies": {
+    "@firebase/firestore-types": "^2.5.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.27",
+    "@types/react": "^18.0.7",
+    "@types/react-dom": "^18.0.0",
     "firebase": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -14,7 +19,8 @@
     "react-scripts": "^3.2.0",
     "react-transition-group": "^2.3.1",
     "slugify": "^1.3.0",
-    "styled-components": "^3.3.2"
+    "styled-components": "^3.3.2",
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "": "How these scripts work: https://medium.com/@tacomanator/environments-with-create-react-app-7b645312c09d",

@@ -19,7 +19,6 @@ const Layout = ({children}) => (
 
     <Header>
       <HeaderLink to="/">Ary</HeaderLink>
-
       <div style={{float: 'right'}}>
         <HeaderLink to="/search">
           <span role="img" aria-label="search">🔎</span>
