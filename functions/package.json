@@ -5,7 +5,7 @@
     "node": "10"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "",
     "serve": "firebase serve --only functions",
     "shell": "firebase experimental:functions:shell",
     "start": "npm run shell",
