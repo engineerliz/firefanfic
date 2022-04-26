@@ -1,0 +1,10 @@
+import { css } from '@emotion/css';
+
+export const FlexCss = {
+  alignCenter: css({
+    alignItems: 'center',
+  }),
+  justifyContentCenter: css({
+    justifyContent: 'center',
+  })
+}

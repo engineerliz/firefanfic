@@ -71,6 +71,10 @@ const Heading = {
     ${headingFontWeight};
     font-size: 18px;
   `,
+  Super1: styled.div`
+    ${headingFontWeight};
+    font-size: 76px;
+  `,
 }
 
 const subheadingFontWeight = 'font-weight: 700';

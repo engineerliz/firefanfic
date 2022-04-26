@@ -30,7 +30,7 @@ const FlexRow = styled.div`
 
 const FlexCol = styled.div`
   display: flex;
-  flex-direction: col;
+  flex-direction: column;
 `
 
 export {
