@@ -13,12 +13,13 @@ import {
 import {
   HeaderLink,
 } from '../../styles/links'
+import { BrandingFont } from '../../../components/common/styles/fonts'
 
 const Layout = ({children}) => (
   <HeaderFooterWrapper>
 
     <Header>
-      <HeaderLink to="/">Ary</HeaderLink>
+      <HeaderLink to="/"><BrandingFont.H4>Ary</BrandingFont.H4></HeaderLink>
       <div style={{float: 'right'}}>
         <HeaderLink to="/search">
           <span role="img" aria-label="search">🔎</span>

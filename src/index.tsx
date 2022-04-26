@@ -7,8 +7,8 @@ import 'firebase/firestore'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
-
-import App from './firefly/views/App'
+import './index.css';
+import App from './components/views/App'
 
 console.log('create-react-app env:', process.env.NODE_ENV)
 console.log('firefly project:', process.env.REACT_APP_ENV)

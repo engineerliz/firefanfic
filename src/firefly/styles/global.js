@@ -6,7 +6,7 @@ injectGlobal`
   *:after,
   * {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Overpass', sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
@@ -15,6 +15,7 @@ injectGlobal`
     margin: 0;
     padding: 0;
     line-height: 1.4;
+    background: #FBF5F4;
   }
 
   html,
