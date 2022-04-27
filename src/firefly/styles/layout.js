@@ -9,9 +9,37 @@ const HeaderFooterWrapper = styled.div`
   background: ${Colors.Branding.Background};
 `
 const Header = styled.div`
-  padding: 2rem 1rem 1rem;
-  width: 100%;
-  background: ${Colors.Branding.Red}; 
+  // padding: 2rem;
+  // width: 100%;
+  // background: ${Colors.Branding.Red}; 
+  // border-radius: 0 0 240px 50%/60px;
+  position: relative;
+  height: 70px;
+  width: 600px;
+  background: #e0efe3;
+  :before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 340px;
+    height: 80px;
+    background-color: #e0efe3;
+    right: -5px;
+    top: 40px;
+    
+  }
+  :after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 300px;
+    height: 70px;
+    background-color: #FBF5F4;
+    left: 0;
+    top: 27px;
+  }
 `
 const Page = styled.div`
   padding: 1rem;

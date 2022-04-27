@@ -16,7 +16,7 @@ import { Route, Switch } from 'react-router'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={PostList} />
+    <Route exact path="/" component={Splash} />
     <Route path="/new" component={PostNew} />
     <Route path="/search" component={Search} />
     <Route path="/splash" component={Splash} />

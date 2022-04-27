@@ -7,18 +7,18 @@ import logIn from '../../actions/logIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
 import {
   HeaderFooterWrapper,
-  Header,
   Footer,
 } from '../../styles/layout'
 import {
   HeaderLink,
 } from '../../styles/links'
 import { BrandingFont } from '../../../components/common/styles/fonts'
+import Header from '../../../components/common/header/Header'
 
 const Layout = ({children}) => (
   <HeaderFooterWrapper>
-
-    <Header>
+    <Header />
+    {/* <Header>
       <HeaderLink to="/"><BrandingFont.H4>Ary</BrandingFont.H4></HeaderLink>
       <div style={{float: 'right'}}>
         <HeaderLink to="/search">
@@ -43,7 +43,7 @@ const Layout = ({children}) => (
           }}
         </FirebaseAuth>
       </div>
-    </Header>
+    </Header> */}
 
     {children}
 
