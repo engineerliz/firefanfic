@@ -13,13 +13,8 @@ export const demoImgCss = css({
 
 export const contentContainerCss = css(FlexCss.alignCenter, FlexCss.justifyContentCenter, {
   marginTop: 0,
-  // '@media (max-width: 820px)': {
-  //   flexDirection: 'column',
-  //   alignItems: 'start',
-  // }
   '@media (max-width: 800px)': {
     flexDirection: 'column',
-    // alignItems: 'start',
   }
 });
 

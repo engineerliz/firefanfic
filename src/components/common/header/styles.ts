@@ -5,6 +5,7 @@ export const containerCss = css({
   position: 'sticky',
   width: '100%',
   height: 110,
+  top: 0,
 });
 
 export const waveCss = css({
