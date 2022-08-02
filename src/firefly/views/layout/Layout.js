@@ -18,6 +18,7 @@ import Backgroud from '../../../components/background/Background'
 
 const Layout = ({children}) => (
   <HeaderFooterWrapper>
+    <Backgroud />
     <Header />
     {/* <Header>
       <HeaderLink to="/"><BrandingFont.H4>Ary</BrandingFont.H4></HeaderLink>
@@ -45,7 +46,6 @@ const Layout = ({children}) => (
         </FirebaseAuth>
       </div>
     </Header> */}
-    <Backgroud />
     {children}
 
     <Footer>

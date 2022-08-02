@@ -19,32 +19,12 @@ interface ButtonProps {
   children?: JSX.Element;
 }
 
-const ButtonText = ({
-  text, 
-  buttonSize = ButtonSize.Small, 
-  // children,
-}: ButtonProps) => {
-  switch (buttonSize) {
-    case ButtonSize.XSmall:
-      return <Subheading.SH14 className={ColorStyles.Black}>
-        {text}
-      </Subheading.SH14>
-    case ButtonSize.Small:
-      return <Subheading.SH18 className={ColorStyles.Black}>
-        {text}
-      </Subheading.SH18>
-    case ButtonSize.Small:
-      return <Subheading.SH22 className={ColorStyles.Black}>
-        {text}
-      </Subheading.SH22>
-  }
-}
-
 const Button: React.FC<ButtonProps> = ({
   onClick,
   width,
   className,
-  buttonSize = ButtonSize.Small, 
+  buttonSize, 
+  text,
   ...props
 }: ButtonProps) => {
   const buttonClassName = () => {
@@ -54,12 +34,31 @@ const Button: React.FC<ButtonProps> = ({
       case ButtonSize.Small:
         return buttonStyles.smallButtonCss(width)
       case ButtonSize.Medium:
+      default: 
         return buttonStyles.mediumButtonCss(width)
+    }
+  }
+
+  const buttonText = () => {
+    switch (buttonSize) {
+      case ButtonSize.XSmall:
+        return <Subheading.SH14 className={ColorStyles.Black}>
+          {text}
+        </Subheading.SH14>
+      case ButtonSize.Small:
+        return <Subheading.SH18 className={ColorStyles.Black}>
+          {text}
+        </Subheading.SH18>
+      case ButtonSize.Medium:
+      default:
+        return <Subheading.SH22 className={ColorStyles.Black}>
+          {text}
+        </Subheading.SH22>
     }
   }
   return (
     <button onClick={onClick} className={css(buttonClassName(), className)}>
-      {ButtonText(props)}
+      {buttonText()}
     </button>
   )
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { FlexRow } from '../../firefly/styles/layout';
 import { HeaderLink } from '../../firefly/styles/links';
-import { containerCss, contentContainerCss, userPicCss, waveCss } from './styles';
+import { headerStyles } from './styles';
 import Wave from '../../../assets/wave.png';
 import { Heading, Subheading } from '../styles/fonts';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 import logIn from '../../firefly/actions/logIn';
 import { FlexCss } from '../styles/flex';
+import Button, { ButtonSize } from '../button/Button';
 
 interface HeaderProps {
   auth: any;
@@ -14,9 +15,9 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
   return (
-    <div className={containerCss} >
+    <div className={headerStyles.containerCss} >
       {/* <img src={Wave} className={waveCss} /> */}
-      <FlexRow className={contentContainerCss}>
+      <FlexRow className={headerStyles.contentContainerCss}>
         <HeaderLink to="/"><Heading.H22>Juicebox</Heading.H22></HeaderLink>
         <FirebaseAuth>
           { ({isLoading, error, auth}: any) => {
@@ -35,14 +36,14 @@ const Header = (props: HeaderProps) => {
                       alt={auth.displayName} 
                       width="40" 
                       height="40" 
-                      className={userPicCss}
+                      className={headerStyles.userPicCss}
                     />
                     <Subheading.SH18>Hi, {auth.displayName}</Subheading.SH18>
                   </FlexRow>
                 </HeaderLink>
               );
             } else {
-              return <button onClick={logIn}>log in</button>
+              return <Button onClick={logIn} text="Log In" buttonSize={ButtonSize.XSmall}/>
             }
           }}
         </FirebaseAuth>
