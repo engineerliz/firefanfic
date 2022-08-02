@@ -2,7 +2,7 @@ import Firebase from 'firebase/app'
 import ReactGA from 'react-ga'
 
 const logIn = () => {
-
+  console.log('login')
   ReactGA.event({
     category: 'User',
     action: 'Log in',

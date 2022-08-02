@@ -3,7 +3,7 @@ import React from 'react'
 import logIn from '../../actions/logIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
-import Profile from './Profile'
+import Profile from '../../../features/profile/Profile'
 import Subscription from './Subscription'
 import {
   Page,
@@ -31,8 +31,8 @@ const Account = () => (
 
         return <div>
           <Profile auth={auth} />
-          <hr />
-          <Subscription auth={auth} />
+          {/* <hr /> */}
+          {/* <Subscription auth={auth} /> */}
         </div>
 
       }}

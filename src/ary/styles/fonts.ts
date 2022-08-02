@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Colors } from './colors';
+import { Colors } from '../../components/styles/colors';
 
 export const brandingFont = '\'Pacifico\', cursive';
 
@@ -79,7 +79,7 @@ const Heading = {
 
 const subheadingFontWeight = 'font-weight: 700';
 
-const Subeading = {
+const Subheading = {
   SH1: styled.div`
     ${subheadingFontWeight};
     font-size: 56px;
@@ -159,6 +159,6 @@ const Paragraph = {
 export { 
   BrandingFont,
   Heading,
-  Subeading,
+  Subheading,
   Paragraph,
 };

@@ -6,5 +6,8 @@ export const FlexCss = {
   }),
   justifyContentCenter: css({
     justifyContent: 'center',
-  })
+  }),
+  spaceBetween: css({
+  justifyContent: 'space-between',
+  }),
 }

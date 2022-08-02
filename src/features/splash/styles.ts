@@ -1,10 +1,14 @@
 import { css } from '@emotion/css';
-import { FlexCss } from '../../common/styles/flex';
+import { FlexCss } from '../../components/styles/flex';
 
 export const demoImgCss = css({
-  borderRadius: '5%',
-  marginRight: 80,
-  width: '25%',
+  // borderRadius: '5%',
+  // marginRight: 80,
+  width: '60%',
+  position: 'fixed',
+  left: 0,
+  top: '10%',
+  maxWidth: 700,
   minWidth: 190,
   '@media (max-width: 800px)': {
     marginRight: 20,
@@ -12,11 +16,20 @@ export const demoImgCss = css({
 });
 
 export const contentContainerCss = css(FlexCss.alignCenter, FlexCss.justifyContentCenter, {
-  marginTop: 0,
+  marginTop: '30%',
+  justifyContent: 'end',
+  alignItems: 'end',
   '@media (max-width: 800px)': {
     flexDirection: 'column',
   }
 });
+
+export const splashTextContainerCss = css({
+  zIndex: 1,
+  width: '70%',
+  position: 'fixed',
+  bottom: '30%',
+})
 
 export const itineraryTextCss = css({
   marginBottom: 26,

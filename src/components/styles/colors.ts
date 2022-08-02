@@ -2,8 +2,9 @@ import { css } from '@emotion/css';
 
 const Branding = {
   Red: '#FF5040',
-  Secondary: '#EEC6C2',
-  Background: '#FBF5F4',
+  Highlight: '#C0EBF4',
+  Darklight: '#213361',
+  BackgroundGradient: 'linear-gradient(142.91deg, #132248 0%, #050C1D 100%)',
 }
 
 const Colors = {
@@ -21,10 +22,10 @@ const ColorStyles = {
     color: Branding.Red,
   }),
   Secondary: css({
-    color: Branding.Secondary,
+    color: Branding.Highlight,
   }),
   Background: css({
-    color: Branding.Background,
+    color: Branding.Darklight,
   }),
   Black: css({
     color: Colors.Black,

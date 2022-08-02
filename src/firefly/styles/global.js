@@ -6,7 +6,7 @@ injectGlobal`
   *:after,
   * {
     box-sizing: border-box;
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Poppins', sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
@@ -15,7 +15,7 @@ injectGlobal`
     margin: 0;
     padding: 0;
     line-height: 1.4;
-    background: #FBF5F4;
+    background: linear-gradient(142.91deg, #132248 0%, #050C1D 100%);
   }
 
   html,

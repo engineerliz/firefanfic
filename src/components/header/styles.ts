@@ -12,11 +12,15 @@ export const waveCss = css({
   width: '100%',
   height: '100%',
   position: 'absolute',
-
 });
 
-export const contentContainerCss = css(FlexCss.alignCenter, {
+export const contentContainerCss = css(FlexCss.alignCenter, FlexCss.spaceBetween, {
   position: 'relative',
   height: '70%',
   padding: '0 30px',
 });
+
+export const userPicCss = css({
+  borderRadius: '50%',
+  marginRight: 12,
+})

@@ -13,7 +13,7 @@ import '../../styles/search'
 import {
   Page,
 } from '../../styles/layout'
-import Splash from '../../../components/views/splash/Splash'
+import Splash from '../../../features/splash/Splash'
 
 const Search = () => (
   <Page>

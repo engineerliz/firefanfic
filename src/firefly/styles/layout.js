@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Colors } from '../../components/common/styles/colors'
+import { Colors } from '../../components/styles/colors'
 
 const HeaderFooterWrapper = styled.div`
   margin: 0 auto;
@@ -36,7 +36,7 @@ const Header = styled.div`
     border-radius: 100% 50%;
     width: 300px;
     height: 70px;
-    background-color: #FBF5F4;
+    // background-color: #FBF5F4;
     left: 0;
     top: 27px;
   }

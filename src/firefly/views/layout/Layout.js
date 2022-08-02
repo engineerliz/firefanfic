@@ -12,8 +12,8 @@ import {
 import {
   HeaderLink,
 } from '../../styles/links'
-import { BrandingFont } from '../../../components/common/styles/fonts'
-import Header from '../../../components/common/header/Header'
+// import { BrandingFont } from '../../../components/styles/fonts'
+import Header from '../../../components/header/Header'
 
 const Layout = ({children}) => (
   <HeaderFooterWrapper>
