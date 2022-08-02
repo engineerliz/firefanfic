@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Page } from '../../firefly/styles/layout';
 import {
   FormRow,
@@ -20,6 +21,7 @@ const PortfolioEdit = ({
   portfolioId,
   ...props
 }: PortfolioEditProps) => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
 
@@ -28,7 +30,8 @@ const PortfolioEdit = ({
       createPortfolio({
         title,
         description,
-      });
+      }).then((value) => { value?.slug && navigate(`/${value.slug}`) }
+      );
     }
   }
 
@@ -64,3 +67,7 @@ const PortfolioEdit = ({
 }
 
 export default PortfolioEdit
+
+// function useNavigate() {
+//   throw new Error('Function not implemented.');
+// }

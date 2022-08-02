@@ -9,40 +9,42 @@ import {
   Page,
 } from '../../styles/layout'
 
-const PostEdit = ({match, history}) => (
-  <Page>
-    <FirestoreCollection
-      path={'posts'}
-      filter={['slug', '==', match.params.slug]}
-    >
-      { ({error, isLoading, data}) => {
-        if (error) {
-          return <Error error={error} />
-        }
+// const PostEdit = ({match, history}) => (
+const PostEdit = () => (
+  <></>
+  // <Page>
+  //   <FirestoreCollection
+  //     path={'posts'}
+  //     filter={['slug', '==', match.params.slug]}
+  //   >
+  //     { ({error, isLoading, data}) => {
+  //       if (error) {
+  //         return <Error error={error} />
+  //       }
 
-        if (isLoading) {
-          return <p>loading...</p>
-        }
-        
-        if (data.length === 0) {
-          return <Error />
-        }
+  //       if (isLoading) {
+  //         return <p>loading...</p>
+  //       }
 
-        const post = data[0]
+  //       if (data.length === 0) {
+  //         return <Error />
+  //       }
 
-        return <div>
-          <PostForm
-            post={post}
-            onSubmit={values => updatePost(post.id, values).then(() => history.push(`/${post.slug}`))}
-          />
-          <br />
-          <button
-            onClick={() => deletePost(post).then( () => history.push(`/`))}
-          >Delete post</button>
-        </div>
-      }}
-    </FirestoreCollection>
-  </Page>
+  //       const post = data[0]
+
+  //       return <div>
+  //         <PostForm
+  //           post={post}
+  //           onSubmit={values => updatePost(post.id, values).then(() => history.push(`/${post.slug}`))}
+  //         />
+  //         <br />
+  //         <button
+  //           onClick={() => deletePost(post).then( () => history.push(`/`))}
+  //         >Delete post</button>
+  //       </div>
+  //     }}
+  //   </FirestoreCollection>
+  // </Page>
 )
 
 export default PostEdit

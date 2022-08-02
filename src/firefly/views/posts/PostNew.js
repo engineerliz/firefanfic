@@ -8,33 +8,36 @@ import PostForm from './PostForm'
 import {
   Page,
 } from '../../styles/layout'
+import { useNavigate } from 'react-router'
 
-const PostNew = ({ history }) => (
-  <Page>
-    <FirebaseAuth>
-      {({ isLoading, error, auth }) => {
+const PostNew = () => {
+  <></>
+  // const navigate = useNavigate();
+  // return <Page>
+  //   <FirebaseAuth>
+  //     {({ isLoading, error, auth }) => {
 
-        if (error) {
-          return <Error error={error} />
-        }
+  //       if (error) {
+  //         return <Error error={error} />
+  //       }
 
-        if (isLoading) {
-          return <div>loading...</div>
-        }
+  //       if (isLoading) {
+  //         return <div>loading...</div>
+  //       }
 
-        if (!auth) {
-          return <div>
-            <p>You must be logged in to add posts</p>
-            <button onClick={signIn}>log in</button>
-          </div>
-        }
+  //       if (!auth) {
+  //         return <div>
+  //           <p>You must be logged in to add posts</p>
+  //           <button onClick={signIn}>log in</button>
+  //         </div>
+  //       }
 
-        return <PostForm
-          onSubmit={values => createPost(values).then(post => history.push(`/${post.slug}`))}
-        />
-      }}
-    </FirebaseAuth>
-  </Page>
-)
+  //       return <PostForm
+  //         onSubmit={values => createPost(values).then(post => navigate(`/${post.slug}`))}
+  //       />
+  //     }}
+  //   </FirebaseAuth>
+  // </Page>
+}
 
 export default PostNew
