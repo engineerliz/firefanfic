@@ -48,7 +48,7 @@ const Footer = styled.div`
   padding: 1rem;
   text-align: center;
   opacity: .3;
-  border-top: 1px solid ${Colors.Branding.Red};
+  border-top: 1px solid ${Colors.Branding.Highlight};
 `
 
 const FlexRow = styled.div`

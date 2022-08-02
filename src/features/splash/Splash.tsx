@@ -2,19 +2,24 @@ import React from 'react';
 import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
 import { Heading, Paragraph } from '../../components/styles/fonts';
 import SplashImg from '../../assets/illustrations/splash.png';
-import { brandingTextCss, contentContainerCss, demoImgCss, headingH1TextCss, headingSuperTextCss, itineraryTextCss, splashTextContainerCss } from './styles';
-import { ColorStyles } from '../../components/styles/colors';
-import { css } from '@emotion/css';
+import { splashStyles } from './styles';
+import Button from '../../components/button/Button';
 
 const Splash = () => (
     <Page>
-      <FlexRow className={contentContainerCss}>
-        <img src={SplashImg} className={demoImgCss} />
-        <FlexCol className={splashTextContainerCss}>
-          <Heading.H52 className={headingSuperTextCss}>Monetize your portfolio</Heading.H52>
-          <Paragraph.P22 className={headingH1TextCss}>
+      <FlexRow className={splashStyles.contentContainerCss}>
+        <img src={SplashImg} className={splashStyles.demoImgCss} />
+        <FlexCol className={splashStyles.splashTextContainerCss}>
+          <Heading.H52 className={splashStyles.headingSuperTextCss}>
+            Monetize your portfolio
+          </Heading.H52>
+          <Paragraph.P22 className={splashStyles.headingH1TextCss}>
             Portfolios in 2022 look different. Showcase your work, sell your creations, and get hired.
           </Paragraph.P22>
+          <Button
+            text="Get Started"
+            className={splashStyles.ctaButton}
+          />
         </FlexCol>
       </FlexRow>
     </Page>

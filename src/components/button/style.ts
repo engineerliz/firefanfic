@@ -1,10 +1,17 @@
 import { css } from '@emotion/css';
-import { Colors } from '../styles/colors';
+import { Colors, Shadows } from '../styles/colors';
 
 const defaultButtonCss = css({
   background: Colors.White,
   borderRadius: '100px',
   border: 'none',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease',
+  ':hover': {
+    background: Colors.Branding.Highlight,
+    boxShadow: Shadows.V2,
+
+  },
 });
 
 export const buttonStyles = {

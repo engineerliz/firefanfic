@@ -14,6 +14,7 @@ import {
 } from '../../styles/links'
 // import { BrandingFont } from '../../../components/styles/fonts'
 import Header from '../../../components/header/Header'
+import Backgroud from '../../../components/background/Background'
 
 const Layout = ({children}) => (
   <HeaderFooterWrapper>
@@ -44,7 +45,7 @@ const Layout = ({children}) => (
         </FirebaseAuth>
       </div>
     </Header> */}
-
+    <Backgroud />
     {children}
 
     <Footer>
