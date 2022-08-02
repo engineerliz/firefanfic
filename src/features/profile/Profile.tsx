@@ -11,26 +11,26 @@ import { FlexCss } from '../../components/styles/flex';
 import PortfolioTab from './portfolioTab/PortfolioTab';
 import { Colors } from '../../components/styles/colors';
 
-const Profile = ({auth}: any) => (
-  <Route render={({history}: any) => (
+const Profile = ({ auth }: any) => (
+  <Route render={({ history }: any) => (
     <FlexCol>
       <FlexRow className={css(profileStyles.profileContainer, FlexCss.alignCenter)}>
-        <img 
-          src={auth.photoURL} 
-          alt={auth.displayName} 
-          width="100" 
-          height="100" 
+        <img
+          src={auth.photoURL}
+          alt={auth.displayName}
+          width="100"
+          height="100"
           className={profileStyles.profilePic}
         />
         <FlexCol>
           <Heading.H42>{auth.displayName}</Heading.H42>
           <Subheading.SH22>{auth.email}</Subheading.SH22>
-          <Button 
+          <Button
             text="Log Out"
             buttonSize={ButtonSize.XSmall}
             className={profileStyles.logoutButton}
             textColor={Colors.White}
-            onClick={() => logOut().then( () => history.push(`/`)) }
+            onClick={() => logOut().then(() => history.push(`/`))}
           />
         </FlexCol>
       </FlexRow>

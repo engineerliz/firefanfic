@@ -5,6 +5,8 @@ const Branding = {
   Highlight: '#C0EBF4',
   Darklight: '#213361',
   BackgroundGradient: 'linear-gradient(142.91deg, #132248 0%, #050C1D 100%)',
+  BlueGradient: 'linear-gradient(270deg, #69E5FF 0%, #5489FF 100%)',
+  GreenGradient: 'linear-gradient(270deg, #0CFF8A 0%, #07FEEF 100%)',
 }
 
 const Gray = {
@@ -19,9 +21,16 @@ const Gray = {
   V9: '#1B1B1B',
 }
 
+const Transparent = {
+  Dark: {
+    V2: 'rgba(33, 51, 97, 0.5)',
+  }
+}
+
 const Colors = {
   Branding,
   Gray,
+  Transparent,
   White: '#FFFFFF',
   Black: '#000000',
 }

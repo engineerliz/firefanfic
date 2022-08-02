@@ -3,7 +3,7 @@ import React from 'react'
 import { Subheading } from '../styles/fonts';
 import { buttonStyles } from './style';
 
-export enum ButtonSize { 
+export enum ButtonSize {
   XSmall,
   Small,
   Medium,
@@ -16,7 +16,7 @@ interface ButtonProps {
   textColor?: string;
   className?: string;
   children?: JSX.Element;
-  
+
   onClick?: () => void;
 }
 
@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   width,
   className,
-  buttonSize, 
+  buttonSize,
   textColor,
   text,
 }: ButtonProps) => {
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       case ButtonSize.Small:
         return buttonStyles.smallButtonCss(width)
       case ButtonSize.Medium:
-      default: 
+      default:
         return buttonStyles.mediumButtonCss(width)
     }
   }

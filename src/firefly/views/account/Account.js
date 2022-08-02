@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logIn from '../../actions/logIn'
+import signIn from '../../../actions/user/signIn'
 import FirebaseAuth from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import Profile from '../../../features/profile/Profile'
@@ -11,7 +11,7 @@ import {
 const Account = () => (
   <Page>
     <FirebaseAuth>
-      { ({isLoading, error, auth}) => {
+      {({ isLoading, error, auth }) => {
 
         if (isLoading) {
           return <p>loading...</p>
@@ -24,7 +24,7 @@ const Account = () => (
         if (!auth) {
           return <div>
             <p>Log in to see your account</p>
-            <button onClick={logIn}>Log in</button>
+            <button onClick={signIn}>Log in</button>
           </div>
         }
 

@@ -13,6 +13,8 @@ import Post from '../firefly/views/posts/Post'
 import Error from '../firefly/views/misc/Error'
 import Splash from './splash/Splash'
 import { Route, Switch } from 'react-router'
+import SignIn from './signIn/SignIn'
+import PortfolioEdit from './portfolioEdit/PortfolioEdit'
 
 const Routes = () => (
   <Switch>
@@ -21,6 +23,8 @@ const Routes = () => (
     <Route path="/search" component={Search} />
     <Route path="/splash" component={Splash} />
     <Route exact path="/feed" component={PostList} />
+    <Route path="/signin" component={SignIn} />
+    <Route path="/new-portfolio" component={PortfolioEdit} />
 
     <Route path="/account" component={Account} />
     <Route path="/:slug/edit" component={PostEdit} />

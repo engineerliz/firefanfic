@@ -4,8 +4,7 @@ import { FlexCss } from '../styles/flex';
 export const headerStyles = {
   containerCss: css({
     position: 'sticky',
-    width: '100%',
-    height: 110,
+    width: '100vw',
     top: 0,
     zIndex: 10,
   }),
@@ -16,8 +15,8 @@ export const headerStyles = {
   }),
   contentContainerCss: css(FlexCss.alignCenter, FlexCss.spaceBetween, {
     position: 'relative',
-    height: '70%',
-    padding: '0 30px',
+    height: 'fit-content',
+    padding: '20px 30px',
   }),
   userPicCss: css({
     borderRadius: '50%',
