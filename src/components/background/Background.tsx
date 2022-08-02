@@ -4,7 +4,7 @@ import { backgroundStyles } from './styles';
 
 const Backgroud = () => {
   return <div className={backgroundStyles.container}>
-    <img src={BackgroundImg} className={backgroundStyles.backgroundImg} />
+    <img src={BackgroundImg} alt="background" className={backgroundStyles.backgroundImg} />
   </div>
 }
 

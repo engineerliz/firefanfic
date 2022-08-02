@@ -1,6 +1,5 @@
 import { css } from '@emotion/css';
 import React from 'react'
-import { ColorStyles } from '../styles/colors';
 import { Subheading } from '../styles/fonts';
 import { buttonStyles } from './style';
 
@@ -14,9 +13,11 @@ interface ButtonProps {
   text: string;
   buttonSize?: ButtonSize;
   width?: number | string;
-  onClick?: () => void;
+  textColor?: string;
   className?: string;
   children?: JSX.Element;
+  
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,8 +25,8 @@ const Button: React.FC<ButtonProps> = ({
   width,
   className,
   buttonSize, 
+  textColor,
   text,
-  ...props
 }: ButtonProps) => {
   const buttonClassName = () => {
     switch (buttonSize) {
@@ -42,16 +43,16 @@ const Button: React.FC<ButtonProps> = ({
   const buttonText = () => {
     switch (buttonSize) {
       case ButtonSize.XSmall:
-        return <Subheading.SH14 className={ColorStyles.Black}>
+        return <Subheading.SH14 className={buttonStyles.buttonText(textColor)}>
           {text}
         </Subheading.SH14>
       case ButtonSize.Small:
-        return <Subheading.SH18 className={ColorStyles.Black}>
+        return <Subheading.SH18 className={buttonStyles.buttonText(textColor)}>
           {text}
         </Subheading.SH18>
       case ButtonSize.Medium:
       default:
-        return <Subheading.SH22 className={ColorStyles.Black}>
+        return <Subheading.SH22 className={buttonStyles.buttonText(textColor)}>
           {text}
         </Subheading.SH22>
     }

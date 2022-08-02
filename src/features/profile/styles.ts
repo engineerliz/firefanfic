@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { Colors } from '../../components/styles/colors';
 
 export const profileStyles = {
   profileContainer: css({
@@ -8,4 +9,11 @@ export const profileStyles = {
     borderRadius: '50%',
     marginRight: 20,
   }),
+  logoutButton: css({
+    width: 'fit-content',
+    background: 'none',
+    marginTop: 12,
+    border: `1px solid ${Colors.White}`,
+    color: Colors.White,
+  })
 }

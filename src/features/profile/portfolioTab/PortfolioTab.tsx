@@ -1,5 +1,4 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
 import { FlexCol, FlexRow } from '../../../firefly/styles/layout';
 import StoplightImg from '../../../assets/illustrations/stoplight.png';
 import { portfolioTabStyles } from './styles';
@@ -8,7 +7,7 @@ import Button from '../../../components/button/Button';
 
 const PortfolioTab = () => {
   return <FlexRow>
-    <img src={StoplightImg} className={portfolioTabStyles.image} />
+    <img src={StoplightImg} alt="Stoplight" className={portfolioTabStyles.image} />
     <FlexCol className={portfolioTabStyles.textContainer}>
       <Heading.H34>
         Get started by creating a portfolio
@@ -19,6 +18,10 @@ const PortfolioTab = () => {
       <Button
         text="Create your portfolio"
         className={portfolioTabStyles.ctaButton}
+        // onClick={() => createPortfolio({
+        //   title: 'portfolio 1',
+        //   description: 'hello hello'
+        // })}
       />
     </FlexCol>
   </FlexRow>

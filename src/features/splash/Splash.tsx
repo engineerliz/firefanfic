@@ -8,7 +8,7 @@ import Button from '../../components/button/Button';
 const Splash = () => (
     <Page>
       <FlexRow className={splashStyles.contentContainerCss}>
-        <img src={SplashImg} className={splashStyles.demoImgCss} />
+        <img src={SplashImg} alt="Splash" className={splashStyles.demoImgCss} />
         <FlexCol className={splashStyles.splashTextContainerCss}>
           <Heading.H52 className={splashStyles.headingSuperTextCss}>
             Monetize your portfolio

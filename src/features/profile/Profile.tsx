@@ -9,6 +9,7 @@ import Button, { ButtonSize } from '../../components/button/Button';
 import { css } from '@emotion/css';
 import { FlexCss } from '../../components/styles/flex';
 import PortfolioTab from './portfolioTab/PortfolioTab';
+import { Colors } from '../../components/styles/colors';
 
 const Profile = ({auth}: any) => (
   <Route render={({history}: any) => (
@@ -17,17 +18,18 @@ const Profile = ({auth}: any) => (
         <img 
           src={auth.photoURL} 
           alt={auth.displayName} 
-          width="126" 
-          height="126" 
+          width="100" 
+          height="100" 
           className={profileStyles.profilePic}
         />
         <FlexCol>
-          <Heading.H52>{auth.displayName}</Heading.H52>
+          <Heading.H42>{auth.displayName}</Heading.H42>
           <Subheading.SH22>{auth.email}</Subheading.SH22>
           <Button 
-            text="log out"
+            text="Log Out"
             buttonSize={ButtonSize.XSmall}
-            width={120}
+            className={profileStyles.logoutButton}
+            textColor={Colors.White}
             onClick={() => logOut().then( () => history.push(`/`)) }
           />
         </FlexCol>

@@ -4,10 +4,10 @@ import React from 'react'
 import ReactGA from 'react-ga'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import ErrorBoundary from '../firefly/views/misc/ErrorBoundary'
+import ErrorBoundary from '../../firefly/views/misc/ErrorBoundary'
 import Routes from './Routes'
-import Layout from '../components/layout/Layout'
-import '../firefly/styles/global'
+import Layout from '../layout/Layout'
+import '../../firefly/styles/global'
 
 const App = () => (
   <FirestoreProvider firebase={Firebase}>

@@ -5,6 +5,7 @@ export const portfolioTabStyles = {
     position: 'fixed',
     width: '40%',
     left: '2%',
+    maxWidth: 700,
   }),
   textContainer: css({
     zIndex: 1,
