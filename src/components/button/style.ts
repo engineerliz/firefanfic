@@ -8,15 +8,15 @@ const defaultButtonCss = css({
 });
 
 export const buttonStyles = {
-  xSmallButtonCss: (width?: number) => css(defaultButtonCss, {
+  xSmallButtonCss: (width?: number | string) => css(defaultButtonCss, {
     width,
     padding: '2px 12px',
   }),  
-  smallButtonCss: (width?: number) =>  css(defaultButtonCss, {
+  smallButtonCss: (width?: number | string) =>  css(defaultButtonCss, {
     width,
     padding: '8px 20px',
   }),
-  mediumButtonCss: (width?: number) =>  css(defaultButtonCss, {
+  mediumButtonCss: (width?: number | string) =>  css(defaultButtonCss, {
     width,
     padding: '10px 24px',
   }),
