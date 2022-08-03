@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import logOut from '../../firefly/actions/logOut'
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
@@ -12,7 +12,6 @@ import PortfolioTab from './portfolioTab/PortfolioTab';
 import { Colors } from '../../components/styles/colors';
 
 const Profile = ({ auth }: any) => {
-  // <Route render={({ history }: any) => (
   const navigate = useNavigate();
 
   return <FlexCol>
@@ -38,7 +37,6 @@ const Profile = ({ auth }: any) => {
     </FlexRow>
     <PortfolioTab />
   </FlexCol>
-  // )} />
 }
 
 export default Profile

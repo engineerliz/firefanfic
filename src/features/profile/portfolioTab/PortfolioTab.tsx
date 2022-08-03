@@ -3,8 +3,7 @@ import { FlexCol, FlexRow } from '../../../firefly/styles/layout';
 import StoplightImg from '../../../assets/illustrations/stoplight.png';
 import { portfolioTabStyles } from './styles';
 import { Heading, Paragraph } from '../../../components/styles/fonts';
-import Button from '../../../components/button/Button';
-import { InternalLink } from '../../../firefly/styles/links';
+import Button, { ButtonSize } from '../../../components/button/Button';
 import Portfolio from '../../../models/portfolio/PortfolioModel';
 import { getAllPortfolios } from '../../../actions/portfolio/getPortfolios';
 import { Link } from 'react-router-dom';
@@ -14,22 +13,30 @@ const PortfolioTab = () => {
 
   useEffect(() => {
     getAllPortfolios().then((value) => value && setPortfolios(value))
-    // getAllPortfolios().then((value) => setPortfolios(value?.docs)))
 
   }, [])
 
-  console.log('portfolios', portfolios)
   if (portfolios) {
     return <FlexCol>
+      <Link to="/new-portfolio">
+        <Button
+          buttonSize={ButtonSize.XSmall}
+          text="Create New"
+        />
+      </Link>
       <Heading.H26>Portfolios</Heading.H26>
       {portfolios.map(portfolio =>
-        <Link to={`/portfolio/${portfolio.portfolioId}`}>
-          <Heading.H18>{portfolio.title}</Heading.H18>
+        <>
+          <Link to={`/portfolio/${portfolio.portfolioId}`}>
+            <Heading.H18>{portfolio.title}</Heading.H18>
+          </Link>
           <Paragraph.P14>{portfolio.portfolioId}</Paragraph.P14>
-        </Link>
+
+        </>
       )}
     </FlexCol>
   }
+
   return <FlexRow>
     <>
       <img src={StoplightImg} alt="Stoplight" className={portfolioTabStyles.image} />
@@ -40,14 +47,12 @@ const PortfolioTab = () => {
         <Paragraph.P22>
           A few simple steps to showcase your work.
         </Paragraph.P22>
-        <Button
-          text="Create your portfolio"
-          className={portfolioTabStyles.ctaButton}
-        // onClick={() => createPortfolio({
-        //   title: 'portfolio 1',
-        //   description: 'hello hello'
-        // })}
-        />
+        <Link to="/new-portfolio">
+          <Button
+            text="Create your portfolio"
+            className={portfolioTabStyles.ctaButton}
+          />
+        </Link>
       </FlexCol>
     </>
   </FlexRow>

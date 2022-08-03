@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Page } from '../../firefly/styles/layout';
-import {
-  FormRow,
-  FormLabel,
-  TextArea,
-} from '../../firefly/styles/forms'
 import { Heading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import { portfolioEditStyles } from './styles';
@@ -18,7 +13,6 @@ interface PortfolioEditProps {
 
 const PortfolioEdit = ({
   portfolioId,
-  ...props
 }: PortfolioEditProps) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState<string>();
@@ -37,10 +31,6 @@ const PortfolioEdit = ({
   return <Page>
     <Heading.H26 className={portfolioEditStyles.title}>{portfolioId ? 'PortfolioName' : 'New Portfolio'}</Heading.H26>
     <div>
-      {/* <form> */}
-      {/* <FormRow> */}
-      {/* <FormLabel htmlFor='title'>Title</FormLabel> */}
-      {/* <TextInput type='text' name='title' defaultValue={''} required /> */}
       <TextInput
         label='Title'
         className={portfolioEditStyles.input}
@@ -60,13 +50,8 @@ const PortfolioEdit = ({
         buttonSize={ButtonSize.Small}
         onClick={onSubmit}
       />
-      {/* </form> */}
     </div>
   </Page>
 }
 
 export default PortfolioEdit
-
-// function useNavigate() {
-//   throw new Error('Function not implemented.');
-// }

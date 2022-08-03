@@ -7,18 +7,14 @@ import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 import { FlexCss } from '../styles/flex';
 import { globalContext } from '../../context';
 
-interface HeaderProps {
-  auth?: any;
-}
 
-const Header = (props: HeaderProps) => {
-  const { globalState, dispatch } = useContext(globalContext);
+const Header = () => {
+  const { globalState } = useContext(globalContext);
   console.log('globalState', globalState);
   return (
     <div className={headerStyles.containerCss} >
-      {/* <img src={Wave} className={waveCss} /> */}
       <FlexRow className={headerStyles.contentContainerCss}>
-        <HeaderLink to="/"><Heading.H22>Juicebox</Heading.H22></HeaderLink>
+        <HeaderLink to="/"><Heading.H22>Digital Soda</Heading.H22></HeaderLink>
         <FirebaseAuth>
           {({ isLoading, error, auth }: any) => {
             if (isLoading) {
@@ -43,11 +39,11 @@ const Header = (props: HeaderProps) => {
                 </HeaderLink>
               );
             } else {
-              return <HeaderLink to={`/signin`}>
-                <Subheading.SH14>Sign In</Subheading.SH14>
-
-              </HeaderLink>
-              // return <Button onClick={signIn} text="Log In" buttonSize={ButtonSize.XSmall}/>
+              return (
+                <HeaderLink to={`/signin`}>
+                  <Subheading.SH14>Sign In</Subheading.SH14>
+                </HeaderLink>
+              )
             }
           }}
         </FirebaseAuth>
