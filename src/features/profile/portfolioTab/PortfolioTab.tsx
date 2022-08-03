@@ -18,7 +18,7 @@ const PortfolioTab = ({
 
   if (portfolios) {
     return <FlexCol>
-      <Link to="/new-portfolio">
+      <Link to="/edit-portfolio">
         <Button
           buttonSize={ButtonSize.XSmall}
           text="Create New"
@@ -47,7 +47,7 @@ const PortfolioTab = ({
         <Paragraph.P22>
           A few simple steps to showcase your work.
         </Paragraph.P22>
-        <Link to="/new-portfolio">
+        <Link to="/edit-portfolio">
           <Button
             text="Create your portfolio"
             className={portfolioTabStyles.ctaButton}

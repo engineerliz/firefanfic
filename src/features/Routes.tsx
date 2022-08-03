@@ -14,7 +14,7 @@ const AppRoutes = () => (
     <Route path="/" element={<Splash />} />
     <Route path="/account" element={<Account />} />
     <Route path="/signin" element={<SignIn />} />
-    <Route path="/new-portfolio" element={<PortfolioEdit />} />
+    <Route path="/edit-portfolio" element={<PortfolioEdit />} />
     <Route path="/portfolio/:portfolioId" element={<PortfolioPage />} />
   </Routes>
 )

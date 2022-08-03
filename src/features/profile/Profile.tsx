@@ -40,13 +40,22 @@ const Profile = ({
       <FlexCol>
         <Heading.H26>{user.displayName}</Heading.H26>
         <Subheading.SH14>{user.email}</Subheading.SH14>
-        <Button
-          text="Log Out"
-          buttonSize={ButtonSize.XSmall}
-          className={profileStyles.logoutButton}
-          textColor={Colors.White}
-          onClick={() => logOut().then(() => navigate(`/`))}
-        />
+        <FlexRow>
+          <Button
+            text="Edit Profile"
+            buttonSize={ButtonSize.XSmall}
+            className={profileStyles.logoutButton}
+            textColor={Colors.White}
+          // onClick={() => logOut().then(() => navigate(`/`))}
+          />
+          <Button
+            text="Log Out"
+            buttonSize={ButtonSize.XSmall}
+            className={profileStyles.logoutButton}
+            textColor={Colors.White}
+            onClick={() => logOut().then(() => navigate(`/`))}
+          />
+        </FlexRow>
       </FlexCol>
     </FlexRow>
     <PortfolioTab portfolios={userPortfolios} />

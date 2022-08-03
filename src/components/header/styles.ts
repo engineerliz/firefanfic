@@ -21,5 +21,16 @@ export const headerStyles = {
   userPicCss: css({
     borderRadius: '50%',
     marginRight: 12,
-  })
+  }),
+  logoContainer: css(FlexCss.alignCenter, FlexCss.justifyContentCenter, {
+    cursor: 'pointer',
+  }),
+  sodaCan: css({
+    width: 32,
+    height: 32,
+    marginRight: 6,
+  }),
+  logoText: css({
+    marginTop: 4,
+  }),
 }

@@ -17,7 +17,7 @@ const Splash = () => {
         <Paragraph.P22 className={splashStyles.headingH1TextCss}>
           Portfolios in 2022 look different. Showcase your work, sell your creations, and get hired.
         </Paragraph.P22>
-        <HeaderLink to="/new-portfolio">
+        <HeaderLink to="/edit-portfolio">
           <Button
             text="Get Started"
             className={splashStyles.ctaButton}

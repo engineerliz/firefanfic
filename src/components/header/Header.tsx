@@ -6,7 +6,7 @@ import { Heading, Subheading } from '../styles/fonts';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 import { FlexCss } from '../styles/flex';
 import { globalContext } from '../../context';
-
+import SodaCanImg from '../../assets/icons/sodaCan.png';
 
 const Header = () => {
   const { globalState } = useContext(globalContext);
@@ -14,7 +14,12 @@ const Header = () => {
   return (
     <div className={headerStyles.containerCss} >
       <FlexRow className={headerStyles.contentContainerCss}>
-        <HeaderLink to="/"><Heading.H22>Digital Soda</Heading.H22></HeaderLink>
+        <HeaderLink to="/">
+          <FlexRow className={headerStyles.logoContainer}>
+            <img src={SodaCanImg} alt="Splash" className={headerStyles.sodaCan} />
+            <Heading.H18 className={headerStyles.logoText}>Digital Soda</Heading.H18>
+          </FlexRow>
+        </HeaderLink>
         <FirebaseAuth>
           {({ isLoading, error, auth }: any) => {
             if (isLoading) {
@@ -47,8 +52,8 @@ const Header = () => {
             }
           }}
         </FirebaseAuth>
-      </FlexRow>
-    </div>
+      </FlexRow >
+    </div >
   )
 }
 
