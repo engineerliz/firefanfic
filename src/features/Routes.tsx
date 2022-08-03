@@ -13,13 +13,17 @@ import Splash from './splash/Splash'
 import { Route, Routes } from 'react-router-dom'
 import SignIn from './signIn/SignIn'
 import PortfolioEdit from './portfolioEdit/PortfolioEdit'
+import PortfolioPage from './portfolioPage/PortfolioPage'
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={Splash()} />
-    <Route path="/account" element={Account()} />
-    <Route path="/signin" element={SignIn()} />
-    <Route path="/new-portfolio" element={PortfolioEdit({})} />
+    <Route path="/" element={<Splash />} />
+    <Route path="/account" element={<Account />} />
+    <Route path="/signin" element={<SignIn />} />
+    <Route path="/new-portfolio" element={<PortfolioEdit />} />
+    <Route path="/portfolio/:portfolioId" element={<PortfolioPage />} />
+
+
 
     {/* <Route path="/new" children={PostNew()} /> */}
     {/* <Route path="/search" children={Search()} />

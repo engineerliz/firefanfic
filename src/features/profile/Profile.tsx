@@ -25,8 +25,8 @@ const Profile = ({ auth }: any) => {
         className={profileStyles.profilePic}
       />
       <FlexCol>
-        <Heading.H42>{auth.displayName}</Heading.H42>
-        <Subheading.SH22>{auth.email}</Subheading.SH22>
+        <Heading.H26>{auth.displayName}</Heading.H26>
+        <Subheading.SH14>{auth.email}</Subheading.SH14>
         <Button
           text="Log Out"
           buttonSize={ButtonSize.XSmall}

@@ -14,7 +14,6 @@ import createPortfolio from '../../actions/portfolio/createPortfolio';
 
 interface PortfolioEditProps {
   portfolioId?: string;
-
 }
 
 const PortfolioEdit = ({
@@ -30,7 +29,7 @@ const PortfolioEdit = ({
       createPortfolio({
         title,
         description,
-      }).then((value) => { value?.slug && navigate(`/${value.slug}`) }
+      }).then((value) => { value?.slug && navigate(`/portfolio/${value.portfolioId}`) }
       );
     }
   }
