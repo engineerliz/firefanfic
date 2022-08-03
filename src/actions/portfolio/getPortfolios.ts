@@ -12,7 +12,7 @@ export const getAllPortfolios = () => {
       slug: portfolio.data()?.slug,
     } as Portfolio)))
     .catch(error => {
-      alert(`Whoops, couldn't get the portfolio: ${error.message}`)
+      alert(`Whoops, couldn't get the portfolios: ${error.message}`)
     })
 }
 
@@ -29,5 +29,21 @@ export const getPortfolioById = (id: string) => {
     } as Portfolio))
     .catch(error => {
       alert(`Whoops, couldn't get the portfolio: ${error.message}`)
+    })
+}
+
+export const getPortfolioByUserId = (userId: string) => {
+  return Firebase.firestore()
+    .collection('portfolios')
+    .where('createdBy', '==', userId)
+    .get()
+    .then((portfolios) => portfolios.docs.map(portfolio => ({
+      title: portfolio.data()?.title,
+      description: portfolio.data()?.description,
+      portfolioId: portfolio.data()?.portfolioId,
+      slug: portfolio.data()?.slug,
+    } as Portfolio)))
+    .catch(error => {
+      alert(`Whoops, couldn't get the portfolios: ${error.message}`)
     })
 }

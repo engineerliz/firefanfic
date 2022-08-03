@@ -1,7 +1,7 @@
 import React from 'react'
 
 import signIn from '../../../actions/user/signIn'
-import FirebaseAuth from '../misc/FirebaseAuth'
+import FirebaseAuth, { AuthState } from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import Profile from '../../../features/profile/Profile'
 import {
@@ -11,14 +11,14 @@ import {
 const Account = () => (
   <Page>
     <FirebaseAuth>
-      {({ isLoading, error, auth }) => {
+      {({ isLoading, error, auth }: AuthState) => {
 
         if (isLoading) {
           return <p>loading...</p>
         }
 
         if (error) {
-          return <Error error={error} />
+          // return <Error error={error} />
         }
 
         if (!auth) {
@@ -29,7 +29,9 @@ const Account = () => (
         }
 
         return <div>
-          <Profile auth={auth} />
+          <Profile
+            user={auth}
+          />
           {/* <hr /> */}
           {/* <Subscription auth={auth} /> */}
         </div>

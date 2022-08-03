@@ -8,13 +8,13 @@ import Portfolio from '../../../models/portfolio/PortfolioModel';
 import { getAllPortfolios } from '../../../actions/portfolio/getPortfolios';
 import { Link } from 'react-router-dom';
 
-const PortfolioTab = () => {
-  const [portfolios, setPortfolios] = useState<Portfolio[]>();
+interface PortfolioTabInterface {
+  portfolios?: Portfolio[];
+}
 
-  useEffect(() => {
-    getAllPortfolios().then((value) => value && setPortfolios(value))
-
-  }, [])
+const PortfolioTab = ({
+  portfolios
+}: PortfolioTabInterface) => {
 
   if (portfolios) {
     return <FlexCol>

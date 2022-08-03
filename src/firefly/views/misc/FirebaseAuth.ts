@@ -5,7 +5,7 @@
 import Firebase, { User } from 'firebase/app'
 import React from 'react'
 
-interface AuthState {
+export interface AuthState {
   isLoading?: boolean;
   error?: any;
   auth?: User;
