@@ -9,8 +9,8 @@ import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'
 
-const App = () => (
-  <FirestoreProvider firebase={Firebase} >
+const App = () => {
+  return <FirestoreProvider firebase={Firebase} >
     <BrowserRouter>
       {/* <ErrorBoundary> */}
       <Layout>
@@ -24,7 +24,7 @@ const App = () => (
       {/* </ErrorBoundary> */}
     </BrowserRouter>
   </FirestoreProvider>
-)
+}
 
 // scroll to top on route change
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md#scroll-to-top

@@ -10,12 +10,12 @@ import { css } from '@emotion/css';
 import { FlexCss } from '../../components/styles/flex';
 import PortfolioTab from './portfolioTab/PortfolioTab';
 import { Colors } from '../../components/styles/colors';
-import { User } from 'firebase';
 import Portfolio from '../../models/portfolio/PortfolioModel';
-import { getPortfolioByUserId } from '../../actions/portfolio/getPortfolios';
+import { getPortfoliosByUserId } from '../../actions/portfolio/getPortfolios';
+import { SodaUser } from '../../models/user/UserModel';
 
 interface ProfileProps {
-  user: User;
+  user: SodaUser;
 }
 
 const Profile = ({
@@ -25,14 +25,14 @@ const Profile = ({
   const [userPortfolios, setUserPortfolios] = useState<Portfolio[]>();
 
   useEffect(() => {
-    getPortfolioByUserId(user.uid).then((value) => value && setUserPortfolios(value))
+    getPortfoliosByUserId(user.userId).then((value) => value && setUserPortfolios(value))
   }, [])
 
   return <FlexCol>
     <FlexRow className={css(profileStyles.profileContainer, FlexCss.alignCenter)}>
-      {user.photoURL && <img
-        src={user.photoURL}
-        alt={user.photoURL}
+      {user.avatarUrl && <img
+        src={user.avatarUrl}
+        alt={user.avatarUrl}
         width="100"
         height="100"
         className={profileStyles.profilePic}

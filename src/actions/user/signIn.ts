@@ -2,7 +2,7 @@ import Firebase, { User } from 'firebase/app'
 import randomWords from 'random-words'
 import ReactGA from 'react-ga'
 import slugify from 'slugify'
-import SodaUser from '../../models/user/UserModel'
+import { SodaUser, transformFirebaseUsertoSodaUser } from '../../models/user/UserModel'
 
 export const signIn = () => {
   console.log('sign in')
@@ -22,8 +22,7 @@ export const signIn = () => {
     })
 }
 
-export const addUser = async (user?: User) => {
-  console.log('add user', user)
+export const addUser = async (user?: User): Promise<void | SodaUser> => {
   if (user) {
     const userDocRef = Firebase.firestore()
       .collection('users')
@@ -31,16 +30,7 @@ export const addUser = async (user?: User) => {
     const doc = await userDocRef.get();
 
     if (!doc.exists) {
-      console.log('user dne')
-      const displayName = user.displayName ?? randomWords(2).join(' ');
-      const newUser: SodaUser = {
-        userId: user.uid,
-        displayName,
-        email: user.email ?? undefined,
-        username: slugify(displayName),
-        joinDate: Firebase.firestore.Timestamp.now(),
-        avatarUrl: user.photoURL ?? undefined,
-      }
+      const newUser = transformFirebaseUsertoSodaUser(user);
       return Firebase.firestore()
         .collection('users')
         .doc(user.uid)

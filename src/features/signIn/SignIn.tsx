@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
 import { Heading } from '../../components/styles/fonts';
 import { globalContext } from '../../context';
+import { CurrentUserContext } from '../../context/state';
 import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 
@@ -12,6 +13,7 @@ const SignIn = () => {
   console.log('globalState', globalState);
   const navigate = useNavigate();
   // return <Route render={({ history }: any) => (
+
   return <Page>
     <FlexRow>
       <FlexCol>

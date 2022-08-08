@@ -11,7 +11,7 @@ import Header from '../header/Header'
 import Backgroud from '../background/Background'
 import { layoutStyles } from './styles'
 
-const Layout = ({children}: any) => (
+const Layout = ({ children }: any) => (
   <HeaderFooterWrapper>
     <Backgroud />
     <Header />

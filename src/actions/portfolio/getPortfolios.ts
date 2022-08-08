@@ -1,7 +1,7 @@
 import Firebase from 'firebase/app'
 import Portfolio from '../../models/portfolio/PortfolioModel';
 
-export const getAllPortfolios = () => {
+export const getAllPortfolios = (): Promise<void | Portfolio[]> => {
   return Firebase.firestore()
     .collection('portfolios')
     .get()
@@ -16,7 +16,7 @@ export const getAllPortfolios = () => {
     })
 }
 
-export const getPortfolioById = (id: string) => {
+export const getPortfolioById = (id: string): Promise<void | Portfolio> => {
   return Firebase.firestore()
     .collection('portfolios')
     .doc(id)
@@ -32,7 +32,7 @@ export const getPortfolioById = (id: string) => {
     })
 }
 
-export const getPortfolioByUserId = (userId: string) => {
+export const getPortfoliosByUserId = (userId: string): Promise<void | Portfolio[]> => {
   return Firebase.firestore()
     .collection('portfolios')
     .where('createdBy', '==', userId)

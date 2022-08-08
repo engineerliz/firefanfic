@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import FirebaseAuth, { AuthState } from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
@@ -7,38 +7,41 @@ import {
   Page,
 } from '../../styles/layout'
 import { signIn } from '../../../actions/user/signIn'
+import { useCurrentUserContext } from '../../../context/state'
+import { SodaUser } from '../../../models/user/UserModel'
+import { getCurrentUser, getCurrentUserId } from '../../../actions/user/getUser'
 
-const Account = () => (
-  <Page>
-    <FirebaseAuth>
-      {({ isLoading, error, auth }: AuthState) => {
+const Account = () => {
+  const [currentUserId, setCurrentUserId] = useState<string | undefined>(getCurrentUserId());
+  const [user, setUser] = useState<SodaUser | undefined>();
+  useEffect(() => {
+    setCurrentUserId(getCurrentUserId())
+  }, [])
+  useEffect(() => {
+    getCurrentUser()?.then(value => setUser(value ?? undefined))
+  }, [currentUserId])
 
-        if (isLoading) {
-          return <p>loading...</p>
-        }
-
-        if (error) {
-          // return <Error error={error} />
-        }
-
-        if (!auth) {
-          return <div>
-            <p>Log in to see your account</p>
-            <button onClick={signIn}>Log in</button>
-          </div>
-        }
-
-        return <div>
+  if (user) {
+    return (
+      <Page>
+        <div>
           <Profile
-            user={auth}
+            user={user!}
           />
           {/* <hr /> */}
           {/* <Subscription auth={auth} /> */}
         </div>
-
-      }}
-    </FirebaseAuth>
-  </Page>
-)
+      </Page>
+    )
+  }
+  return (
+    <Page>
+      <div>
+        <p>Log in to see your account</p>
+        <button onClick={signIn}>Log in</button>
+      </div>
+    </Page>
+  )
+}
 
 export default Account
