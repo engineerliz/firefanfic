@@ -46,7 +46,11 @@ const Profile = ({
             buttonSize={ButtonSize.XSmall}
             className={profileStyles.logoutButton}
             textColor={Colors.White}
-          // onClick={() => logOut().then(() => navigate(`/`))}
+            onClick={() => navigate(`/edit-profile`, {
+              state: {
+                user,
+              }
+            })}
           />
           <Button
             text="Log Out"

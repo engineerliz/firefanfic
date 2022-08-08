@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import SignIn from './signIn/SignIn'
 import PortfolioEdit from './portfolioEdit/PortfolioEdit'
 import PortfolioPage from './portfolioPage/PortfolioPage'
+import EditProfile from './profile/editProfile/EditProfile'
 
 const AppRoutes = () => (
   <Routes>
@@ -16,6 +17,9 @@ const AppRoutes = () => (
     <Route path="/signin" element={<SignIn />} />
     <Route path="/edit-portfolio" element={<PortfolioEdit />} />
     <Route path="/portfolio/:portfolioId" element={<PortfolioPage />} />
+    <Route path="/signin" element={<SignIn />} />
+    <Route path="/edit-profile" element={<EditProfile />} />
+
   </Routes>
 )
 
