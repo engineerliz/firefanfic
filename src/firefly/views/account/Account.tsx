@@ -1,12 +1,12 @@
 import React from 'react'
 
-import signIn from '../../../actions/user/signIn'
 import FirebaseAuth, { AuthState } from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
 import Profile from '../../../features/profile/Profile'
 import {
   Page,
 } from '../../styles/layout'
+import { signIn } from '../../../actions/user/signIn'
 
 const Account = () => (
   <Page>

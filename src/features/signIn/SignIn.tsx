@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
-import signIn from '../../actions/user/signIn';
+import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
 import { Heading } from '../../components/styles/fonts';
 import { globalContext } from '../../context';
@@ -16,7 +16,7 @@ const SignIn = () => {
     <FlexRow>
       <FlexCol>
         <Heading.H52>
-          Let’s get your account setup.
+          Welcome to Digital Soda.
         </Heading.H52>
         <FirebaseAuth>
           {({ isLoading, error, auth }: any) => {
@@ -36,9 +36,6 @@ const SignIn = () => {
                 text="Sign In with Google"
                 width="fit-content"
                 onClick={() => signIn().then(() => {
-                  console.log('happening?')
-                  dispatch({ type: 'SET_USER', payload: auth });
-
                   navigate(`/`)
                 })}
               />
