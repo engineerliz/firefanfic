@@ -23,7 +23,7 @@ const PortfolioEdit = ({
       createPortfolio({
         title,
         description,
-      }).then((value) => { value?.slug && navigate(`/portfolio/${value.portfolioId}`) }
+      }).then((value) => { value?.portfolioId && navigate(`/portfolio/${value.portfolioId}`) }
       );
     }
   }

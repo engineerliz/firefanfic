@@ -26,13 +26,13 @@ const PortfolioTab = ({
       </Link>
       <Heading.H26>Portfolios</Heading.H26>
       {portfolios.map(portfolio =>
-        <>
+        <div key={portfolio.portfolioId}>
           <Link to={`/portfolio/${portfolio.portfolioId}`}>
             <Heading.H18>{portfolio.title}</Heading.H18>
           </Link>
           <Paragraph.P14>{portfolio.portfolioId}</Paragraph.P14>
 
-        </>
+        </div>
       )}
     </FlexCol>
   }

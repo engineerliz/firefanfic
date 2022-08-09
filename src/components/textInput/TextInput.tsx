@@ -21,8 +21,8 @@ const TextInput = ({
   onChange,
   className,
   value,
-  ...props
 }: TextInputProps) => {
+  console.log('value', value, 'isMultiline', isMultiline)
   return <FlexCol className={className}>
     {label &&
       <Subheading.SH14 className={textInputStyles.label}>
@@ -34,10 +34,9 @@ const TextInput = ({
         <textarea
           className={css(textInputStyles.input, textInputStyles.textArea(height))}
           onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChange?.(event.target.value)}
-
-        >
-          {value}
-        </textarea> :
+          value={value}
+        />
+        :
         <input
           type="text"
           className={textInputStyles.input}

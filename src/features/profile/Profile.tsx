@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import logOut from '../../firefly/actions/logOut'
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
-import { Heading, Subheading } from '../../components/styles/fonts';
+import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
 import { profileStyles } from './styles';
 import Button, { ButtonSize } from '../../components/button/Button';
 import { css } from '@emotion/css';
@@ -40,6 +40,7 @@ const Profile = ({
       <FlexCol>
         <Heading.H26>{user.displayName}</Heading.H26>
         <Subheading.SH14>{user.email}</Subheading.SH14>
+        <Paragraph.P14>{user.bio}</Paragraph.P14>
         <FlexRow>
           <Button
             text="Edit Profile"

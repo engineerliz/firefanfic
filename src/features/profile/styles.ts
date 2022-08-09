@@ -13,6 +13,7 @@ export const profileStyles = {
     width: 'fit-content',
     background: 'none',
     marginTop: 12,
+    marginRight: 12,
     border: `1px solid ${Colors.White}`,
     color: Colors.White,
   })
