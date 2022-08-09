@@ -2,15 +2,18 @@ import Firebase from 'firebase/app'
 import slugify from 'slugify'
 import { v4 as uuid_v4 } from 'uuid';
 import Artifact from '../../models/artifact/ArtifactModel';
+import Asset from '../../models/artifact/AssetModel';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 
 interface ArtifactCreateValues {
   portfolio?: Portfolio;
   title: string;
   description?: string;
+  images?: Asset;
 }
 
 const createArtifact = (values: ArtifactCreateValues) => {
+  console.log('createArtifact', values)
   const newArtifact: Artifact = {
     artifactId: uuid_v4(),
     portfolioId: values.portfolio?.portfolioId,
@@ -19,6 +22,7 @@ const createArtifact = (values: ArtifactCreateValues) => {
     slug: slugify(values.title, { lower: true }),
     createdBy: Firebase.auth().currentUser?.uid ? Firebase.auth().currentUser!.uid : '',
     createdOn: Firebase.firestore.Timestamp.now(),
+    images: values.images && [values.images]
   }
 
   return Firebase.firestore()

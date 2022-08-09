@@ -74,7 +74,14 @@ const PortfolioPage = () => {
         </FlexRow>
         <Paragraph.P14>{portfolio && portfolio.description}</Paragraph.P14>
         <div>
-          {artifacts?.map(artifact => <Subheading.SH18>{artifact.title}</Subheading.SH18>)}
+          {artifacts?.map(
+            artifact => (
+              <div>
+                <Subheading.SH18>{artifact.title}</Subheading.SH18>
+                {artifact.images && <img src={artifact.images[0].url} width={100} height={100} />}
+              </div>
+            )
+          )}
         </div>
         <FloatingFooter
           left={
@@ -88,6 +95,7 @@ const PortfolioPage = () => {
         />
       </Page>
       <SideDrawer
+        // isOpen={true}
         isOpen={isArtifactDrawerOpen}
         onDismiss={onSideDrawerDismiss}
         content={

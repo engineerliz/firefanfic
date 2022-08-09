@@ -1,4 +1,5 @@
 import Firebase from 'firebase/app'
+import Asset from './AssetModel';
 
 interface Artifact {
   artifactId: string;
@@ -8,6 +9,7 @@ interface Artifact {
   title: string;
   description?: string;
   slug?: string;
+  images?: Asset[];
 }
 
 export default Artifact
