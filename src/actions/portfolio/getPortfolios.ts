@@ -22,10 +22,7 @@ export const getPortfolioById = (id: string): Promise<void | Portfolio> => {
     .doc(id)
     .get()
     .then((value) => ({
-      title: value.data()?.title,
-      description: value.data()?.description,
-      portfolioId: id,
-      slug: value.data()?.slug,
+      ...value.data()
     } as Portfolio))
     .catch(error => {
       alert(`Whoops, couldn't get the portfolio: ${error.message}`)

@@ -9,7 +9,7 @@ export interface SodaUser {
   email?: string;
   bio?: string;
   avatarUrl?: string;
-  joinDate: Firebase.firestore.Timestamp
+  joinDate: Firebase.firestore.Timestamp;
 }
 
 export const transformFirebaseUsertoSodaUser = (user: User): SodaUser => {

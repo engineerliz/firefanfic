@@ -8,13 +8,13 @@ import Portfolio from '../../../models/portfolio/PortfolioModel';
 import { getAllPortfolios } from '../../../actions/portfolio/getPortfolios';
 import { Link } from 'react-router-dom';
 
-interface PortfolioTabInterface {
+interface PortfolioTabProps {
   portfolios?: Portfolio[];
 }
 
 const PortfolioTab = ({
   portfolios
-}: PortfolioTabInterface) => {
+}: PortfolioTabProps) => {
 
   if (portfolios) {
     return <FlexCol>
