@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FlexCol, FlexRow } from '../../../firefly/styles/layout';
 import StoplightImg from '../../../assets/illustrations/stoplight.png';
 import { portfolioTabStyles } from './styles';
 import { Heading, Paragraph } from '../../../components/styles/fonts';
 import Button, { ButtonSize } from '../../../components/button/Button';
 import Portfolio from '../../../models/portfolio/PortfolioModel';
-import { getAllPortfolios } from '../../../actions/portfolio/getPortfolios';
 import { Link } from 'react-router-dom';
 
 interface PortfolioTabProps {
@@ -17,28 +16,30 @@ const PortfolioTab = ({
 }: PortfolioTabProps) => {
 
   if (portfolios) {
-    return <FlexCol>
-      <Link to="/edit-portfolio">
-        <Button
-          buttonSize={ButtonSize.XSmall}
-          text="Create New"
-        />
-      </Link>
-      <Heading.H26>Portfolios</Heading.H26>
-      {portfolios.map(portfolio =>
-        <div key={portfolio.portfolioId}>
-          <Link to={`/portfolio/${portfolio.portfolioId}`}>
-            <Heading.H18>{portfolio.title}</Heading.H18>
-          </Link>
-          <Paragraph.P14>{portfolio.portfolioId}</Paragraph.P14>
+    return (
+      <FlexCol>
+        <Link to="/edit-portfolio">
+          <Button
+            buttonSize={ButtonSize.XSmall}
+            text="Create New"
+          />
+        </Link>
+        <Heading.H26>Portfolios</Heading.H26>
+        {portfolios.map(portfolio =>
+          <div key={portfolio.portfolioId}>
+            <Link to={`/portfolio/${portfolio.portfolioId}`}>
+              <Heading.H18>{portfolio.title}</Heading.H18>
+            </Link>
+            <Paragraph.P14>{portfolio.portfolioId}</Paragraph.P14>
 
-        </div>
-      )}
-    </FlexCol>
+          </div>
+        )}
+      </FlexCol>
+    )
   }
 
-  return <FlexRow>
-    <>
+  return (
+    <FlexRow>
       <img src={StoplightImg} alt="Stoplight" className={portfolioTabStyles.image} />
       <FlexCol className={portfolioTabStyles.textContainer}>
         <Heading.H34>
@@ -54,8 +55,8 @@ const PortfolioTab = ({
           />
         </Link>
       </FlexCol>
-    </>
-  </FlexRow>
+    </FlexRow>
+  )
 }
 
 export default PortfolioTab

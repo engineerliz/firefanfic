@@ -1,4 +1,4 @@
-import Firebase, { User } from 'firebase/app'
+import Firebase from 'firebase/app'
 
 interface Portfolio {
   portfolioId: string;

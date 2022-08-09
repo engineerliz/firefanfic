@@ -19,6 +19,7 @@ export const assetBannerStyles = {
     width: '140%',
     maxWidth: 750,
     position: 'absolute',
-    left: 0,
+    left: '50%',
+    transform: 'translate(-48%, 0)',
   })
 }

@@ -26,9 +26,9 @@ export const headerStyles = {
     cursor: 'pointer',
   }),
   sodaCan: css({
-    width: 32,
-    height: 32,
-    marginRight: 6,
+    width: 30,
+    height: 30,
+    marginRight: 4,
   }),
   logoText: css({
     marginTop: 4,

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { css } from '@emotion/css';
 import { splashStyles } from '../../features/splash/styles';
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
-import { HeaderLink } from '../../firefly/styles/links';
 import Button from '../button/Button';
 import { Heading, Paragraph } from '../styles/fonts';
 import { assetBannerStyles } from './styles';

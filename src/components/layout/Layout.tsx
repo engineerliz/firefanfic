@@ -19,9 +19,9 @@ const Layout = ({ children }: any) => (
       {children}
     </div>
 
-    <Footer>
+    {/* <Footer>
       © {(new Date()).getFullYear()}
-    </Footer>
+    </Footer> */}
 
   </HeaderFooterWrapper>
 )
