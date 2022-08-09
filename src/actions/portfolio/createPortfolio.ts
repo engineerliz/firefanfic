@@ -1,7 +1,6 @@
 import Firebase from 'firebase/app'
 import slugify from 'slugify'
 import { v4 as uuid_v4 } from 'uuid';
-import { prepareDocForCreate } from '../../firefly/actions/helpers/firestoreHelpers'
 import Portfolio from '../../models/portfolio/PortfolioModel';
 
 interface PortfolioCreateValues {
@@ -21,7 +20,7 @@ const createPortfolio = (values: PortfolioCreateValues) => {
   return Firebase.firestore()
     .collection('portfolios')
     .doc(newPortfolio.portfolioId)
-    .set(prepareDocForCreate(newPortfolio))
+    .set(newPortfolio)
     .then(() => newPortfolio)
     .catch(error => {
       alert(`Whoops, couldn't create the portfolio: ${error.message}`)

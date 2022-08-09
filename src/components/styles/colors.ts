@@ -24,6 +24,7 @@ const Gray = {
 const Transparent = {
   Dark: {
     V2: 'rgba(33, 51, 97, 0.5)',
+    V3: 'rgba(18, 28, 53, 0.7)',
   },
   Light: {
     V2: 'rgba(255, 255, 255, 0.3)',
