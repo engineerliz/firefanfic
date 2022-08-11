@@ -1,4 +1,5 @@
 import Firebase from 'firebase/app'
+import { List } from 'immutable';
 import Asset from './AssetModel';
 
 interface Artifact {
@@ -9,7 +10,7 @@ interface Artifact {
   title: string;
   description?: string;
   slug?: string;
-  images?: Asset[];
+  images?: List<Asset>;
 }
 
 export default Artifact

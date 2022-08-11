@@ -1,34 +1,77 @@
-import React, { ChangeEventHandler } from 'react'
+import { List } from 'immutable';
+import React, { useRef } from 'react'
 import { useState } from 'react'
+import { FlexCol, FlexRow } from '../../firefly/styles/layout';
+import Button, { ButtonSize } from '../button/Button';
+import { turnFileListIntoList } from './fileUploader.helpers';
+import { fileUploaderStyles } from './fileUploader.styles';
 
 interface FileUploaderProps {
+  imagesSize?: number;
+  className?: string;
   onChange?: (fileList?: FileList) => void;
 }
 
 const FileUploader = ({
+  imagesSize,
+  className,
   onChange
 }: FileUploaderProps) => {
-  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer>();
+  const [fileUrls, setFileUrls] = useState<List<string>>();
+  const hiddenFileInput = useRef<HTMLInputElement>(null)
 
-  const onFilesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target as HTMLInputElement;
+  const handleClick = () => {
+    hiddenFileInput.current && hiddenFileInput.current.click();
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target.files ?? undefined)
+    const files = event.target.files && turnFileListIntoList(event.target.files);
 
-    if (!input.files?.length) {
-      return;
-    }
+    setFileUrls(files?.map(file =>
+      URL.createObjectURL(file)
+    ))
 
-    const file = input.files[0];
-    console.log('input.files', input.files);
-    onChange?.(input.files)
-  }
-
+    // if (files) {
+    //   for (let i = 0; i < files.length; i++) {
+    //     const newFiles = fileNames;
+    //     newFiles.push(files.item(i)!)
+    //     setFileUrls(
+    //       newFiles.map(file => URL.createObjectURL(file))
+    //     )
+    //   }
+    // }
+  };
   return (
-    <input
-      type="file"
-      onChange={onFilesChange}
-      multiple
-    />
-  )
+    <FlexCol className={className}>
+      {fileUrls &&
+        <FlexRow className={fileUploaderStyles.imageRow}>
+          {fileUrls.map(url => (
+            <div className={fileUploaderStyles.imageContainer(imagesSize)} key={url}>
+              <img
+                src={url}
+                width={100}
+                className={fileUploaderStyles.images}
+              />
+            </div>
+          ))}
+        </FlexRow>
+      }
+      <FlexRow>
+        <Button
+          onClick={handleClick}
+          text='Upload a file'
+          buttonSize={ButtonSize.XSmall}
+        />
+        <input
+          type="file"
+          ref={hiddenFileInput}
+          onChange={handleChange}
+          style={{ display: 'none' }}
+          multiple
+        />
+      </FlexRow>
+    </FlexCol>
+  );
 }
 
 export default FileUploader

@@ -22,7 +22,6 @@ const TextInput = ({
   className,
   value,
 }: TextInputProps) => {
-  console.log('value', value, 'isMultiline', isMultiline)
   return <FlexCol className={className}>
     {label &&
       <Subheading.SH14 className={textInputStyles.label}>

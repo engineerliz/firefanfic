@@ -1,4 +1,5 @@
 import Firebase from 'firebase/app'
+import { List } from 'immutable';
 import slugify from 'slugify'
 import { v4 as uuid_v4 } from 'uuid';
 import Artifact from '../../models/artifact/ArtifactModel';
@@ -9,7 +10,7 @@ interface ArtifactCreateValues {
   portfolio?: Portfolio;
   title: string;
   description?: string;
-  images?: Asset;
+  images?: List<Asset>;
 }
 
 const createArtifact = (values: ArtifactCreateValues) => {
@@ -18,17 +19,20 @@ const createArtifact = (values: ArtifactCreateValues) => {
     artifactId: uuid_v4(),
     portfolioId: values.portfolio?.portfolioId,
     title: values.title,
-    description: values.description,
+    description: values.description ?? '',
     slug: slugify(values.title, { lower: true }),
     createdBy: Firebase.auth().currentUser?.uid ? Firebase.auth().currentUser!.uid : '',
     createdOn: Firebase.firestore.Timestamp.now(),
-    images: values.images && [values.images]
+    images: values.images
   }
 
   return Firebase.firestore()
     .collection('artifacts')
     .doc(newArtifact.artifactId)
-    .set(newArtifact)
+    .set({
+      ...newArtifact,
+      images: values.images?.toArray() ?? [],
+    })
     .then(() => newArtifact)
     .catch(error => {
       alert(`Whoops, couldn't create the artifact: ${error.message}`)

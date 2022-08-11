@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts';
@@ -22,7 +23,7 @@ const PortfolioPage = () => {
   const [portfolioCreator, setPortfolioCreator] = useState<SodaUser>();
   const [currentUser, setCurrentUser] = useState<SodaUser>();
   const [isArtifactDrawerOpen, setIsArtifactDrawerOpen] = useState<boolean>(false);
-  const [artifacts, setArtifacts] = useState<Artifact[]>();
+  const [artifacts, setArtifacts] = useState<List<Artifact>>();
 
   useEffect(() => {
     portfolioId &&
@@ -76,9 +77,11 @@ const PortfolioPage = () => {
         <div>
           {artifacts?.map(
             artifact => (
-              <div>
+              <div key={artifact.artifactId}>
                 <Subheading.SH18>{artifact.title}</Subheading.SH18>
-                {artifact.images && <img src={artifact.images[0].url} width={100} height={100} />}
+                {artifact.images?.map(image => (
+                  <img src={image.url} width={100} height={100} />
+                ))}
               </div>
             )
           )}
