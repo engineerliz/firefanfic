@@ -5,7 +5,8 @@ import { portfolioTabStyles } from './styles';
 import { Heading, Paragraph } from '../../../components/styles/fonts';
 import Button, { ButtonSize } from '../../../components/button/Button';
 import Portfolio from '../../../models/portfolio/PortfolioModel';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AssetTile from '../../../components/assetTile/AssetTile';
 
 interface PortfolioTabProps {
   portfolios?: Portfolio[];
@@ -14,7 +15,7 @@ interface PortfolioTabProps {
 const PortfolioTab = ({
   portfolios
 }: PortfolioTabProps) => {
-
+  const navigate = useNavigate();
   if (portfolios) {
     return (
       <FlexCol>
@@ -27,9 +28,13 @@ const PortfolioTab = ({
         <Heading.H26>Portfolios</Heading.H26>
         {portfolios.map(portfolio =>
           <div key={portfolio.portfolioId}>
-            <Link to={`/portfolio/${portfolio.portfolioId}`}>
-              <Heading.H18>{portfolio.title}</Heading.H18>
-            </Link>
+            {/* <Heading.H18>{portfolio.title}</Heading.H18> */}
+            <AssetTile
+              title={portfolio.title}
+              subtitle={portfolio.description}
+              size={300}
+              onClick={() => navigate(`/portfolio/${portfolio.portfolioId}`)}
+            />
             <Paragraph.P14>{portfolio.portfolioId}</Paragraph.P14>
 
           </div>

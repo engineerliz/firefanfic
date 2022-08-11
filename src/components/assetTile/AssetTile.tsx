@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 import { FlexCol } from '../../firefly/styles/layout';
 import { Heading, Subheading } from '../styles/fonts';
 import { assetTileStyles } from './assetTile.styles';
+import EmptyImg from '../../assets/illustrations/empty.png';
 
 interface AssetTileProps {
   imgUrl?: string;
   title: string;
   subtitle?: string;
   size?: number | string;
+  onClick?: () => void;
   className?: string;
 }
 
@@ -17,6 +19,7 @@ const AssetTile = ({
   title,
   subtitle,
   size,
+  onClick,
   className
 }: AssetTileProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
@@ -25,8 +28,9 @@ const AssetTile = ({
       className={css(assetTileStyles.container(size), className)}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      onClick={onClick}
     >
-      <img src={imgUrl} className={assetTileStyles.backgroundImg} />
+      <img src={imgUrl ?? EmptyImg} className={assetTileStyles.backgroundImg} />
       <FlexCol className={assetTileStyles.textContainer(isHovering)}>
         <Heading.H18 className={assetTileStyles.text}>
           {title}
