@@ -43,6 +43,7 @@ const Header = styled.div`
 `
 const Page = styled.div`
   padding: 1rem;
+  padding-bottom: 100px;
 `
 const Footer = styled.div`
   padding: 1rem;

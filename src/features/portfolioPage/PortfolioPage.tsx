@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts';
 import { getPortfolioById } from '../../actions/portfolio/getPortfolios';
 import { getCurrentUser, getCurrentUserId, getUserById } from '../../actions/user/getUser';
+import AssetTile from '../../components/assetTile/AssetTile';
 import Button, { ButtonSize } from '../../components/button/Button';
 import FloatingFooter from '../../components/floatingFooter/FloatingFooter';
 import PortfolioOwnerTile from '../../components/portfolioOwnerTile/PortfolioOwnerTile';
@@ -14,7 +15,7 @@ import Artifact from '../../models/artifact/ArtifactModel';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { SodaUser } from '../../models/user/UserModel';
 import ArtifactEdit from '../artifactEdit/ArtifactEdit';
-import { portfolioPageStyles } from './styles';
+import { portfolioPageStyles } from './portfolioPage.styles';
 
 
 const PortfolioPage = () => {
@@ -74,18 +75,21 @@ const PortfolioPage = () => {
           </FlexCol>
         </FlexRow>
         <Paragraph.P14>{portfolio && portfolio.description}</Paragraph.P14>
-        <div>
+        <FlexRow className={portfolioPageStyles.artifactsRow}>
           {artifacts?.map(
             artifact => (
-              <div key={artifact.artifactId}>
-                <Subheading.SH18>{artifact.title}</Subheading.SH18>
-                {artifact.images?.map(image => (
-                  <img src={image.url} width={100} height={100} />
-                ))}
-              </div>
+              artifact.images?.map(image => (
+                <AssetTile
+                  title={artifact.title}
+                  subtitle={artifact.description}
+                  imgUrl={image.url}
+                  size='25%'
+                />
+                // <img src={image.url} width={100} height={100} />
+              ))
             )
           )}
-        </div>
+        </FlexRow>
         <FloatingFooter
           left={
             <PortfolioOwnerTile

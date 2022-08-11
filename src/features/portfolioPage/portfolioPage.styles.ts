@@ -6,5 +6,10 @@ export const portfolioPageStyles = {
   }),
   portfolioHeader: css({
     marginBottom: 12,
+  }),
+  artifactsRow: css({
+    height: 'fit-content',
+    flexWrap: 'wrap',
+    margin: '20px 0',
   })
 }

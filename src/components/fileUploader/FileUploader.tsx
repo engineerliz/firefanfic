@@ -30,16 +30,6 @@ const FileUploader = ({
     setFileUrls(files?.map(file =>
       URL.createObjectURL(file)
     ))
-
-    // if (files) {
-    //   for (let i = 0; i < files.length; i++) {
-    //     const newFiles = fileNames;
-    //     newFiles.push(files.item(i)!)
-    //     setFileUrls(
-    //       newFiles.map(file => URL.createObjectURL(file))
-    //     )
-    //   }
-    // }
   };
   return (
     <FlexCol className={className}>

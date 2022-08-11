@@ -6,6 +6,7 @@ export const getArtifactsByPortfolioId = (portfolioId: string): Promise<void | L
   return Firebase.firestore()
     .collection('artifacts')
     .where('portfolioId', '==', portfolioId)
+    .orderBy('createdOn', 'desc')
     .get()
     .then((artifacts) => List(artifacts.docs).map(artifact => ({
       ...artifact.data()

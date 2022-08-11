@@ -7,6 +7,7 @@ export const headerStyles = {
     width: '100vw',
     top: 0,
     zIndex: 10,
+    backdropFilter: 'blur(6px)',
   }),
   waveCss: css({
     width: '100%',
