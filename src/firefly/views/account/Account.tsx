@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import FirebaseAuth, { AuthState } from '../misc/FirebaseAuth'
 import Error from '../misc/Error'
@@ -10,23 +10,28 @@ import { signIn } from '../../../actions/user/signIn'
 import { useCurrentUserContext } from '../../../context/state'
 import { SodaUser } from '../../../models/user/UserModel'
 import { getCurrentUser, getCurrentUserId } from '../../../actions/user/getUser'
+import { UserContext } from '../../../features/App'
 
 const Account = () => {
+  const userContext = useContext(UserContext);
+
   const [currentUserId, setCurrentUserId] = useState<string | undefined>();
-  const [user, setUser] = useState<SodaUser | undefined>();
+  // const [user, setUser] = useState<SodaUser | undefined>();
   useEffect(() => {
-    setCurrentUserId(getCurrentUserId())
+    // setCurrentUserId(getCurrentUserId())
   }, [])
   useEffect(() => {
-    getCurrentUser()?.then(value => setUser(value ?? undefined))
+    // getCurrentUser()?.then(value => setUser(value ?? undefined))
   }, [currentUserId])
 
-  if (user) {
+  // console.log('userContext', userContext);
+
+  if (userContext.user) {
     return (
       <Page>
         <div>
           <Profile
-            user={user!}
+            user={userContext.user}
           />
           {/* <hr /> */}
           {/* <Subscription auth={auth} /> */}

@@ -14,13 +14,16 @@ export const getUserById = (id: string): Promise<void | SodaUser> => {
     })
 }
 
-export const getCurrentUserId = (): string | undefined => {
-  return Firebase.auth().currentUser?.uid;
+export const getCurrentUserId = (): Promise<string | undefined> => {
+  return new Promise((resolve) => {
+    return resolve(Firebase.auth().currentUser?.uid)
+  });
 }
 
 export const getCurrentUser = (): Promise<void | SodaUser> | undefined => {
   const currentUserId = getCurrentUserId()
-  if (currentUserId) {
-    return getUserById(currentUserId)
-  }
+  // if (currentUserId) {
+  //   return getUserById(currentUserId)
+  // }
+  return undefined
 }

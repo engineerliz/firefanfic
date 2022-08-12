@@ -1,28 +1,48 @@
 import Firebase from 'firebase/app'
 import { FirestoreProvider } from '@react-firebase/firestore'
-import React from 'react'
-import ReactGA from 'react-ga'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-import ErrorBoundary from '../firefly/views/misc/ErrorBoundary'
 import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'
+import { transformFirebaseUsertoSodaUser } from '../models/user/UserModel'
+
+const userInfo = {
+  user: {
+    userId: '',
+    displayName: '',
+    email: undefined,
+    username: '',
+    joinDate: Firebase.firestore.Timestamp.now(),
+    avatarUrl: undefined,
+  }
+}
+export const UserContext = React.createContext(userInfo);
 
 const App = () => {
+  const [currentUser, setCurrentUser] = useState()
+  useEffect(() => {
+    Firebase.auth().onAuthStateChanged((user) => setCurrentUser(transformFirebaseUsertoSodaUser(user)))
+  }, [])
+
   return <FirestoreProvider firebase={Firebase} >
-    <BrowserRouter>
-      {/* <ErrorBoundary> */}
-      <Layout>
-        {/* <Routes>
+    <UserContext.Provider value={{
+      user: currentUser
+    }}>
+      <BrowserRouter>
+        {/* <ErrorBoundary> */}
+        <Layout>
+          {/* <Routes>
             <Route path="/" children={ScrollToTop} />
             <Route path="/" children={Analytics({})} />
           </Routes> */}
-        <Routes />
-        {/* {Routes()} */}
-      </Layout>
-      {/* </ErrorBoundary> */}
-    </BrowserRouter>
+          <Routes />
+          {/* {Routes()} */}
+        </Layout>
+        {/* </ErrorBoundary> */}
+      </BrowserRouter>
+    </UserContext.Provider>
   </FirestoreProvider>
 }
 
