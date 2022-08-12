@@ -12,7 +12,7 @@ import { SodaUser } from '../../../models/user/UserModel'
 import { getCurrentUser, getCurrentUserId } from '../../../actions/user/getUser'
 
 const Account = () => {
-  const [currentUserId, setCurrentUserId] = useState<string | undefined>(getCurrentUserId());
+  const [currentUserId, setCurrentUserId] = useState<string | undefined>();
   const [user, setUser] = useState<SodaUser | undefined>();
   useEffect(() => {
     setCurrentUserId(getCurrentUserId())

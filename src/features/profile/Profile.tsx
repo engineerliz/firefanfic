@@ -13,6 +13,8 @@ import { Colors } from '../../components/styles/colors';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { getPortfoliosByUserId } from '../../actions/portfolio/getPortfolios';
 import { SodaUser } from '../../models/user/UserModel';
+import Tabs from '../../components/tabs/Tabs';
+import { List } from 'immutable';
 
 interface ProfileProps {
   user: SodaUser;
@@ -63,6 +65,13 @@ const Profile = ({
         </FlexRow>
       </FlexCol>
     </FlexRow>
+    <Tabs
+      tabLabels={List([
+        'Portfolios',
+        'Library',
+        'Account'
+      ])}
+    />
     <PortfolioTab portfolios={userPortfolios} />
   </FlexCol>
 }
