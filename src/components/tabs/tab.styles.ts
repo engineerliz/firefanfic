@@ -7,6 +7,7 @@ export const tabStyles = {
     padding: '8px 20px',
     borderRadius: 30,
     transition: 'all 0.3s ease',
+    cursor: 'pointer',
   }),
   label: (isActive: boolean) => css({
     color: isActive ? Colors.Black : Colors.Gray.V2,

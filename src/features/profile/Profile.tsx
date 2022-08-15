@@ -25,6 +25,7 @@ const Profile = ({
 }: ProfileProps) => {
   const navigate = useNavigate();
   const [userPortfolios, setUserPortfolios] = useState<Portfolio[]>();
+  const [activeTab, setActiveTab] = useState<number>(0);
 
   useEffect(() => {
     getPortfoliosByUserId(user.userId).then((value) => value && setUserPortfolios(value))
@@ -71,8 +72,12 @@ const Profile = ({
         'Library',
         'Account'
       ])}
+      onChange={(index) => setActiveTab(index)}
+      className={profileStyles.tabs}
     />
-    <PortfolioTab portfolios={userPortfolios} />
+    {activeTab == 0 &&
+      <PortfolioTab portfolios={userPortfolios} />
+    }
   </FlexCol>
 }
 

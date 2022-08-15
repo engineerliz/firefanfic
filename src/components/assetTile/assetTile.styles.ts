@@ -8,6 +8,10 @@ export const assetTileStyles = {
     position: 'relative',
     background: Colors.White,
     cursor: 'pointer',
+    minWidth: 160,
+    minHeight: 160,
+    maxWidth: 350,
+    maxHeight: 350,
   }),
   backgroundImg: css({
     height: '100%',

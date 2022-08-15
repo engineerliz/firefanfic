@@ -11,6 +11,8 @@ import { useCurrentUserContext } from '../../../context/state'
 import { SodaUser } from '../../../models/user/UserModel'
 import { getCurrentUser, getCurrentUserId } from '../../../actions/user/getUser'
 import { UserContext } from '../../../features/App'
+import FloatingFooter from '../../../components/floatingFooter/FloatingFooter'
+import Button, { ButtonSize } from '../../../components/button/Button'
 
 const Account = () => {
   const userContext = useContext(UserContext);
@@ -36,6 +38,14 @@ const Account = () => {
           {/* <hr /> */}
           {/* <Subscription auth={auth} /> */}
         </div>
+        {/* <FloatingFooter
+          rightButtons={[
+            <Button
+              text='Create'
+              buttonSize={ButtonSize.XSmall}
+            />
+          ]}
+        /> */}
       </Page>
     )
   }
@@ -45,6 +55,7 @@ const Account = () => {
         <p>Log in to see your account</p>
         <button onClick={signIn}>Log in</button>
       </div>
+
     </Page>
   )
 }

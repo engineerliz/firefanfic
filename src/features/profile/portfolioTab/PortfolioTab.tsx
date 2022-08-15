@@ -7,6 +7,7 @@ import Button, { ButtonSize } from '../../../components/button/Button';
 import Portfolio from '../../../models/portfolio/PortfolioModel';
 import { Link, useNavigate } from 'react-router-dom';
 import AssetTile from '../../../components/assetTile/AssetTile';
+import { FlexCss } from '../../../components/styles/flex';
 
 interface PortfolioTabProps {
   portfolios?: Portfolio[];
@@ -19,16 +20,16 @@ const PortfolioTab = ({
   if (portfolios) {
     return (
       <FlexCol>
-        <Link to="/edit-portfolio">
+        <FlexRow className={FlexCss.spaceBetween}>
+          <Heading.H26>Your Portfolios</Heading.H26>
           <Button
             buttonSize={ButtonSize.XSmall}
             text="Create New"
+            onClick={() => navigate('/edit-portfolio')}
           />
-        </Link>
-        <Heading.H26>Portfolios</Heading.H26>
+        </FlexRow>
         {portfolios.map(portfolio =>
           <div key={portfolio.portfolioId}>
-            {/* <Heading.H18>{portfolio.title}</Heading.H18> */}
             <AssetTile
               title={portfolio.title}
               subtitle={portfolio.description}

@@ -13,15 +13,16 @@ export const sideDrawerStyles = {
   }),
   container: (isOpen?: boolean) => css({
     // width: isOpen ? '50vw' : 0,
-    width: '50vw',
+    width: '50%',
     minWidth: 800,
     height: '100%',
     background: Colors.Branding.BackgroundGradient,
     position: 'fixed',
-    right: isOpen ? 0 : '-100%',
+    right: 0,
+    transform: isOpen ? 'none' : 'translate(100%, 0)',
     top: 0,
     zIndex: 1,
     padding: '6% 42px 34px',
-    transition: 'all 0.8s ease',
+    transition: 'all 0.6s ease',
   })
 }

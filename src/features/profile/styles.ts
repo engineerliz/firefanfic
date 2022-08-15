@@ -16,5 +16,8 @@ export const profileStyles = {
     marginRight: 12,
     border: `1px solid ${Colors.White}`,
     color: Colors.White,
+  }),
+  tabs: css({
+    marginBottom: 24,
   })
 }

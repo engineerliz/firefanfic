@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts';
 import { getPortfolioById } from '../../actions/portfolio/getPortfolios';
@@ -14,6 +14,7 @@ import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
 import Artifact from '../../models/artifact/ArtifactModel';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { SodaUser } from '../../models/user/UserModel';
+import { UserContext } from '../App';
 import ArtifactEdit from '../artifactEdit/ArtifactEdit';
 import { portfolioPageStyles } from './portfolioPage.styles';
 
@@ -22,6 +23,8 @@ const PortfolioPage = () => {
   const { portfolioId } = useParams();
   const [portfolio, setPortfolio] = useState<Portfolio>();
   const [portfolioCreator, setPortfolioCreator] = useState<SodaUser>();
+  const userContext = useContext(UserContext);
+
   const [currentUser, setCurrentUser] = useState<SodaUser>();
   const [isArtifactDrawerOpen, setIsArtifactDrawerOpen] = useState<boolean>(false);
   const [artifacts, setArtifacts] = useState<List<Artifact>>();
@@ -47,8 +50,7 @@ const PortfolioPage = () => {
   }, [portfolio])
 
   const getRightButtons = () => {
-    console.log('currentUser?.userId', currentUser?.userId, 'portfolioCreator?.userId', portfolioCreator?.userId)
-    if (currentUser?.userId == portfolioCreator?.userId) {
+    if (userContext.user?.userId == portfolioCreator?.userId) {
       return [
         <Button
           buttonSize={ButtonSize.XSmall}

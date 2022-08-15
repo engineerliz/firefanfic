@@ -1,8 +1,10 @@
 import Firebase from 'firebase/app'
 import { FirestoreProvider } from '@react-firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import ReactGA from 'react-ga'
 import { BrowserRouter } from 'react-router-dom'
 
+import ErrorBoundary from '../firefly/views/misc/ErrorBoundary'
 import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'
