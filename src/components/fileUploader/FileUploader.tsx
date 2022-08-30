@@ -2,7 +2,7 @@ import { List } from 'immutable';
 import React, { useRef } from 'react'
 import { useState } from 'react'
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
-import Button, { ButtonSize } from '../button/Button';
+import Button, { ButtonSize2 } from '../button/Button';
 import { turnFileListIntoList } from './fileUploader.helpers';
 import { fileUploaderStyles } from './fileUploader.styles';
 
@@ -50,7 +50,7 @@ const FileUploader = ({
         <Button
           onClick={handleClick}
           text='Upload a file'
-          buttonSize={ButtonSize.XSmall}
+          ButtonSize2={ButtonSize2.XSmall}
         />
         <input
           type="file"

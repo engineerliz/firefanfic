@@ -5,7 +5,7 @@ import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts'
 import { getPortfolioById } from '../../actions/portfolio/getPortfolios';
 import { getCurrentUser, getCurrentUserId, getUserById } from '../../actions/user/getUser';
 import AssetTile from '../../components/assetTile/AssetTile';
-import Button, { ButtonSize } from '../../components/button/Button';
+import Button, { ButtonSize2 } from '../../components/button/Button';
 import FloatingFooter from '../../components/floatingFooter/FloatingFooter';
 import PortfolioOwnerTile from '../../components/portfolioOwnerTile/PortfolioOwnerTile';
 import SideDrawer from '../../components/sideDrawer/SideDrawer';
@@ -53,11 +53,11 @@ const PortfolioPage = () => {
     if (userContext.user?.userId == portfolioCreator?.userId) {
       return [
         <Button
-          buttonSize={ButtonSize.XSmall}
+          ButtonSize2={ButtonSize2.XSmall}
           text='Edit Soda'
         />,
         <Button
-          buttonSize={ButtonSize.XSmall}
+          ButtonSize2={ButtonSize2.XSmall}
           text='Add Pop'
           onClick={() => setIsArtifactDrawerOpen(true)}
         />

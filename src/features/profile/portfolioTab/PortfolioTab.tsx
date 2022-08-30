@@ -3,7 +3,7 @@ import { FlexCol, FlexRow } from '../../../firefly/styles/layout';
 import StoplightImg from '../../../assets/illustrations/stoplight.png';
 import { portfolioTabStyles } from './styles';
 import { Heading, Paragraph } from '../../../components/styles/fonts';
-import Button, { ButtonSize } from '../../../components/button/Button';
+import Button, { ButtonSize2 } from '../../../components/button/Button';
 import Portfolio from '../../../models/portfolio/PortfolioModel';
 import { Link, useNavigate } from 'react-router-dom';
 import AssetTile from '../../../components/assetTile/AssetTile';
@@ -23,7 +23,7 @@ const PortfolioTab = ({
         <FlexRow className={FlexCss.spaceBetween}>
           <Heading.H26>Your Portfolios</Heading.H26>
           <Button
-            buttonSize={ButtonSize.XSmall}
+            ButtonSize2={ButtonSize2.XSmall}
             text="Create New"
             onClick={() => navigate('/edit-portfolio')}
           />

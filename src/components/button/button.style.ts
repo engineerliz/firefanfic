@@ -2,8 +2,7 @@ import { css } from '@emotion/css';
 import { Colors, Shadows } from '../styles/colors';
 
 const defaultButtonCss = css({
-  background: Colors.White,
-  borderRadius: '100px',
+  borderRadius: 10,
   border: 'none',
   cursor: 'pointer',
   color: Colors.Black,
@@ -16,19 +15,29 @@ const defaultButtonCss = css({
 });
 
 export const buttonStyles = {
-  xSmallButtonCss: (width?: number | string) => css(defaultButtonCss, {
-    width,
-    padding: '2px 20px',
-  }),
-  smallButtonCss: (width?: number | string) => css(defaultButtonCss, {
-    width,
-    padding: '8px 20px',
-  }),
-  mediumButtonCss: (width?: number | string) => css(defaultButtonCss, {
-    width,
-    padding: '10px 24px',
-  }),
-  buttonText: (color?: string) => css({
-    color: color || Colors.Black,
-  })
+  primary: {
+    container: css(defaultButtonCss, {
+      background: Colors.White,
+    }),
+  },
+  secondary: {
+    container: css(defaultButtonCss, {
+      background: Colors.Gray.V8,
+    })
+  },
+  large: {
+    padding: css({
+      padding: '8px 0'
+    })
+  },
+  medium: {
+    padding: css({
+      padding: '4px 0'
+    })
+  },
+  small: {
+    padding: css({
+      padding: '2px 0'
+    })
+  },
 }

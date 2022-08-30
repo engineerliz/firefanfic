@@ -4,7 +4,7 @@ import { Page } from '../../firefly/styles/layout';
 import { Heading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import { portfolioEditStyles } from './styles';
-import Button, { ButtonSize } from '../../components/button/Button';
+import Button, { ButtonSize2 } from '../../components/button/Button';
 import createPortfolio from '../../actions/portfolio/createPortfolio';
 
 interface PortfolioEditProps {
@@ -47,7 +47,7 @@ const PortfolioEdit = ({
       />
       <Button
         text='Create Portfolio'
-        buttonSize={ButtonSize.Small}
+        ButtonSize2={ButtonSize2.Small}
         onClick={onSubmit}
       />
     </div>

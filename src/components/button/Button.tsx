@@ -1,19 +1,27 @@
 import { css } from '@emotion/css';
-import React from 'react'
+import React from 'react';
+import { Colors, textColorCss } from '../styles/colors';
+import { Subheading } from '../styles/fonts';
 import { buttonStyles } from './button.style';
 
-export enum ButtonSize {
+export enum ButtonSize2 {
   XSmall,
   Small,
   Medium,
 }
 
+type ButtonType = 'Primary' | 'Secondary';
+type ButtonSize = 'Small' | 'Medium' | 'Large';
+
 interface ButtonProps {
   text?: string;
-  buttonSize?: ButtonSize;
+  ButtonSize2?: ButtonSize2;
   width?: number | string;
   frontColor?: string;
   backColor?: string;
+
+  type?: ButtonType;
+  size?: ButtonSize;
   className?: string;
   children?: React.ReactNode;
 
@@ -22,17 +30,60 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
-  frontColor,
-  backColor,
+  type,
+  size,
   className,
   children,
 }: ButtonProps) => {
+  const getTextColor = () => {
+    if (type === 'Primary') {
+      return textColorCss(Colors.Black);
+    }
+    return textColorCss(Colors.White);
+  };
 
-  return (
-    <button onClick={onClick} className={css(className)}>
+  const getText = () => {
+    if (size === 'Large') {
+      return (
+        <Subheading.SH22
+          className={css(getTextColor(), buttonStyles.large.padding)}
+        >
+          {children}
+        </Subheading.SH22>
+      );
+    }
+    if (size === 'Medium') {
+      return (
+        <Subheading.SH18
+          className={css(getTextColor(), buttonStyles.medium.padding)}
+        >
+          {children}
+        </Subheading.SH18>
+      );
+    }
+    return (
+      <Subheading.SH12
+        className={css(getTextColor(), buttonStyles.small.padding)}
+      >
         {children}
-    </button>
-  )
-}
+      </Subheading.SH12>
+    );
+  };
 
-export default Button
+  const getContainerClassName = () => {
+    if (type === 'Primary') {
+      return buttonStyles.primary.container;
+    }
+    return buttonStyles.secondary.container;
+  };
+  return (
+    <button
+      onClick={onClick}
+      className={css(getContainerClassName(), className)}
+    >
+      {getText()}
+    </button>
+  );
+};
+
+export default Button;

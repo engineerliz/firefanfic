@@ -61,8 +61,11 @@ const ColorStyles = {
   }),
 }
 
+const textColorCss = (color: string) => css({ color, });
+
 export {
   Colors,
   Shadows,
-  ColorStyles
+  ColorStyles,
+  textColorCss
 }

@@ -2,7 +2,7 @@ import { List } from 'immutable'
 import React, { useEffect, useState } from 'react'
 import createArtifact from '../../actions/artifacts/createArtifact'
 import { uploadFileList } from '../../actions/storage/uploadFile'
-import Button, { ButtonSize } from '../../components/button/Button'
+import Button, { ButtonSize2 } from '../../components/button/Button'
 import FileUploader from '../../components/fileUploader/FileUploader'
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts'
 import TextInput from '../../components/textInput/TextInput'
@@ -86,7 +86,7 @@ const ArtifactEdit = ({
           </Subheading.SH14>
           <Button
             text='Create Artifact'
-            buttonSize={ButtonSize.Small}
+            ButtonSize2={ButtonSize2.Small}
             onClick={onSubmit}
           />
         </FlexRow>

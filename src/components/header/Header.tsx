@@ -32,16 +32,7 @@ const Header = () => {
             if (auth) {
               return (
                 <HeaderLink to={`/account`}>
-                  <FlexRow className={FlexCss.alignCenter}>
-                    <img
-                      src={auth.photoURL}
-                      alt={auth.displayName}
-                      width="30"
-                      height="30"
-                      className={headerStyles.userPicCss}
-                    />
-                    <Subheading.SH14>Hi, {auth.displayName}</Subheading.SH14>
-                  </FlexRow>
+                  <Subheading.SH14>Hi, {auth.displayName}</Subheading.SH14>
                 </HeaderLink>
               );
             } else {

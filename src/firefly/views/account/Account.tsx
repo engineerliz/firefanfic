@@ -1,51 +1,44 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
-import FirebaseAuth, { AuthState } from '../misc/FirebaseAuth'
-import Error from '../misc/Error'
-import Profile from '../../../features/profile/Profile'
 import {
+  FlexCol,
+  FlexRow,
   Page,
 } from '../../styles/layout'
 import { signIn } from '../../../actions/user/signIn'
-import { useCurrentUserContext } from '../../../context/state'
-import { SodaUser } from '../../../models/user/UserModel'
-import { getCurrentUser, getCurrentUserId } from '../../../actions/user/getUser'
 import { UserContext } from '../../../features/App'
-import FloatingFooter from '../../../components/floatingFooter/FloatingFooter'
-import Button, { ButtonSize } from '../../../components/button/Button'
+import ProfileCard from '../../../components/profileCard/ProfileCard'
+import { accountStyles } from './account.styles'
+import { List } from 'immutable'
+import Tabs from '../../../components/tabs/Tabs'
+import { profileStyles } from '../../../features/profile/styles'
+import { useNavigate } from 'react-router-dom'
 
 const Account = () => {
   const userContext = useContext(UserContext);
-
-  const [currentUserId, setCurrentUserId] = useState<string | undefined>();
-  // const [user, setUser] = useState<SodaUser | undefined>();
-  useEffect(() => {
-    // setCurrentUserId(getCurrentUserId())
-  }, [])
-  useEffect(() => {
-    // getCurrentUser()?.then(value => setUser(value ?? undefined))
-  }, [currentUserId])
-
-  // console.log('userContext', userContext);
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<number>(0);
 
   if (userContext.user) {
     return (
       <Page>
-        <div>
-          <Profile
-            user={userContext.user}
-          />
-          {/* <hr /> */}
-          {/* <Subscription auth={auth} /> */}
-        </div>
-        {/* <FloatingFooter
-          rightButtons={[
-            <Button
-              text='Create'
-              buttonSize={ButtonSize.XSmall}
+        <FlexRow>
+          <ProfileCard className={accountStyles.profileCard} withLogout />
+          <FlexCol className={accountStyles.body}>
+            <Tabs
+              tabLabels={List([
+                'Your Fics',
+                'Bookmarks',
+                'Account'
+              ])}
+              onChange={(index) => setActiveTab(index)}
+              className={profileStyles.tabs}
             />
-          ]}
-        /> */}
+            {/* {activeTab == 0 &&
+              <PortfolioTab portfolios={userPortfolios} />
+            } */}
+          </FlexCol>
+        </FlexRow>
       </Page>
     )
   }

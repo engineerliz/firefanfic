@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { editUser } from '../../../actions/user/editUser';
-import Button, { ButtonSize } from '../../../components/button/Button';
+import Button, { ButtonSize2 } from '../../../components/button/Button';
 import { Heading } from '../../../components/styles/fonts';
 import TextInput from '../../../components/textInput/TextInput';
 import { FlexCol, FlexRow, Page } from '../../../firefly/styles/layout';
@@ -48,7 +48,7 @@ const EditProfile = () => {
       isMultiline={true}
     />
     <Button
-      buttonSize={ButtonSize.Small}
+      ButtonSize2={ButtonSize2.Small}
       text='Save'
       onClick={() => {
         user && editUser(user, {
