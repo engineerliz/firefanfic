@@ -1,9 +1,13 @@
 import { List } from 'immutable';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts';
 import { getPortfolioById } from '../../actions/portfolio/getPortfolios';
-import { getCurrentUser, getCurrentUserId, getUserById } from '../../actions/user/getUser';
+import {
+  getCurrentUser,
+  getCurrentUserId,
+  getUserById,
+} from '../../actions/user/getUser';
 import AssetTile from '../../components/assetTile/AssetTile';
 import Button, { ButtonSize2 } from '../../components/button/Button';
 import FloatingFooter from '../../components/floatingFooter/FloatingFooter';
@@ -18,7 +22,6 @@ import { UserContext } from '../App';
 import ArtifactEdit from '../artifactEdit/ArtifactEdit';
 import { portfolioPageStyles } from './portfolioPage.styles';
 
-
 const PortfolioPage = () => {
   const { portfolioId } = useParams();
   const [portfolio, setPortfolio] = useState<Portfolio>();
@@ -26,44 +29,45 @@ const PortfolioPage = () => {
   const userContext = useContext(UserContext);
 
   const [currentUser, setCurrentUser] = useState<SodaUser>();
-  const [isArtifactDrawerOpen, setIsArtifactDrawerOpen] = useState<boolean>(false);
+  const [isArtifactDrawerOpen, setIsArtifactDrawerOpen] =
+    useState<boolean>(false);
   const [artifacts, setArtifacts] = useState<List<Artifact>>();
 
   useEffect(() => {
     portfolioId &&
       getPortfolioById(portfolioId).then(
-        (value) => value && setPortfolio(value)
+        (value) => value && setPortfolio(value),
       );
     portfolioId &&
       getArtifactsByPortfolioId(portfolioId).then(
-        (value) => value && setArtifacts(value)
+        (value) => value && setArtifacts(value),
       );
-  }, [])
+  }, []);
 
   useEffect(() => {
-    console.log('setCurrentUser')
-    getCurrentUser()?.then(value => value && setCurrentUser(value));
-  }, [getCurrentUserId()])
+    console.log('setCurrentUser');
+    getCurrentUser()?.then((value) => value && setCurrentUser(value));
+  }, [getCurrentUserId()]);
 
   useEffect(() => {
-    portfolio?.createdBy && getUserById(portfolio?.createdBy).then(value => value && setPortfolioCreator(value))
-  }, [portfolio])
+    portfolio?.createdBy &&
+      getUserById(portfolio?.createdBy).then(
+        (value) => value && setPortfolioCreator(value),
+      );
+  }, [portfolio]);
 
   const getRightButtons = () => {
     if (userContext.user?.userId == portfolioCreator?.userId) {
       return [
+        <Button ButtonSize2={ButtonSize2.XSmall} text="Edit Soda" />,
         <Button
           ButtonSize2={ButtonSize2.XSmall}
-          text='Edit Soda'
-        />,
-        <Button
-          ButtonSize2={ButtonSize2.XSmall}
-          text='Add Pop'
+          text="Add Pop"
           onClick={() => setIsArtifactDrawerOpen(true)}
-        />
+        />,
       ];
     }
-  }
+  };
   const onSideDrawerDismiss = () => setIsArtifactDrawerOpen(false);
 
   return (
@@ -78,18 +82,17 @@ const PortfolioPage = () => {
         </FlexRow>
         <Paragraph.P14>{portfolio && portfolio.description}</Paragraph.P14>
         <FlexRow className={portfolioPageStyles.artifactsRow}>
-          {artifacts?.map(
-            artifact => (
-              artifact.images?.map(image => (
-                <AssetTile
-                  title={artifact.title}
-                  subtitle={artifact.description}
-                  imgUrl={image.url}
-                  size='25%'
-                />
-                // <img src={image.url} width={100} height={100} />
-              ))
-            )
+          {artifacts?.map((artifact) =>
+            artifact.images?.map((image) => (
+              <AssetTile
+                key={image.id}
+                title={artifact.title}
+                subtitle={artifact.description}
+                imgUrl={image.url}
+                size="25%"
+              />
+              // <img src={image.url} width={100} height={100} />
+            )),
           )}
         </FlexRow>
         <FloatingFooter
@@ -108,14 +111,11 @@ const PortfolioPage = () => {
         isOpen={isArtifactDrawerOpen}
         onDismiss={onSideDrawerDismiss}
         content={
-          <ArtifactEdit
-            onDismiss={onSideDrawerDismiss}
-            portfolio={portfolio}
-          />
+          <ArtifactEdit onDismiss={onSideDrawerDismiss} portfolio={portfolio} />
         }
       />
     </>
-  )
-}
+  );
+};
 
-export default PortfolioPage
+export default PortfolioPage;

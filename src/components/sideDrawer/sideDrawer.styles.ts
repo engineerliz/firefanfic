@@ -3,7 +3,8 @@ import { Colors } from '../styles/colors';
 
 export const sideDrawerStyles = {
   overlay: (isOpen?: boolean) => css({
-    background: Colors.Transparent.Dark.V3,
+    background: Colors.Gray.V9,
+    opacity: 0.6,
     height: '100%',
     width: '100%',
     display: isOpen ? 'default' : 'none',
@@ -16,7 +17,7 @@ export const sideDrawerStyles = {
     width: '50%',
     minWidth: 800,
     height: '100%',
-    background: Colors.Branding.BackgroundGradient,
+    background: Colors.Black,
     position: 'fixed',
     right: 0,
     transform: isOpen ? 'none' : 'translate(100%, 0)',

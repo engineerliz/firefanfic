@@ -9,14 +9,14 @@ import TextInput from '../../components/textInput/TextInput';
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
 import Asset from '../../models/artifact/AssetModel';
 import Portfolio from '../../models/portfolio/PortfolioModel';
-import { artifactEditStyles } from './artifactEdit.styles';
+import { ficEditStyles } from './ficEdit.styles';
 
-interface ArtifactEditProps {
+interface FicEditProps {
   portfolio?: Portfolio;
   onDismiss: () => void;
 }
 
-const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
+const FicEdit = ({ portfolio, onDismiss }: FicEditProps) => {
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
   const [images, setImages] = useState<FileList>();
@@ -45,17 +45,17 @@ const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
   const onCancel = () => onDismiss();
 
   return (
-    <FlexCol className={artifactEditStyles.container}>
+    <FlexCol className={ficEditStyles.container}>
       <Heading.H26>Add a pop to your soda</Heading.H26>
       <Paragraph.P14>
         Pops are artifacts in your portfolio to showcase your work. You can add
         and edit pops in your portfolio at any time.
       </Paragraph.P14>
-      <FlexCol className={artifactEditStyles.formBody}>
+      <FlexCol className={ficEditStyles.formBody}>
         <div>
           <TextInput
             label="Title"
-            className={artifactEditStyles.input}
+            className={ficEditStyles.input}
             value={title}
             onChange={(value) => {
               setTitle(value);
@@ -65,7 +65,7 @@ const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
             label="Description"
             isMultiline={true}
             height={200}
-            className={artifactEditStyles.input}
+            className={ficEditStyles.input}
             value={description}
             onChange={(value) => {
               setDescription(value);
@@ -73,10 +73,10 @@ const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
           />
           <FileUploader
             onChange={(fileList?: FileList) => setImages(fileList)}
-            className={artifactEditStyles.fileUploader}
+            className={ficEditStyles.fileUploader}
           />
         </div>
-        <FlexRow className={artifactEditStyles.bottomButtons}>
+        <FlexRow className={ficEditStyles.bottomButtons}>
           <Subheading.SH14 onClick={onCancel}>Cancel</Subheading.SH14>
           <Button
             text="Create Artifact"
@@ -89,4 +89,4 @@ const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
   );
 };
 
-export default ArtifactEdit;
+export default FicEdit;
