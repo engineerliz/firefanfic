@@ -13,14 +13,14 @@ export interface SodaUser {
 }
 
 export const transformFirebaseUsertoSodaUser = (user: User): SodaUser => {
-  const displayName = user.displayName ?? randomWords(2).join(' ');
+  const displayName = user?.displayName ?? randomWords(2).join(' ');
 
   return {
-    userId: user.uid,
+    userId: user?.uid,
     displayName,
-    email: user.email ?? undefined,
+    email: user?.email ?? undefined,
     username: slugify(displayName.toLowerCase()),
     joinDate: Firebase.firestore.Timestamp.now(),
-    avatarUrl: user.photoURL ?? undefined,
+    avatarUrl: user?.photoURL ?? undefined,
   }
 }

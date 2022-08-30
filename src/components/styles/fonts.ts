@@ -59,6 +59,11 @@ const Subheading = {
     font-size: 14px;
     color: ${Colors.White};
   `,
+  SH12: styled.div`
+    ${subheadingFontWeight};
+    font-size: 12px;
+    color: ${Colors.White};
+  `,
 }
 
 const paragraphFontWeight = 'font-weight: 400';

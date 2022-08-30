@@ -15,7 +15,7 @@ injectGlobal`
     margin: 0;
     padding: 0;
     line-height: 1.4;
-    background: linear-gradient(142.91deg, #132248 0%, #050C1D 100%);
+    background: #1B1B1B;
   }
 
   html,

@@ -5,6 +5,7 @@ import PortfolioTab from '../profile/portfolioTab/PortfolioTab';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { getAllPortfolios } from '../../actions/portfolio/getPortfolios';
 import AssetBanner from '../../components/assetBanner/AssetBanner';
+import ProfileCard from '../../components/profileCard/ProfileCard';
 
 const Splash = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>();
@@ -13,14 +14,7 @@ const Splash = () => {
   })
 
   return <Page>
-    <AssetBanner
-      imageSrc={SplashImg}
-      title='Monetize your portfolio'
-      subtitle='Portfolios in 2022 look different. Showcase your work, sell your creations, and get hired.'
-      linkTo='/edit-portfolio'
-      buttonText='Get Started'
-    />
-    <PortfolioTab portfolios={portfolios} />
+    <ProfileCard />
   </Page>
 }
 

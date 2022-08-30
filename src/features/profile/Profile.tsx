@@ -49,7 +49,6 @@ const Profile = ({
             text="Edit Profile"
             buttonSize={ButtonSize.XSmall}
             className={profileStyles.logoutButton}
-            textColor={Colors.White}
             onClick={() => navigate(`/edit-profile`, {
               state: {
                 user,
@@ -60,7 +59,6 @@ const Profile = ({
             text="Log Out"
             buttonSize={ButtonSize.XSmall}
             className={profileStyles.logoutButton}
-            textColor={Colors.White}
             onClick={() => logOut().then(() => navigate(`/`))}
           />
         </FlexRow>

@@ -25,7 +25,7 @@ export const UserContext = React.createContext(userInfo);
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
   useEffect(() => {
-    Firebase.auth().onAuthStateChanged((user) => setCurrentUser(transformFirebaseUsertoSodaUser(user)))
+    Firebase.auth().onAuthStateChanged((user) => user?.uid && setCurrentUser(transformFirebaseUsertoSodaUser(user)))
   }, [])
 
   return <FirestoreProvider firebase={Firebase} >

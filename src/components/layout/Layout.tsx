@@ -13,7 +13,6 @@ import { layoutStyles } from './styles'
 
 const Layout = ({ children }: any) => (
   <HeaderFooterWrapper>
-    <Backgroud />
     <Header />
     <div className={layoutStyles.body}>
       {children}
