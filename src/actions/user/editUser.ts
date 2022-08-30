@@ -1,5 +1,5 @@
 import { SodaUser } from '../../models/user/UserModel';
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 
 export interface EditUserFields {
   displayName?: string;

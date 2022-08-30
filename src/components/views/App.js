@@ -1,4 +1,4 @@
-// import Firebase from 'firebase/app'
+// import Firebase from 'firebase/compat/app'
 // import { FirestoreProvider } from 'react-firestore'
 // import React from 'react'
 // import ReactGA from 'react-ga'

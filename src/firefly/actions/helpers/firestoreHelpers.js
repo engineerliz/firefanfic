@@ -1,7 +1,7 @@
 // Helper functions for working with Firebase Firestore
 
-import Firebase from 'firebase/app'
-import 'firebase/auth'
+import Firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 
 const prepareDocForCreate = doc => {
 

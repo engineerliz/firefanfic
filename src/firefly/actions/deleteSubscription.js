@@ -1,4 +1,4 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import ReactGA from 'react-ga'
 
 const deleteSubscription = subscription => {

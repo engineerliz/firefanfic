@@ -4,7 +4,6 @@ import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
 import { Heading } from '../../components/styles/fonts';
 import { globalContext } from '../../context';
-import { CurrentUserContext } from '../../context/state';
 import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 

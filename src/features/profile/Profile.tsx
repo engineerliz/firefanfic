@@ -11,7 +11,6 @@ import { FlexCss } from '../../components/styles/flex';
 import PortfolioTab from './portfolioTab/PortfolioTab';
 import { Colors } from '../../components/styles/colors';
 import Portfolio from '../../models/portfolio/PortfolioModel';
-import { getPortfoliosByUserId } from '../../actions/portfolio/getPortfolios';
 import { SodaUser } from '../../models/user/UserModel';
 import Tabs from '../../components/tabs/Tabs';
 import { List } from 'immutable';
@@ -26,9 +25,9 @@ const Profile = ({ user }: ProfileProps) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   useEffect(() => {
-    getPortfoliosByUserId(user.userId).then(
-      (value) => value && setUserPortfolios(value),
-    );
+    // getPortfoliosByUserId(user.userId).then(
+    //   (value: any) => value && setUserPortfolios(value),
+    // );
   }, []);
 
   return (

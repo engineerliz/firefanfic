@@ -1,4 +1,5 @@
-import Firebase, { User } from 'firebase/app'
+import { FieldValue, serverTimestamp } from '@firebase/firestore';
+import Firebase from 'firebase/compat/app'
 import randomWords from 'random-words';
 import slugify from 'slugify';
 
@@ -9,10 +10,10 @@ export interface SodaUser {
   email?: string;
   bio?: string;
   avatarUrl?: string;
-  joinDate: Firebase.firestore.Timestamp;
+  joinDate: FieldValue;
 }
 
-export const transformFirebaseUsertoSodaUser = (user: User): SodaUser => {
+export const transformFirebaseUsertoSodaUser = (user: Firebase.User): SodaUser => {
   const displayName = user?.displayName ?? randomWords(2).join(' ');
 
   return {
@@ -20,7 +21,8 @@ export const transformFirebaseUsertoSodaUser = (user: User): SodaUser => {
     displayName,
     email: user?.email ?? undefined,
     username: slugify(displayName.toLowerCase()),
-    joinDate: Firebase.firestore.Timestamp.now(),
+    // joinDate: Firebase.firestore.Timestamp.now(),
+    joinDate: serverTimestamp(),
     avatarUrl: user?.photoURL ?? undefined,
   }
 }

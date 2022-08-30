@@ -2,13 +2,13 @@
 // similar API to react-firestore, but instead of returning a collection or document,
 // it returns the logged in user (or null if not logged in) along with loading state and errors
 
-import Firebase, { User } from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import React from 'react'
 
 export interface AuthState {
   isLoading?: boolean;
   error?: any;
-  auth?: User;
+  auth?: Firebase.User;
   children?: any;
 }
 
@@ -32,7 +32,7 @@ class FirebaseAuth extends React.Component<AuthState> {
     }
   }
 
-  handleAuth = (auth: User | null) => {
+  handleAuth = (auth: Firebase.User | null) => {
     this.setState({
       isLoading: false,
       auth,

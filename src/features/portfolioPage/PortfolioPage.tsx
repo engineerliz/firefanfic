@@ -1,8 +1,6 @@
 import { List } from 'immutable';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArtifactsByPortfolioId } from '../../actions/artifacts/getArtifacts';
-import { getPortfolioById } from '../../actions/portfolio/getPortfolios';
 import {
   getCurrentUser,
   getCurrentUserId,
@@ -33,16 +31,16 @@ const PortfolioPage = () => {
     useState<boolean>(false);
   const [artifacts, setArtifacts] = useState<List<Artifact>>();
 
-  useEffect(() => {
-    portfolioId &&
-      getPortfolioById(portfolioId).then(
-        (value) => value && setPortfolio(value),
-      );
-    portfolioId &&
-      getArtifactsByPortfolioId(portfolioId).then(
-        (value) => value && setArtifacts(value),
-      );
-  }, []);
+  // useEffect(() => {
+  //   portfolioId &&
+  //     getPortfolioById(portfolioId).then(
+  //       (value) => value && setPortfolio(value),
+  //     );
+  //   portfolioId &&
+  //     getArtifactsByPortfolioId(portfolioId).then(
+  //       (value) => value && setArtifacts(value),
+  //     );
+  // }, []);
 
   useEffect(() => {
     console.log('setCurrentUser');

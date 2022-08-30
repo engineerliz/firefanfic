@@ -1,4 +1,4 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import slugify from 'slugify'
 import { v4 as uuid_v4 } from 'uuid';
 import Fic from '../../models/fics/FicModel';

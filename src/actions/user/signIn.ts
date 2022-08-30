@@ -1,4 +1,4 @@
-import Firebase, { User } from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import randomWords from 'random-words'
 import ReactGA from 'react-ga'
 import slugify from 'slugify'
@@ -22,7 +22,7 @@ export const signIn = () => {
     })
 }
 
-export const addUser = async (user?: User): Promise<void | SodaUser> => {
+export const addUser = async (user?: Firebase.User): Promise<void | SodaUser> => {
   if (user) {
     const userDocRef = Firebase.firestore()
       .collection('users')

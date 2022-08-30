@@ -1,4 +1,4 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import { List } from 'immutable';
 import Asset from './AssetModel';
 

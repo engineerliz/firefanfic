@@ -1,4 +1,4 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
 import { SodaUser } from '../../models/user/UserModel'
 
 export const getUserById = (id: string): Promise<void | SodaUser> => {

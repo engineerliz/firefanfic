@@ -1,4 +1,7 @@
-import Firebase from 'firebase/app'
+import Firebase from 'firebase/compat/app'
+import 'firebase/compat/firestore';
+
+import { updateDoc, serverTimestamp } from "firebase/firestore"
 import { FirestoreProvider } from '@react-firebase/firestore'
 import React, { useContext, useEffect, useState } from 'react'
 import ReactGA from 'react-ga'
@@ -16,7 +19,7 @@ const userInfo = {
     displayName: '',
     email: undefined,
     username: '',
-    joinDate: Firebase.firestore.Timestamp.now(),
+    joinDate: serverTimestamp(),
     avatarUrl: undefined,
   }
 }

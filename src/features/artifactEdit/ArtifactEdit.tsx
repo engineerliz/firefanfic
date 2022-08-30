@@ -1,6 +1,6 @@
 import { List } from 'immutable';
 import React, { useEffect, useState } from 'react';
-import createArtifact from '../../actions/artifacts/createArtifact';
+// import createArtifact from '../../actions/artifacts/createArtifact';
 import { uploadFileList } from '../../actions/storage/uploadFile';
 import Button, { ButtonSize2 } from '../../components/button/Button';
 import FileUploader from '../../components/fileUploader/FileUploader';
@@ -22,24 +22,24 @@ const ArtifactEdit = ({ portfolio, onDismiss }: ArtifactEditProps) => {
   const [images, setImages] = useState<FileList>();
 
   const onSubmit = () => {
-    if (title) {
-      if (images) {
-        uploadFileList(images, (assets: List<Asset>) => {
-          createArtifact({
-            portfolio,
-            title,
-            description,
-            images: assets,
-          }).then(() => window.location.reload());
-        });
-      } else {
-        createArtifact({
-          portfolio,
-          title,
-          description,
-        }).then(() => window.location.reload());
-      }
-    }
+    // if (title) {
+    //   if (images) {
+    //     uploadFileList(images, (assets: List<Asset>) => {
+    //       createArtifact({
+    //         portfolio,
+    //         title,
+    //         description,
+    //         images: assets,
+    //       }).then(() => window.location.reload());
+    //     });
+    //   } else {
+    //     createArtifact({
+    //       portfolio,
+    //       title,
+    //       description,
+    //     }).then(() => window.location.reload());
+    //   }
+    // }
   };
 
   const onCancel = () => onDismiss();
