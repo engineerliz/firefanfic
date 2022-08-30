@@ -12,7 +12,7 @@ export const profileCardStyles = {
     minHeight: '80vh'
   }),
   emoji: css({
-    width: '40%',
+    width: '40%', 
     maxWidth: 100,
     marginBottom: 20,
   }),
