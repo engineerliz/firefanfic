@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Page } from '../../firefly/styles/layout';
-import SplashImg from '../../assets/illustrations/splash.png';
-import PortfolioTab from '../profile/portfolioTab/PortfolioTab';
-import Portfolio from '../../models/portfolio/PortfolioModel';
-import AssetBanner from '../../components/assetBanner/AssetBanner';
+import { FlexRow, Page } from '../../firefly/styles/layout';
 import ProfileCard from '../../components/profileCard/ProfileCard';
+import FicList from '../../components/ficList/FicList';
+import { List } from 'immutable';
+import Fic from '../../models/fics/FicModel';
+import { getAllFics } from '../../actions/fics/getFics';
 
 const Splash = () => {
-  const [portfolios, setPortfolios] = useState<Portfolio[]>();
+  const [fics, setFics] = useState<List<Fic>>();
   useEffect(() => {
-    // getAllPortfolios().then(value => value && setPortfolios(value));
+    getAllFics().then((value) => value && setFics(value));
   });
 
   return (
     <Page>
-      <ProfileCard />
+      <FlexRow>
+        <ProfileCard />
+        <FicList fics={fics} />
+      </FlexRow>
     </Page>
   );
 };

@@ -1,13 +1,11 @@
 import Firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore';
 
-import { updateDoc, serverTimestamp } from "firebase/firestore"
+import { serverTimestamp } from "firebase/firestore"
 import { FirestoreProvider } from '@react-firebase/firestore'
-import React, { useContext, useEffect, useState } from 'react'
-import ReactGA from 'react-ga'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-import ErrorBoundary from '../firefly/views/misc/ErrorBoundary'
 import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'

@@ -1,17 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
 import { Heading } from '../../components/styles/fonts';
-import { globalContext } from '../../context';
 import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 
 const SignIn = () => {
-  const { globalState, dispatch } = useContext(globalContext);
-  console.log('globalState', globalState);
   const navigate = useNavigate();
-  // return <Route render={({ history }: any) => (
 
   return (
     <Page>

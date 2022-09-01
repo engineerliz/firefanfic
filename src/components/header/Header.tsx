@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
-import { FlexRow } from "../../firefly/styles/layout";
-import { HeaderLink } from "../../firefly/styles/links";
-import { headerStyles } from "./styles";
-import { Heading, Subheading } from "../styles/fonts";
-import FirebaseAuth from "../../firefly/views/misc/FirebaseAuth";
-import { FlexCss } from "../styles/flex";
-import { globalContext } from "../../context";
-import SodaCanImg from "../../assets/icons/sodaCan.png";
+import React from 'react';
+import { FlexRow } from '../../firefly/styles/layout';
+import { HeaderLink } from '../../firefly/styles/links';
+import { headerStyles } from './styles';
+import { Heading, Subheading } from '../styles/fonts';
+import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 
 const Header = () => {
-  const { globalState } = useContext(globalContext);
-  console.log("globalState", globalState);
   return (
     <div className={headerStyles.containerCss}>
       <FlexRow className={headerStyles.contentContainerCss}>
@@ -24,10 +19,10 @@ const Header = () => {
         <FirebaseAuth>
           {({ isLoading, error, auth }: any) => {
             if (isLoading) {
-              return "...";
+              return '...';
             }
             if (error) {
-              return "⚠️ login error";
+              return '⚠️ login error';
             }
             if (auth) {
               return (

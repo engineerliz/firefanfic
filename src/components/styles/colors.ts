@@ -61,7 +61,7 @@ const ColorStyles = {
   }),
 }
 
-const textColorCss = (color: string) => css({ color, });
+const textColorCss = (color: string) => css({ color: `${color} !important`, });
 
 export {
   Colors,

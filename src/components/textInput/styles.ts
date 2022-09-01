@@ -6,7 +6,7 @@ export const textInputStyles = {
     marginBottom: 6,
   }),
   input: css({
-    background: Colors.Transparent.Dark.V2,
+    background: 'rgba(0, 0, 0, 0.5)',
     border: '0px',
     borderRadius: 12,
     height: 52,
@@ -16,10 +16,10 @@ export const textInputStyles = {
     outline: 'none',
     transition: 'all .3s ease',
     ':focus': {
-      border: `1px solid ${Colors.Branding.Highlight}`
+      border: 'none',
     },
     ':active': {
-      border: `1px solid ${Colors.Branding.Highlight}`
+      border: 'none',
     }
   }),
   textArea: (height?: number | string) => css({

@@ -27,17 +27,17 @@ export const buttonStyles = {
   },
   large: {
     padding: css({
-      padding: '8px 0'
+      padding: '8px 12px'
     })
   },
   medium: {
     padding: css({
-      padding: '4px 0'
+      padding: '4px 8px'
     })
   },
   small: {
     padding: css({
-      padding: '2px 0'
+      padding: '2px 4px'
     })
   },
 }

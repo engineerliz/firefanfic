@@ -5,14 +5,16 @@ import { FlexCss } from '../styles/flex';
 export const profileCardStyles = {
   container: css({
     width: '25%',
-    maxWidth: 400,
+    maxWidth: 300,
+    minWidth: 200,
     background: Colors.Gray.V8,
-    padding: 40,
+    padding: '40px 26px',
     borderRadius: 20,
     height: '100%',
     minHeight: '80vh',
     position: 'sticky',
     top: 0,
+    marginRight: 40,
   }),
   emoji: css({
     width: '40%', 

@@ -1,7 +1,5 @@
 import Firebase from 'firebase/compat/app'
-import randomWords from 'random-words'
 import ReactGA from 'react-ga'
-import slugify from 'slugify'
 import { SodaUser, transformFirebaseUsertoSodaUser } from '../../models/user/UserModel'
 
 export const signIn = () => {
@@ -11,7 +9,7 @@ export const signIn = () => {
     action: 'Log in',
   })
 
-  let provider = new Firebase.auth.GoogleAuthProvider()
+  const provider = new Firebase.auth.GoogleAuthProvider()
 
   return Firebase.auth()
     .signInWithPopup(provider)

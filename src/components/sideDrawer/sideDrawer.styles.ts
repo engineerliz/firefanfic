@@ -17,7 +17,7 @@ export const sideDrawerStyles = {
     width: '50%',
     minWidth: 800,
     height: '100%',
-    background: Colors.Black,
+    background: Colors.Gray.V8,
     position: 'fixed',
     right: 0,
     transform: isOpen ? 'none' : 'translate(100%, 0)',

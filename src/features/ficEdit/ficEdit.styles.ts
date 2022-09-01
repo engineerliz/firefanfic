@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { Colors } from '../../components/styles/colors';
 import { FlexCss } from '../../components/styles/flex';
 
 export const ficEditStyles = {
@@ -19,5 +20,5 @@ export const ficEditStyles = {
   }),
   fileUploader: css({
     marginBottom: 100,
-  })
+  }),
 }

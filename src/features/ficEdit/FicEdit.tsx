@@ -1,8 +1,10 @@
 import { List } from 'immutable';
 import React, { useEffect, useState } from 'react';
+import createFic from '../../actions/fics/createFic';
 import { uploadFileList } from '../../actions/storage/uploadFile';
 import Button, { ButtonSize2 } from '../../components/button/Button';
 import FileUploader from '../../components/fileUploader/FileUploader';
+import { Colors } from '../../components/styles/colors';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
@@ -18,38 +20,25 @@ interface FicEditProps {
 const FicEdit = ({ portfolio, onDismiss }: FicEditProps) => {
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
-  const [images, setImages] = useState<FileList>();
+  const [errorMessage, setErrorMessage] = useState<string>();
 
   const onSubmit = () => {
-    // if (title) {
-    //   if (images) {
-    //     uploadFileList(images, (assets: List<Asset>) => {
-    //       createArtifact({
-    //         portfolio,
-    //         title,
-    //         description,
-    //         images: assets,
-    //       }).then(() => window.location.reload());
-    //     });
-    //   } else {
-    //     createArtifact({
-    //       portfolio,
-    //       title,
-    //       description,
-    //     }).then(() => window.location.reload());
-    //   }
-    // }
+    if (title) {
+      createFic({
+        title,
+        description,
+      }).then(() => window.location.reload());
+    }
+    if (!title) {
+      setErrorMessage('Please add a title.');
+    }
   };
 
   const onCancel = () => onDismiss();
 
   return (
     <FlexCol className={ficEditStyles.container}>
-      <Heading.H26>Add a pop to your soda</Heading.H26>
-      <Paragraph.P14>
-        Pops are artifacts in your portfolio to showcase your work. You can add
-        and edit pops in your portfolio at any time.
-      </Paragraph.P14>
+      <Heading.H26>Create a New Fic</Heading.H26>
       <FlexCol className={ficEditStyles.formBody}>
         <div>
           <TextInput
@@ -70,18 +59,24 @@ const FicEdit = ({ portfolio, onDismiss }: FicEditProps) => {
               setDescription(value);
             }}
           />
-          <FileUploader
+          {/* <FileUploader
             onChange={(fileList?: FileList) => setImages(fileList)}
             className={ficEditStyles.fileUploader}
-          />
+          /> */}
         </div>
+        <Paragraph.P14 color={Colors.Branding.Red}>
+          {errorMessage}
+        </Paragraph.P14>
         <FlexRow className={ficEditStyles.bottomButtons}>
           <Subheading.SH14 onClick={onCancel}>Cancel</Subheading.SH14>
           <Button
             text="Create Artifact"
-            ButtonSize2={ButtonSize2.Small}
+            size="Medium"
+            type="Primary"
             onClick={onSubmit}
-          />
+          >
+            Save
+          </Button>
         </FlexRow>
       </FlexCol>
     </FlexCol>
