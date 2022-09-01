@@ -25,7 +25,7 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<Fic>> | un
     .then((fics) => List(fics.docs.map(fic => ({
       title: fic.data()?.title,
       description: fic.data()?.description,
-      ficId: fic.data()?.portfolioId,
+      ficId: fic.data()?.ficId,
       slug: fic.data()?.slug,
     } as Fic))))
     .catch(error => {
@@ -37,11 +37,12 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<Fic>> | un
 export const getAllFics = (): Promise<void | List<Fic>> => {
   return Firebase.firestore()
     .collection('fics')
+    .orderBy('createdOn', 'desc')
     .get()
     .then((fics) => List(fics.docs.map(fic => ({
       title: fic.data()?.title,
       description: fic.data()?.description,
-      ficId: fic.data()?.portfolioId,
+      ficId: fic.data()?.ficId,
       slug: fic.data()?.slug,
     } as Fic))))
     .catch(error => {

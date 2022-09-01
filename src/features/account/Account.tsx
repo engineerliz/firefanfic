@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { FlexCol, FlexRow, Page } from '../../styles/layout';
-import { signIn } from '../../../actions/user/signIn';
-import { UserContext } from '../../../features/App';
-import ProfileCard from '../../../components/profileCard/ProfileCard';
+import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
+import { signIn } from '../../actions/user/signIn';
+import { UserContext } from '../App';
+import ProfileCard from '../../components/profileCard/ProfileCard';
 import { accountStyles } from './account.styles';
 import { List } from 'immutable';
-import Tabs from '../../../components/tabs/Tabs';
-import { profileStyles } from '../../../features/profile/styles';
+import Tabs from '../../components/tabs/Tabs';
+import { profileStyles } from '../profile/styles';
 import { useNavigate } from 'react-router-dom';
-import Fic from '../../../models/fics/FicModel';
-import { getFicsByUserId } from '../../../actions/fics/getFics';
-import FicList from '../../../components/ficList/FicList';
+import Fic from '../../models/fics/FicModel';
+import { getFicsByUserId } from '../../actions/fics/getFics';
+import FicList from '../../components/ficList/FicList';
+import AccountTab from './accountTab/AccountTab';
 
 const Account = () => {
   const { user } = useContext(UserContext);
@@ -27,7 +28,7 @@ const Account = () => {
     return (
       <Page>
         <FlexRow>
-          <ProfileCard className={accountStyles.profileCard} withLogout />
+          <ProfileCard />
           <FlexCol className={accountStyles.body}>
             <Tabs
               tabLabels={List(['Your Fics', 'Bookmarks', 'Account'])}
@@ -35,6 +36,7 @@ const Account = () => {
               className={profileStyles.tabs}
             />
             {activeTab == 0 && <FicList fics={userFics} />}
+            {activeTab == 2 && <AccountTab />}
           </FlexCol>
         </FlexRow>
       </Page>

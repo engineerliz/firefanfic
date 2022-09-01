@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Error from '../misc/Error'
-import createSubscription from '../../actions/createSubscription'
-import updateSubscription from '../../actions/updateSubscription'
-import deleteSubscription from '../../actions/deleteSubscription'
-import FireflySubscription from '../misc/FireflySubscription'
+import Error from '../../firefly/views/misc/Error'
+import createSubscription from '../../firefly/actions/createSubscription'
+import updateSubscription from '../../firefly/actions/updateSubscription'
+import deleteSubscription from '../../firefly/actions/deleteSubscription'
+import FireflySubscription from '../../firefly/views/misc/FireflySubscription'
 
 class Subscription extends React.Component {
 

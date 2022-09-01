@@ -1,8 +1,12 @@
-import { css } from '@emotion/css';
+import styled from 'styled-components';
+import BreakPoints from '../styles/breakpoints';
 
 export const layoutStyles = {
-  body: css({
-    zIndex: 1,
-    padding: '20px 50px',
-  })
+  body: styled.div`
+    z-index: 1;
+    padding: 20px 50px;
+    ${BreakPoints.sm} {
+      padding: 20px;
+    }
+  `,
 }

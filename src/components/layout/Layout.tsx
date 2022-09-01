@@ -14,15 +14,12 @@ import { layoutStyles } from './styles'
 const Layout = ({ children }: any) => (
   <HeaderFooterWrapper>
     <Header />
-    <div className={layoutStyles.body}>
-      {children}
-    </div>
+    <layoutStyles.body>{children}</layoutStyles.body>
 
     {/* <Footer>
       © {(new Date()).getFullYear()}
     </Footer> */}
-
   </HeaderFooterWrapper>
-)
+);
 
 export default Layout
