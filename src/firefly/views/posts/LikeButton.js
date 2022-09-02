@@ -7,7 +7,7 @@ import FirebaseAuth from '../misc/FirebaseAuth'
 
 const LikeButton = ({post}) => (
   <FirebaseAuth>
-    { ({isLoading, error, auth}) => {
+    {/* { ({isLoading, error, auth}) => {
 
       if (!auth || isLoading || error) {
         return <button disabled>like</button>
@@ -39,7 +39,7 @@ const LikeButton = ({post}) => (
           </button>
         }}
       </FirestoreCollection>
-    }}
+    }} */}
   </FirebaseAuth>
 )
 

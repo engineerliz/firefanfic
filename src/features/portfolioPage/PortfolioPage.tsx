@@ -57,12 +57,12 @@ const PortfolioPage = () => {
   const getRightButtons = () => {
     if (userContext.user?.userId == portfolioCreator?.userId) {
       return [
-        <Button ButtonSize2={ButtonSize2.XSmall} text="Edit Soda" />,
-        <Button
-          ButtonSize2={ButtonSize2.XSmall}
-          text="Add Pop"
-          onClick={() => setIsArtifactDrawerOpen(true)}
-        />,
+        // <Button ButtonSize2={ButtonSize2.XSmall} text="Edit Soda" />,
+        // <Button
+        //   ButtonSize2={ButtonSize2.XSmall}
+        //   text="Add Pop"
+        //   onClick={() => setIsArtifactDrawerOpen(true)}
+        // />,
       ];
     }
   };

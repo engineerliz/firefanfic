@@ -6,7 +6,7 @@ export const layoutStyles = {
     z-index: 1;
     padding: 20px 50px;
     ${BreakPoints.sm} {
-      padding: 20px;
+      padding: 14px;
     }
   `,
 }

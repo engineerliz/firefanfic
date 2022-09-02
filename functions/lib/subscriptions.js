@@ -3,9 +3,9 @@ const FieldValue = require('firebase-admin').firestore.FieldValue
 const functions = require('firebase-functions')
 const Stripe = require('stripe')
 
-const STRIPE_SECRET_KEY = functions.config().stripe.secret_key
-const STRIPE_PLAN_ID = functions.config().stripe.plan_id
-const stripe = Stripe(STRIPE_SECRET_KEY)
+// const STRIPE_SECRET_KEY = functions.config().stripe.secret_key
+// const STRIPE_PLAN_ID = functions.config().stripe.plan_id
+// const stripe = Stripe(STRIPE_SECRET_KEY)
 
 // this backend code is responsible for keeping the Stripe subscriptions 
 // up-to-date when users CRUD db subscriptions

@@ -13,7 +13,7 @@ export interface TabProps {
 
 const Tab = ({ label, index, isActive = false, onClick }: TabProps) => {
   return (
-    <FlexRow
+    <tabStyles.tab
       className={tabStyles.container(isActive)}
       onClick={() => onClick?.(index)}
     >
@@ -23,7 +23,7 @@ const Tab = ({ label, index, isActive = false, onClick }: TabProps) => {
       >
         {label}
       </Subheading.SH18>
-    </FlexRow>
+    </tabStyles.tab>
   );
 };
 

@@ -5,9 +5,9 @@ import {
 } from '../../styles/links'
 
 const SearchResult = ({hit}) => (
-  <InternalLink to={`/${hit.slug}`}>
-    {hit.title}
-  </InternalLink>
+  // <InternalLink to={`/${hit.slug}`}>
+  //   {hit.title}
+  // </InternalLink>
 )
 
 export default SearchResult

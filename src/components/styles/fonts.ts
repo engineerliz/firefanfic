@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import BreakPoints from './breakpoints';
 import { Colors } from './colors';
 
 const headingFontWeight = 'font-weight: 800';
@@ -53,6 +54,9 @@ const Subheading = {
     ${subheadingFontWeight};
     font-size: 18px;
     color: ${props => props.color || Colors.White};
+    ${BreakPoints.sm} {
+      font-size: 14px;
+    }
   `,
   SH14: styled.div`
     ${subheadingFontWeight};

@@ -18,14 +18,14 @@ import Splash from '../../../features/splash/Splash'
 const Search = () => (
   <Page>
     <Splash />
-    <InstantSearch
+    {/* <InstantSearch
       appId={process.env.REACT_APP_ALGOLIA_APP_ID}
       apiKey={process.env.REACT_APP_ALGOLIA_SEARCH_KEY}
       indexName="posts"
     >
       <SearchBox autofocus />
       <Hits hitComponent={SearchResult} />
-    </InstantSearch>
+    </InstantSearch> */}
   </Page>
 )
 

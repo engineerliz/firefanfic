@@ -17,18 +17,18 @@ import {
 class PostForm extends React.Component {
 
   onSubmit = event => {
-    event.preventDefault()
-    const {title, content} = event.target.elements
-    const values = {
-      title: title.value,
-      content: content.value,
-    }
-    this.props.onSubmit(values)
+    // event.preventDefault()
+    // const {title, content} = event.target.elements
+    // const values = {
+    //   title: title.value,
+    //   content: content.value,
+    // }
+    // this.props.onSubmit(values)
   }
 
   render() {    
     return <form onSubmit={this.onSubmit}>
-      <FormRow>
+      {/* <FormRow>
         <FormLabel for="title">Title</FormLabel>
         <TextInput type="text" name="title" defaultValue={this.props.post ? this.props.post.title : ''} required />
       </FormRow>
@@ -38,7 +38,7 @@ class PostForm extends React.Component {
         <TextArea type="text" name="content" defaultValue={this.props.post ? this.props.post.content : ''} required />
       </FormRow>
 
-      <button type="submit">Save post</button>
+      <button type="submit">Save post</button> */}
     </form>
   }
 }
