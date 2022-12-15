@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { FlexRow, Page } from '../../firefly/styles/layout';
+import { FlexRow, Page, View } from '../../components/layout/styles';
 import FicList from '../../components/ficList/FicList';
 import { List } from 'immutable';
-import Fic from '../../models/fics/FicModel';
+import FicModel from '../../models/fics/FicModel';
 import { getAllFics } from '../../actions/fics/getFics';
+import Header from '../../components/header/Header';
 
 const Splash = () => {
-  const [fics, setFics] = useState<List<Fic>>();
+  const [fics, setFics] = useState<List<FicModel>>();
   useEffect(() => {
     getAllFics().then((value) => value && setFics(value));
   });
 
   return (
-    <Page>
-      <FlexRow>
-        <FicList fics={fics} />
-      </FlexRow>
-    </Page>
+    <>
+      <Header />
+      <View>
+        <FlexRow>
+          <FicList fics={fics} />
+        </FlexRow>
+      </View>
+    </>
   );
 };
 

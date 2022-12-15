@@ -3,22 +3,18 @@
 
 import React from 'react'
 
-import {
-  HeaderFooterWrapper,
-  Footer,
-} from '../../firefly/styles/layout'
-import Header from '../header/Header'
-import Backgroud from '../background/Background'
-import { layoutStyles } from './styles'
+import { HeaderFooterWrapper } from '../../components/layout/styles';
+import Header from '../header/Header';
+import { layoutStyles } from './styles';
 
-const Layout = ({ children }: any) => (
+interface LayoutProps {
+  children: React.ReactNode;
+}
+const Layout = ({ children }: LayoutProps) => (
   <HeaderFooterWrapper>
-    <Header />
-    <layoutStyles.body>{children}</layoutStyles.body>
-
-    {/* <Footer>
-      © {(new Date()).getFullYear()}
-    </Footer> */}
+    {/* <Header /> */}
+    {children}
+    {/* <layoutStyles.body>{children}</layoutStyles.body> */}
   </HeaderFooterWrapper>
 );
 

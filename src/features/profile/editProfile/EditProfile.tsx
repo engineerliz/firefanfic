@@ -4,7 +4,7 @@ import { editUser } from '../../../actions/user/editUser';
 import Button, { ButtonSize2 } from '../../../components/button/Button';
 import { Heading } from '../../../components/styles/fonts';
 import TextInput from '../../../components/textInput/TextInput';
-import { FlexCol, FlexRow, Page } from '../../../firefly/styles/layout';
+import { FlexCol, FlexRow, Page } from '../../../components/layout/styles';
 import { SodaUser } from '../../../models/user/UserModel';
 
 const EditProfile = () => {

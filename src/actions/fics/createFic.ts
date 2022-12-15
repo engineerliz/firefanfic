@@ -1,7 +1,7 @@
 import Firebase from 'firebase/compat/app'
 import slugify from 'slugify'
 import { v4 as uuid_v4 } from 'uuid';
-import Fic from '../../models/fics/FicModel';
+import FicModel from '../../models/fics/FicModel';
 
 interface FicCreateValues {
   title: string;
@@ -9,7 +9,7 @@ interface FicCreateValues {
 }
 
 const createFic = (values: FicCreateValues) => {
-  const newFic: Fic = {
+  const newFic: FicModel = {
     ...values,
     ficId: uuid_v4(),
     slug: slugify(values.title, { lower: true }),

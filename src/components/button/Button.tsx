@@ -54,11 +54,11 @@ const Button: React.FC<ButtonProps> = ({
     }
     if (size === 'Medium') {
       return (
-        <Subheading.SH18
+        <Subheading.SH14
           className={css(getTextColor(), buttonStyles.medium.padding)}
         >
           {children}
-        </Subheading.SH18>
+        </Subheading.SH14>
       );
     }
     return (

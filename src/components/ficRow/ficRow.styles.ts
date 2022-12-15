@@ -1,8 +1,9 @@
 import { css } from '@emotion/css';
+import { gapCss } from '../layout/styles';
 
 export const ficRowStyles = {
-  title: css({
-    marginBottom: 6,
+  container: css(gapCss(2), {
+    cursor: 'pointer',
   }),
   readNow: css({
     width: 'fit-content',

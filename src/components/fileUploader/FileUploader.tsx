@@ -1,7 +1,7 @@
 import { List } from 'immutable';
 import React, { useRef } from 'react'
 import { useState } from 'react'
-import { FlexCol, FlexRow } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow } from '../../components/layout/styles';
 import Button, { ButtonSize2 } from '../button/Button';
 import { turnFileListIntoList } from './fileUploader.helpers';
 import { fileUploaderStyles } from './fileUploader.styles';

@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
 import { Heading } from '../../components/styles/fonts';
-import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow, Page } from '../../components/layout/styles';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 
 const SignIn = () => {

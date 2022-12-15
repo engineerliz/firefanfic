@@ -9,6 +9,8 @@ import SignIn from './signIn/SignIn'
 import PortfolioEdit from './portfolioEdit/PortfolioEdit';
 import EditProfile from './profile/editProfile/EditProfile'
 import FicPage from './ficPage/FicPage';
+import AddChapterPage from './addChapter/AddChapterPage';
+import ChapterPage from './chapterPage/ChapterPage';
 
 const AppRoutes = () => (
   <Routes>
@@ -19,6 +21,8 @@ const AppRoutes = () => (
     <Route path="/signin" element={<SignIn />} />
     <Route path="/edit-profile" element={<EditProfile />} />
     <Route path="/fic/:ficId" element={<FicPage />} />
+    <Route path="/add-chapter/:ficId" element={<AddChapterPage />} />
+    <Route path="/fic/:ficId/:chapterIndex" element={<ChapterPage />} />
   </Routes>
 );
 

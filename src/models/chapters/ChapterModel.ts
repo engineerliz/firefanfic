@@ -1,12 +1,13 @@
 import Firebase from 'firebase/compat/app'
 
-interface FicModel {
+interface ChapterModel {
+  id: string;
   ficId: string;
   createdBy: string;
   createdOn: Firebase.firestore.Timestamp;
   title: string;
-  description?: string;
-  slug?: string;
+  content: string;
+  chapterIndex: number;
 }
 
-export default FicModel;
+export default ChapterModel;

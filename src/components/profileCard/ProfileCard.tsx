@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FlexCol, FlexRow } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow } from '../../components/layout/styles';
 import LoveEmoji from '../../assets/illustrations/love-emoji.png';
 import { profileCardStyles } from './profileCard.styles';
 import { Subheading } from '../styles/fonts';

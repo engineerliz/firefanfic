@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import React, { ChangeEvent } from 'react'
-import { FlexCol } from '../../firefly/styles/layout';
+import { FlexCol } from '../../components/layout/styles';
 import { Subheading } from '../styles/fonts';
 import { textInputStyles } from './styles';
 

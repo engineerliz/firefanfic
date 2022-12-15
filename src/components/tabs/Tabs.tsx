@@ -1,7 +1,7 @@
 import { css } from '@emotion/css';
 import { List } from 'immutable';
 import React, { useEffect, useState } from 'react';
-import { FlexRow } from '../../firefly/styles/layout';
+import { FlexRow } from '../../components/layout/styles';
 import Tab, { TabProps } from './Tab';
 import { tabsStyles } from './tabs.styles';
 

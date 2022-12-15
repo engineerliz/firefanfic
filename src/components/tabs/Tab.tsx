@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlexRow } from '../../firefly/styles/layout'
+import { FlexRow } from '../../components/layout/styles';
 import { Colors } from '../styles/colors';
 import { Subheading } from '../styles/fonts';
 import { tabStyles } from './tab.styles';

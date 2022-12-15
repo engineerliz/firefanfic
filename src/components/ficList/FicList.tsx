@@ -1,14 +1,15 @@
 import { List } from 'immutable';
 import React from 'react';
-import { FlexCol } from '../../firefly/styles/layout';
-import Fic from '../../models/fics/FicModel';
+// import { FlexCol } from '../../components/layout/styles';
+import FicModel from '../../models/fics/FicModel';
 import FicRow from '../ficRow/FicRow';
+import { FlexCol } from '../../components/layout/styles';
 import { Colors } from '../styles/colors';
 import { Subheading } from '../styles/fonts';
 import { ficListStyles } from './ficList.styles';
 
 interface FicListProps {
-  fics?: List<Fic>;
+  fics?: List<FicModel>;
 }
 const FicList = ({ fics }: FicListProps) => {
   if (!fics) {

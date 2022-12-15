@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logOut from '../../firefly/actions/logOut';
-import { FlexCol, FlexRow } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow } from '../../components/layout/styles';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
 import { profileStyles } from './styles';
 import Button, { ButtonSize2 } from '../../components/button/Button';

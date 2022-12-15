@@ -15,7 +15,7 @@ injectGlobal`
     margin: 0;
     padding: 0;
     line-height: 1.4;
-    background: #1B1B1B;
+    background: #0E0E0E;
   }
 
   html,

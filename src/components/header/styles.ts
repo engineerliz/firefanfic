@@ -1,27 +1,34 @@
 import { css } from '@emotion/css';
+import { Colors, Shadows } from '../styles/colors';
 import { FlexCss } from '../styles/flex';
 
 export const headerStyles = {
-  containerCss: css({
-    position: 'sticky',
+  container: css({
     width: '100vw',
     top: 0,
+    left: 0,
     zIndex: 10,
     backdropFilter: 'blur(6px)',
-  }),
-  waveCss: css({
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  }),
-  contentContainerCss: css(FlexCss.alignCenter, FlexCss.spaceBetween, {
-    position: 'relative',
+    background: Colors.Gray.V10,
+    shadow: Shadows.V5,
+    position: 'sticky',
     height: 'fit-content',
     padding: '20px 30px',
   }),
+  content: css(FlexCss.alignCenter, FlexCss.spaceBetween, {
+    width: '100%',
+    height: 'fit-content',
+  }),
+  children: css({
+    marginTop: 15,
+  }),
+  emoji: css({
+    width: 20,
+  }),
   userPicCss: css({
     borderRadius: '50%',
-    marginRight: 12,
+    width: 30,
+    cursor: 'pointer',
   }),
   logoContainer: css(FlexCss.alignCenter, FlexCss.justifyContentCenter, {
     cursor: 'pointer',

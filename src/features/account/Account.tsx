@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { FlexCol, FlexRow, Page } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow, Page } from '../../components/layout/styles';
 import { signIn } from '../../actions/user/signIn';
 import { UserContext } from '../App';
 import ProfileCard from '../../components/profileCard/ProfileCard';
@@ -9,7 +9,7 @@ import { List } from 'immutable';
 import Tabs from '../../components/tabs/Tabs';
 import { profileStyles } from '../profile/styles';
 import { useNavigate } from 'react-router-dom';
-import Fic from '../../models/fics/FicModel';
+import FicModel from '../../models/fics/FicModel';
 import { getFicsByUserId } from '../../actions/fics/getFics';
 import FicList from '../../components/ficList/FicList';
 import AccountTab from './accountTab/AccountTab';
@@ -19,7 +19,7 @@ const Account = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<number>(0);
-  const [userFics, setUserFics] = useState<List<Fic>>();
+  const [userFics, setUserFics] = useState<List<FicModel>>();
 
   useEffect(() => {
     getFicsByUserId(user?.userId)?.then((value) => value && setUserFics(value));

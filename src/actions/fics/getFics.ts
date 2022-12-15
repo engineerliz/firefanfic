@@ -1,21 +1,37 @@
 import Firebase from 'firebase/compat/app'
 import { List } from 'immutable'
-import Fic from '../../models/fics/FicModel'
+import FicModel from '../../models/fics/FicModel'
 
-export const getFicById = (id: string): Promise<void | Fic> => {
+export const getFicById = (id: string): Promise<void | FicModel> => {
   return Firebase.firestore()
     .collection('fics')
     .doc(id)
     .get()
     .then((value) => ({
       ...value.data()
-    } as Fic))
+    } as FicModel))
     .catch(error => {
       alert(`Whoops, couldn't get the fic: ${error.message}`)
     })
 }
 
-export const getFicsByUserId = (userId?: string): Promise<void | List<Fic>> | undefined => {
+export const getFicBySlug = (slug?: string): Promise<void | FicModel> => {
+  return Firebase.firestore()
+  .collection('fics')
+  .where('slug', '==', slug)
+  .get()
+  .then(
+      (value) =>
+        ({
+          ...value.docs[0].data(),
+        } as FicModel),
+    )
+    .catch((error) => {
+      console.log(`Whoops, couldn't get the fic: ${error.message}`);
+    });
+}
+
+export const getFicsByUserId = (userId?: string): Promise<void | List<FicModel>> | undefined => {
   if (userId) {
     return Firebase.firestore()
     .collection('fics')
@@ -27,14 +43,14 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<Fic>> | un
       description: fic.data()?.description,
       ficId: fic.data()?.ficId,
       slug: fic.data()?.slug,
-    } as Fic))))
+    } as FicModel))))
     .catch(error => {
       console.log(`Whoops, couldn't get the fics: ${error.message}`)
     })
   }
 }
 
-export const getAllFics = (): Promise<void | List<Fic>> => {
+export const getAllFics = (): Promise<void | List<FicModel>> => {
   return Firebase.firestore()
     .collection('fics')
     .orderBy('createdOn', 'desc')
@@ -44,7 +60,8 @@ export const getAllFics = (): Promise<void | List<Fic>> => {
       description: fic.data()?.description,
       ficId: fic.data()?.ficId,
       slug: fic.data()?.slug,
-    } as Fic))))
+      createdBy: fic.data().createdBy,
+    } as FicModel))))
     .catch(error => {
       alert(`Whoops, couldn't get the fics: ${error.message}`)
     })

@@ -4,7 +4,7 @@ import Button from '../../components/button/Button';
 import { Colors } from '../../components/styles/colors';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
-import { FlexCol, FlexRow } from '../../firefly/styles/layout';
+import { FlexCol, FlexRow } from '../../components/layout/styles';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { ficEditStyles } from './ficEdit.styles';
 import { FicEditType } from './ficEditButton/FicEditButton';
@@ -36,7 +36,7 @@ const FicEdit = ({ type, onDismiss }: FicEditProps) => {
 
   return (
     <FlexCol className={ficEditStyles.container}>
-      <Heading.H26>Create a New Fic</Heading.H26>
+      <Heading.H26>Create a New FicModel</Heading.H26>
       <FlexCol className={ficEditStyles.formBody}>
         <div>
           <TextInput

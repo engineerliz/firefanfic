@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Page } from '../../firefly/styles/layout';
+import { Page } from '../../components/layout/styles';
 import { Heading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import { portfolioEditStyles } from './styles';

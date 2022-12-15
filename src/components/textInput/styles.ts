@@ -11,6 +11,7 @@ export const textInputStyles = {
     borderRadius: 12,
     height: 52,
     fontSize: 14,
+    fontWeight: 300,
     padding: '18px 18px',
     color: Colors.White,
     outline: 'none',
@@ -23,6 +24,6 @@ export const textInputStyles = {
     }
   }),
   textArea: (height?: number | string) => css({
-    height,
+    height: `${height ?? 300}px`,
   }),
 }
