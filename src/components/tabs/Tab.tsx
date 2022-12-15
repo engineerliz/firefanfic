@@ -19,7 +19,7 @@ const Tab = ({ label, index, isActive = false, onClick }: TabProps) => {
     >
       <Subheading.SH18
         className={tabStyles.label(isActive)}
-        color={isActive ? Colors.Black : Colors.Gray.V4}
+        color={isActive ? Colors.Black : Colors.Gray.V5}
       >
         {label}
       </Subheading.SH18>

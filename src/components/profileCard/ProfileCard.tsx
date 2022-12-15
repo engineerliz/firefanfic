@@ -14,11 +14,15 @@ import FicEdit from '../../features/ficEdit/FicEdit';
 type ProfileCardType = 'default' | 'author';
 interface ProfileCardProps {
   profileCardType?: ProfileCardType;
+  displayText?: string;
+  button?: React.ReactNode;
   className?: string;
 }
 
 const ProfileCard = ({
   profileCardType = 'default',
+  displayText,
+  button,
   className,
 }: ProfileCardProps) => {
   const { user } = useContext(UserContext);
@@ -36,18 +40,10 @@ const ProfileCard = ({
             onClick={() => navigate('/account')}
           />
         )}
-        {user && (
-          <FlexRow>
-            <Button
-              size="Medium"
-              type="Primary"
-              className={profileCardStyles.createButton}
-              onClick={() => setIsEditOpen(true)}
-            >
-              Create New Fic
-            </Button>
-          </FlexRow>
+        {profileCardType == 'author' && (
+          <Subheading.SH18>{displayText}</Subheading.SH18>
         )}
+        {button}
       </FlexRow>
       <SideDrawer
         isOpen={isEditOpen}

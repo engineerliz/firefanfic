@@ -15,11 +15,11 @@ const SideDrawer = ({
   return (
     <>
       <div className={sideDrawerStyles.overlay(isOpen)} onClick={onDismiss} />
-      <div className={sideDrawerStyles.container(isOpen)}>
+      <sideDrawerStyles.drawer className={sideDrawerStyles.container(isOpen)}>
         {content}
-      </div>
+      </sideDrawerStyles.drawer>
     </>
-  )
+  );
 }
 
 export default SideDrawer

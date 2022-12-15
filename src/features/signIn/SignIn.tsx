@@ -13,7 +13,7 @@ const SignIn = () => {
     <Page>
       <FlexRow>
         <FlexCol>
-          <Heading.H52>Welcome to FireFanFic.</Heading.H52>
+          {/* <Heading.H52>Welcome to FireFanFic.</Heading.H52> */}
           <FirebaseAuth>
             {({ isLoading, error, auth }: any) => {
               if (isLoading) {

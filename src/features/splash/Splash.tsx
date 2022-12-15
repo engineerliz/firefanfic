@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FlexRow, Page } from '../../firefly/styles/layout';
-import ProfileCard from '../../components/profileCard/ProfileCard';
 import FicList from '../../components/ficList/FicList';
 import { List } from 'immutable';
 import Fic from '../../models/fics/FicModel';
@@ -15,7 +14,6 @@ const Splash = () => {
   return (
     <Page>
       <FlexRow>
-        <ProfileCard />
         <FicList fics={fics} />
       </FlexRow>
     </Page>

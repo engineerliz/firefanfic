@@ -1,23 +1,21 @@
-import { List } from 'immutable';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import createFic from '../../actions/fics/createFic';
-import { uploadFileList } from '../../actions/storage/uploadFile';
-import Button, { ButtonSize2 } from '../../components/button/Button';
-import FileUploader from '../../components/fileUploader/FileUploader';
+import Button from '../../components/button/Button';
 import { Colors } from '../../components/styles/colors';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import { FlexCol, FlexRow } from '../../firefly/styles/layout';
-import Asset from '../../models/artifact/AssetModel';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { ficEditStyles } from './ficEdit.styles';
+import { FicEditType } from './ficEditButton/FicEditButton';
 
 interface FicEditProps {
   portfolio?: Portfolio;
+  type?: FicEditType;
   onDismiss: () => void;
 }
 
-const FicEdit = ({ portfolio, onDismiss }: FicEditProps) => {
+const FicEdit = ({ type, onDismiss }: FicEditProps) => {
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
   const [errorMessage, setErrorMessage] = useState<string>();

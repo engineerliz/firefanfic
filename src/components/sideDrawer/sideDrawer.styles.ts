@@ -1,4 +1,6 @@
 import { css } from '@emotion/css';
+import styled from 'styled-components';
+import BreakPoints from '../styles/breakpoints';
 import { Colors } from '../styles/colors';
 
 export const sideDrawerStyles = {
@@ -13,17 +15,25 @@ export const sideDrawerStyles = {
     left: 0,
   }),
   container: (isOpen?: boolean) => css({
-    // width: isOpen ? '50vw' : 0,
     width: '50%',
     minWidth: 800,
     height: '100%',
-    background: Colors.Gray.V8,
+    background: Colors.Gray.V9,
     position: 'fixed',
     right: 0,
     transform: isOpen ? 'none' : 'translate(100%, 0)',
     top: 0,
     zIndex: 1,
-    padding: '6% 42px 34px',
     transition: 'all 0.6s ease',
-  })
+  }),
+  drawer: styled.div`
+    padding: 80px 42px 42px 42px;
+    ${BreakPoints.md} {
+      min-width: unset;
+      width: 100%;
+    }  
+    ${BreakPoints.sm} {
+      padding: 80px 20px 20px 20px;
+    }  
+  `
 }

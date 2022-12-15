@@ -8,8 +8,8 @@ const defaultButtonCss = css({
   color: Colors.Black,
   transition: 'all 0.3s ease',
   ':hover': {
-    background: Colors.Branding.Highlight,
-    boxShadow: Shadows.V2,
+    // background: Colors.Branding.Highlight,
+    // boxShadow: Shadows.V2,
 
   },
 });
@@ -22,7 +22,7 @@ export const buttonStyles = {
   },
   secondary: {
     container: css(defaultButtonCss, {
-      background: Colors.Gray.V8,
+      background: Colors.Gray.V9,
     })
   },
   large: {

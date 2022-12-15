@@ -18,7 +18,7 @@ export const tabStyles = {
     cursor: 'pointer',
   }),
   label: (isActive: boolean) => css({
-    color: isActive ? Colors.Black : Colors.Gray.V2,
+    color: isActive ? Colors.Black : Colors.Gray.V3,
     transition: 'all 0.3s ease',
   }),
 }

@@ -8,7 +8,6 @@ import { profileStyles } from './styles';
 import Button, { ButtonSize2 } from '../../components/button/Button';
 import { css } from '@emotion/css';
 import { FlexCss } from '../../components/styles/flex';
-import PortfolioTab from './portfolioTab/PortfolioTab';
 import { Colors } from '../../components/styles/colors';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { SodaUser } from '../../models/user/UserModel';
@@ -80,7 +79,7 @@ const Profile = ({ user }: ProfileProps) => {
         onChange={(index) => setActiveTab(index)}
         className={profileStyles.tabs}
       />
-      {activeTab == 0 && <PortfolioTab portfolios={userPortfolios} />}
+      {/* {activeTab == 0 && <PortfolioTab portfolios={userPortfolios} />} */}
     </FlexCol>
   );
 };

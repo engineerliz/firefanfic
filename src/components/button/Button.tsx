@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import React from 'react';
-import { Colors, textColorCss } from '../styles/colors';
+import { colorCss, Colors } from '../styles/colors';
 import { Subheading } from '../styles/fonts';
 import { buttonStyles } from './button.style';
 
@@ -37,9 +37,9 @@ const Button: React.FC<ButtonProps> = ({
 }: ButtonProps) => {
   const getTextColor = () => {
     if (type === 'Primary') {
-      return textColorCss(Colors.Black);
+      return colorCss(Colors.Black);
     }
-    return textColorCss(Colors.White);
+    return colorCss(Colors.White);
   };
 
   const getText = () => {

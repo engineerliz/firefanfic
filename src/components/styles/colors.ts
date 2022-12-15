@@ -1,71 +1,40 @@
-import { css } from '@emotion/css';
+import { css } from "@emotion/css"
 
 const Branding = {
-  Red: '#FF5040',
-  Highlight: '#C0EBF4',
-  Darklight: '#213361',
-  BackgroundGradient: 'linear-gradient(142.91deg, #132248 0%, #050C1D 100%)',
-  BlueGradient: 'linear-gradient(270deg, #69E5FF 0%, #5489FF 100%)',
-  GreenGradient: 'linear-gradient(270deg, #0CFF8A 0%, #07FEEF 100%)',
+  Gradient: 'linear-gradient(105.95deg, #7BFFFF 5.23%, #00D1FF 29.78%, #9D50FF 61.1%, #FF5F5F 93.49%)',
+  LightBlue: '#7BFFFF',
+  DarkBlue: '#00D1FF',
+  Purple: '#9D50FF',
+  Red: '#FF5F5F',
 }
 
 const Gray = {
-  V1: '#F3F3F3',
-  V2: '#DFDFDF',
+  V1: '#EDEDED',
   V3: '#C6C6C6',
-  V4: '#A8A8A8',
   V5: '#898989',
-  V6: '#696969',
   V7: '#4D4D4D',
-  V8: '#343434',
   V9: '#1B1B1B',
-}
-
-const Transparent = {
-  Dark: {
-    V2: 'rgba(33, 51, 97, 0.5)',
-    V3: 'rgba(18, 28, 53, 0.7)',
-  },
-  Light: {
-    V2: 'rgba(255, 255, 255, 0.3)',
-  }
+  V10: '#131313',
+  Background: '#0E0E0E',
 }
 
 const Colors = {
   Branding,
   Gray,
-  Transparent,
   White: '#FFFFFF',
   Black: '#000000',
 }
 
 const Shadows = {
-  V2: '0px 2px 30px 0px rgba(0, 0, 0, 0.2)'
+  V3: '4px 4px 15px rgba(0, 0, 0, 0.5)',
+  V4: '4px 4px 15px rgba(0, 0, 0, 0.7)',
+  V5: '4px 4px 15px rgba(0, 0, 0, 0.9)',
 }
 
-const ColorStyles = {
-  Red: css({
-    color: Branding.Red,
-  }),
-  Secondary: css({
-    color: Branding.Highlight,
-  }),
-  Background: css({
-    color: Branding.Darklight,
-  }),
-  Black: css({
-    color: Colors.Black,
-  }),
-  White: css({
-    color: Colors.White,
-  }),
-}
-
-const textColorCss = (color: string) => css({ color: `${color} !important`, });
+const colorCss = (color: string) => css({ color: `${color} !important`, });
 
 export {
   Colors,
   Shadows,
-  ColorStyles,
-  textColorCss
+  colorCss,
 }

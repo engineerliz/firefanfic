@@ -13,6 +13,7 @@ import Fic from '../../models/fics/FicModel';
 import { getFicsByUserId } from '../../actions/fics/getFics';
 import FicList from '../../components/ficList/FicList';
 import AccountTab from './accountTab/AccountTab';
+import FicEditButton from '../ficEdit/ficEditButton/FicEditButton';
 
 const Account = () => {
   const { user } = useContext(UserContext);
@@ -28,7 +29,7 @@ const Account = () => {
     return (
       <Page>
         <FlexRow>
-          <ProfileCard />
+          <ProfileCard button={<FicEditButton />} />
           <FlexCol className={accountStyles.body}>
             <Tabs
               tabLabels={List(['Your Fics', 'Bookmarks', 'Account'])}

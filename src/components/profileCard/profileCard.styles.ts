@@ -15,7 +15,7 @@ export const profileCardStyles = {
   container: css(FlexCss.spaceBetween, FlexCss.alignCenter, {
     width: '100%',
     height: 80,
-    background: Colors.Gray.V8,
+    background: Colors.Gray.V9,
     padding: '12px 40px',
     borderRadius: '30px 30px 0 0',
     position: 'fixed',

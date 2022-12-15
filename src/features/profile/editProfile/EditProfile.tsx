@@ -28,38 +28,41 @@ const EditProfile = () => {
   }, [user])
 
   console.log('edit user', user)
-  return <Page>
-    <Heading.H34>Edit Profile</Heading.H34>
-    <TextInput
-      label='Name'
-      value={nameInput}
-      onChange={(value) => setNameInput(value)}
-    />
-    <TextInput
-      label='Username'
-      value={usernameInput}
-      onChange={(value) => setUsernameInput(value)}
-    />
-    <TextInput
-      label='Bio'
-      value={bioInput}
-      height={150}
-      onChange={(value) => setBioInput(value)}
-      isMultiline={true}
-    />
-    <Button
-      ButtonSize2={ButtonSize2.Small}
-      text='Save'
-      onClick={() => {
-        user && editUser(user, {
-          displayName: nameInput ?? '',
-          username: usernameInput ?? '',
-          bio: bioInput ?? '',
-          // avatarUrl: avatarUrlInput,
-        }).then(() => navigate('/account'))
-      }}
-    />
-  </Page>
+  return (
+    <Page>
+      <Heading.H22>Edit Profile</Heading.H22>
+      <TextInput
+        label="Name"
+        value={nameInput}
+        onChange={(value) => setNameInput(value)}
+      />
+      <TextInput
+        label="Username"
+        value={usernameInput}
+        onChange={(value) => setUsernameInput(value)}
+      />
+      <TextInput
+        label="Bio"
+        value={bioInput}
+        height={150}
+        onChange={(value) => setBioInput(value)}
+        isMultiline={true}
+      />
+      <Button
+        ButtonSize2={ButtonSize2.Small}
+        text="Save"
+        onClick={() => {
+          user &&
+            editUser(user, {
+              displayName: nameInput ?? '',
+              username: usernameInput ?? '',
+              bio: bioInput ?? '',
+              // avatarUrl: avatarUrlInput,
+            }).then(() => navigate('/account'));
+        }}
+      />
+    </Page>
+  );
 }
 
 export default EditProfile
