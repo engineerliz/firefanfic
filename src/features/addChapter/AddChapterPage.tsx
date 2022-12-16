@@ -52,7 +52,6 @@ const AddChapterPage = () => {
             isMultiline
             label="Chapter"
             height="200"
-            // className={ficEditStyles.input}
             value={content}
             onChange={(value) => {
               setContent(value);

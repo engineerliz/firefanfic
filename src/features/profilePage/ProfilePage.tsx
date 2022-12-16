@@ -31,7 +31,6 @@ const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState<SodaUser>();
 
   useEffect(() => {
-    console.log('user', user, 'username', username);
     if (user.username === username) {
       setIsMyProfile(true);
       setUserProfile(user);

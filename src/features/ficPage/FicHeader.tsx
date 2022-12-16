@@ -20,7 +20,7 @@ const FicHeader = ({ fic }: FicHeaderProps) => {
 
   useEffect(() => {
     getUserById(fic.createdBy).then((value) => value && setUser(value));
-  });
+  }, []);
 
   return (
     <Header>

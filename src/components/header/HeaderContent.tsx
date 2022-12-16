@@ -9,6 +9,9 @@ import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import { css } from '@emotion/css';
 import { useNavigate } from 'react-router';
 import { UserContext } from '../../features/App';
+import Button from '../button/Button';
+import Icon from '../icon/Icon';
+import { FlexCss } from '../styles/flex';
 
 interface HeaderContentProps {
   rightButton?: React.ReactNode;
@@ -47,9 +50,12 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
               );
             } else {
               return (
-                <HeaderLink to={`/signin`}>
-                  <Subheading.SH14>Sign In</Subheading.SH14>
-                </HeaderLink>
+                <Button onClick={() => navigate('/signin')}>
+                  <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
+                    <Icon icon="happyEmoji" />
+                    Sign In
+                  </FlexRow>
+                </Button>
               );
             }
           }}

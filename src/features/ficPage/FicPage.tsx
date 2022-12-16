@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getFicById, getFicBySlug } from '../../actions/fics/getFics';
-import { getUserById } from '../../actions/user/getUser';
+import { getFicBySlug } from '../../actions/fics/getFics';
 import { FlexCol, FlexRow, gapCss, View } from '../../components/layout/styles';
 import FicModel from '../../models/fics/FicModel';
-import { SodaUser } from '../../models/user/UserModel';
 import { UserContext } from '../App';
 import FicHeader from './FicHeader';
 import BottomBar from '../../components/bottomBar/BottomBar';

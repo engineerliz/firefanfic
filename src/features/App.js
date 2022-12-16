@@ -20,12 +20,15 @@ const userInfo = {
     username: '',
     joinDate: serverTimestamp(),
     avatarUrl: undefined,
-  }
+  }, 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  clearUser: () => {},
 }
 export const UserContext = React.createContext(userInfo);
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
+  const clearUser = () => setCurrentUser(undefined);
   useEffect(() => {
     Firebase.auth().onAuthStateChanged(
       (user) => user?.uid && getUserById(user?.uid).then((user) => setCurrentUser(user)));
@@ -33,7 +36,8 @@ const App = () => {
 
   return <FirestoreProvider firebase={Firebase} >
     <UserContext.Provider value={{
-      user: currentUser
+      user: currentUser,
+      clearUser,
     }}>
       <BrowserRouter>
         {/* <ErrorBoundary> */}
