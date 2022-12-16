@@ -31,7 +31,16 @@ const App = () => {
   const clearUser = () => setCurrentUser(undefined);
   useEffect(() => {
     Firebase.auth().onAuthStateChanged(
-      (user) => user?.uid && getUserById(user?.uid).then((user) => setCurrentUser(user)));
+      (user) => {
+        user?.uid && getUserById(user?.uid).then((dbUser) => {
+          if (dbUser.userId) {
+            setCurrentUser(dbUser);
+          } else {
+            setCurrentUser(transformFirebaseUsertoSodaUser(user));
+          }
+        });
+      }
+      );
   }, [])
 
   return <FirestoreProvider firebase={Firebase} >

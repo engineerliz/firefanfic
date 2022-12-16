@@ -6,9 +6,10 @@ export const getUserById = (id: string): Promise<void | SodaUser> => {
     .collection('users')
     .doc(id)
     .get()
-    .then((value) => ({
+    .then((value) => {
+      return ({
       ...value.data()
-    } as SodaUser))
+    } as SodaUser)})
     .catch(error => {
       alert(`Whoops, couldn't get the user: ${error.message}`)
     })

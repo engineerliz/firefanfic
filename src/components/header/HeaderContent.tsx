@@ -45,7 +45,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
                 <img
                   src={CupcakePic}
                   className={headerStyles.userPicCss}
-                  onClick={() => navigate(`/profile/${user.username}`)}
+                  onClick={() => navigate(`/profile/${user?.username}`)}
                 />
               );
             } else {
