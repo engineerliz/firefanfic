@@ -20,9 +20,9 @@ const AppRoutes = () => (
     <Route path="/edit-portfolio" element={<PortfolioEdit />} />
     <Route path="/signin" element={<SignIn />} />
     <Route path="/edit-profile" element={<EditProfile />} />
-    <Route path="/fic/:ficId" element={<FicPage />} />
+    <Route path="/fic/:slug" element={<FicPage />} />
     <Route path="/add-chapter/:ficId" element={<AddChapterPage />} />
-    <Route path="/fic/:ficId/:chapterIndex" element={<ChapterPage />} />
+    <Route path="/fic/:slug/:chapterIndex" element={<ChapterPage />} />
   </Routes>
 );
 

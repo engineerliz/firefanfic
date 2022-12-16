@@ -17,30 +17,30 @@ export const getChaptersByFicId = (
     .where('ficId', '==', ficId)
     .orderBy('chapterIndex', 'asc')
     .get()
-    .then((chapters) =>
-      List(
+    .then((chapters) => {
+      return List(
         chapters.docs.map(
           (chap) =>
             ({
               id: chap.data()?.id,
               title: chap.data()?.title,
-              content: chap.data()?.description,
+              content: chap.data()?.content,
               ficId: chap.data()?.ficId,
               createdBy: chap.data()?.createdBy,
               createdOn: chap.data()?.createdOn,
               chapterIndex: chap.data()?.chapterIndex,
             } as ChapterModel),
         ),
-      ),
-    )
+      );
+    })
     .catch((error) => {
       console.log(`Whoops, couldn't get the chapters: ${error.message}`);
     });
 };
 
 export const getChapterByIndex = (
-  ficId: string,
-  chapterIndex: number,
+  ficId?: string,
+  chapterIndex?: number,
 ): Promise<ChapterModel | void> => {
   return Firebase.firestore()
     .collection('chapters')

@@ -21,7 +21,7 @@ const AddChapterPage = () => {
   const [fic, setFic] = useState<FicModel>();
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
-  const [chapters, setChapters] = useState<List<ChapterModel> | void>();
+  const [chapters, setChapters] = useState<List<ChapterModel>>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +30,9 @@ const AddChapterPage = () => {
 
   useEffect(() => {
     ficId &&
-      getChaptersByFicId(ficId).then((chapters) => setChapters(chapters));
+      getChaptersByFicId(ficId).then(
+        (chapters) => chapters && setChapters(chapters),
+      );
   }, [ficId]);
 
   return (
@@ -73,7 +75,7 @@ const AddChapterPage = () => {
                 title,
                 content,
               });
-              navigate(`/fic/${ficId}/chapter-${chapters?.size}`);
+              navigate(`/fic/${fic?.slug}/${chapters?.size}`);
             }
           }}
         >

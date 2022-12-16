@@ -14,7 +14,7 @@ const HeaderContent = () => {
   return (
     <FlexRow className={headerStyles.content}>
       <HeaderLink to="/">
-        <FlexRow className={css(headerStyles.logoContainer, gapCss(4))}>
+        <FlexRow className={css(headerStyles.logoContainer, gapCss(6))}>
           <img src={LoveEmoji} className={headerStyles.emoji} />
           <Heading.H14 className={headerStyles.logoText}>
             FireFanFic

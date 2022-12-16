@@ -15,6 +15,7 @@ export const layoutStyles = {
 
 export const View = styled.div`
   padding: 20px;
+  margin-bottom: 50px;
 `;
 
 const HeaderFooterWrapper = styled.div`

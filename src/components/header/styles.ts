@@ -13,7 +13,7 @@ export const headerStyles = {
     shadow: Shadows.V5,
     position: 'sticky',
     height: 'fit-content',
-    padding: '20px 30px',
+    padding: '12px 20px',
   }),
   content: css(FlexCss.alignCenter, FlexCss.spaceBetween, {
     width: '100%',
