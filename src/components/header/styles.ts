@@ -9,7 +9,7 @@ export const headerStyles = {
     left: 0,
     zIndex: 10,
     backdropFilter: 'blur(6px)',
-    background: Colors.Gray.V10,
+    background: Colors.Transparent.V5,
     shadow: Shadows.V5,
     position: 'sticky',
     height: 'fit-content',

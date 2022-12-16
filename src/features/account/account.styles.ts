@@ -5,5 +5,8 @@ export const accountStyles = {
   }),
   body: css({
     flexGrow: 1,
-  })
+  }),
+  profilePic: css({
+    width: 40,
+  }),
 }

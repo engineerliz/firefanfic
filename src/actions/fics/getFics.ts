@@ -43,6 +43,7 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<FicModel>>
       description: fic.data()?.description,
       ficId: fic.data()?.ficId,
       slug: fic.data()?.slug,
+      createdBy: fic.data().createdBy,
     } as FicModel))))
     .catch(error => {
       console.log(`Whoops, couldn't get the fics: ${error.message}`)

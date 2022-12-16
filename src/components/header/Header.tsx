@@ -4,12 +4,13 @@ import { headerStyles } from './styles';
 import HeaderContent from './HeaderContent';
 
 interface HeaderProps {
+  rightButton?: React.ReactNode;
   children?: React.ReactNode;
 }
-const Header = ({ children }: HeaderProps) => {
+const Header = ({ rightButton, children }: HeaderProps) => {
   return (
     <FlexCol className={headerStyles.container}>
-      <HeaderContent />
+      <HeaderContent rightButton={rightButton} />
       {children && <div className={headerStyles.children}>{children}</div>}
     </FlexCol>
   );

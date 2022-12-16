@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { FlexCol, FlexRow, Page } from '../../components/layout/styles';
+import { FlexCol, FlexRow, gapCss, Page } from '../../components/layout/styles';
 import { signIn } from '../../actions/user/signIn';
 import { UserContext } from '../App';
 import ProfileCard from '../../components/profileCard/ProfileCard';
@@ -14,6 +14,10 @@ import { getFicsByUserId } from '../../actions/fics/getFics';
 import FicList from '../../components/ficList/FicList';
 import AccountTab from './accountTab/AccountTab';
 import FicEditButton from '../ficEdit/ficEditButton/FicEditButton';
+import Header from '../../components/header/Header';
+import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
+import IconButton from '../../components/iconButton/IconButton';
+import { Heading } from '../../components/styles/fonts';
 
 const Account = () => {
   const { user } = useContext(UserContext);
@@ -27,20 +31,19 @@ const Account = () => {
 
   if (user) {
     return (
-      <Page>
-        <FlexRow>
-          <ProfileCard button={<FicEditButton />} />
-          <FlexCol className={accountStyles.body}>
-            <Tabs
-              tabLabels={List(['Your Fics', 'Bookmarks', 'Account'])}
-              onChange={(index) => setActiveTab(index)}
-              className={profileStyles.tabs}
-            />
-            {activeTab == 0 && <FicList fics={userFics} />}
-            {activeTab == 2 && <AccountTab />}
+      <>
+        <Header rightButton={<IconButton icon="user" />}>
+          <FlexCol className={gapCss(8)}>
+            <img src={CupcakePic} className={accountStyles.profilePic} />
+            <Heading.H14>{user.username}</Heading.H14>
           </FlexCol>
-        </FlexRow>
-      </Page>
+        </Header>
+        <Page>
+          <FlexRow>
+            <FicList fics={userFics} />
+          </FlexRow>
+        </Page>
+      </>
     );
   }
   return (

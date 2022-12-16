@@ -58,6 +58,14 @@ export const getChapterByIndex = (
     });
 };
 
+export const getNextChapterIndex = (ficId?: string): Promise<number | void> => {
+  return getChaptersByFicId(ficId).then((value) => {
+    if (value) {
+      return value.size + 1;
+    }
+  });
+};
+
 export const createChapter = async (values: ChapterCreateValues) => {
   if (Firebase.auth().currentUser?.uid) {
     let chapterIndex = 0;

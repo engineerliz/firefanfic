@@ -9,7 +9,11 @@ import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import { css } from '@emotion/css';
 import { useNavigate } from 'react-router';
 
-const HeaderContent = () => {
+interface HeaderContentProps {
+  rightButton?: React.ReactNode;
+}
+
+const HeaderContent = ({ rightButton }: HeaderContentProps) => {
   const navigate = useNavigate();
   return (
     <FlexRow className={headerStyles.content}>
@@ -21,31 +25,33 @@ const HeaderContent = () => {
           </Heading.H14>
         </FlexRow>
       </HeaderLink>
-      <FirebaseAuth>
-        {({ isLoading, error, auth }: any) => {
-          if (isLoading) {
-            return '...';
-          }
-          if (error) {
-            return '⚠️ login error';
-          }
-          if (auth) {
-            return (
-              <img
-                src={CupcakePic}
-                className={headerStyles.userPicCss}
-                onClick={() => navigate('/account')}
-              />
-            );
-          } else {
-            return (
-              <HeaderLink to={`/signin`}>
-                <Subheading.SH14>Sign In</Subheading.SH14>
-              </HeaderLink>
-            );
-          }
-        }}
-      </FirebaseAuth>
+      {rightButton ?? (
+        <FirebaseAuth>
+          {({ isLoading, error, auth }: any) => {
+            if (isLoading) {
+              return '...';
+            }
+            if (error) {
+              return '⚠️ login error';
+            }
+            if (auth) {
+              return (
+                <img
+                  src={CupcakePic}
+                  className={headerStyles.userPicCss}
+                  onClick={() => navigate('/account')}
+                />
+              );
+            } else {
+              return (
+                <HeaderLink to={`/signin`}>
+                  <Subheading.SH14>Sign In</Subheading.SH14>
+                </HeaderLink>
+              );
+            }
+          }}
+        </FirebaseAuth>
+      )}
     </FlexRow>
   );
 };

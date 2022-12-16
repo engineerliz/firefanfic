@@ -13,6 +13,8 @@ import ChapterModel from '../../models/chapters/ChapterModel';
 import { List } from 'immutable';
 import { getChaptersByFicId } from '../../actions/chapters/chapterActions';
 import ChapterRow from '../../components/chapterRow/ChapterRow';
+import { Paragraph, Subheading } from '../../components/styles/fonts';
+import { colorCss, Colors } from '../../components/styles/colors';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -34,20 +36,27 @@ const FicPage = () => {
       );
   }, [fic]);
 
-  console.log('user', user);
   if (fic) {
     return (
       <>
         <FicHeader fic={fic} />
         <View>
-          <FlexCol className={gapCss(15)}>
-            {chapters?.map((chapter) => {
-              return chapter ? (
-                <ChapterRow chapter={chapter} key={chapter.id} fic={fic} />
-              ) : (
-                <></>
-              );
-            })}
+          <FlexCol className={gapCss(30)}>
+            <FlexCol className={gapCss(2)}>
+              <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
+                Description
+              </Subheading.SH12>
+              <Paragraph.P12>{fic.description}</Paragraph.P12>
+            </FlexCol>
+            <FlexCol className={gapCss(20)}>
+              {chapters?.map((chapter) => {
+                return chapter ? (
+                  <ChapterRow chapter={chapter} key={chapter.id} fic={fic} />
+                ) : (
+                  <></>
+                );
+              })}
+            </FlexCol>
           </FlexCol>
         </View>
         <BottomBar>

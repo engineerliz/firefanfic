@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserById } from '../../actions/user/getUser';
 import Header from '../../components/header/Header';
-import { FlexCol } from '../../components/layout/styles';
+import { FlexCol, gapCss } from '../../components/layout/styles';
 import { colorCss, Colors } from '../../components/styles/colors';
 import { Heading, Subheading } from '../../components/styles/fonts';
 import FicModel from '../../models/fics/FicModel';
@@ -19,7 +19,7 @@ const FicHeader = ({ fic }: FicHeaderProps) => {
 
   return (
     <Header>
-      <FlexCol>
+      <FlexCol className={gapCss(2)}>
         <Heading.H18>{fic.title}</Heading.H18>
         <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
           By {user?.username}

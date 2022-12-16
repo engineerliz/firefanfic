@@ -1,9 +1,8 @@
-import { List } from 'immutable';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   createChapter,
-  getChaptersByFicId,
+  getNextChapterIndex,
 } from '../../actions/chapters/chapterActions';
 import { getFicById } from '../../actions/fics/getFics';
 import BottomBar from '../../components/bottomBar/BottomBar';
@@ -13,7 +12,6 @@ import { FlexCol, View } from '../../components/layout/styles';
 import { colorCss, Colors } from '../../components/styles/colors';
 import { Heading, Subheading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
-import ChapterModel from '../../models/chapters/ChapterModel';
 import FicModel from '../../models/fics/FicModel';
 
 const AddChapterPage = () => {
@@ -21,7 +19,7 @@ const AddChapterPage = () => {
   const [fic, setFic] = useState<FicModel>();
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
-  const [chapters, setChapters] = useState<List<ChapterModel>>();
+  const [nextIndex, setNextIndex] = useState<number>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,9 +28,7 @@ const AddChapterPage = () => {
 
   useEffect(() => {
     ficId &&
-      getChaptersByFicId(ficId).then(
-        (chapters) => chapters && setChapters(chapters),
-      );
+      getNextChapterIndex(ficId).then((index) => index && setNextIndex(index));
   }, [ficId]);
 
   return (
@@ -47,7 +43,6 @@ const AddChapterPage = () => {
         <FlexCol>
           <TextInput
             label="Title"
-            // className={ficEditStyles.input}
             value={title}
             onChange={(value) => {
               setTitle(value);
@@ -75,7 +70,7 @@ const AddChapterPage = () => {
                 title,
                 content,
               });
-              navigate(`/fic/${fic?.slug}/${chapters?.size}`);
+              navigate(`/fic/${fic?.slug}/${nextIndex}`);
             }
           }}
         >
@@ -87,4 +82,3 @@ const AddChapterPage = () => {
 };
 
 export default AddChapterPage;
-``;

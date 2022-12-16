@@ -18,11 +18,20 @@ const Gray = {
   Background: '#0E0E0E',
 }
 
+const Transparent = {
+  V1: 'rgba(27, 27, 27, 0.1)',
+  V3: 'rgba(27, 27, 27, 0.3)',
+  V5: 'rgba(27, 27, 27, 0.5)',
+  V7: 'rgba(27, 27, 27, 0.7)',
+  V9: 'rgba(27, 27, 27, 0.9)',
+}
+
 const Colors = {
   Branding,
   Gray,
   White: '#FFFFFF',
   Black: '#000000',
+  Transparent,
 }
 
 const Shadows = {
