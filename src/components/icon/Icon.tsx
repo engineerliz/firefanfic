@@ -6,6 +6,7 @@ import {
   GlobeIcon,
   SunIcon,
   UserIcon,
+  PlusIcon,
 } from '@iconicicons/react';
 import { iconStyles } from './icon.styles';
 import React from 'react';
@@ -18,7 +19,8 @@ export type IconName =
   | 'columnsHorizontal'
   | 'folder'
   | 'globe'
-  | 'user';
+  | 'user'
+  | 'plus';
 
 const getIcon = (icon: IconName) => {
   switch (icon) {
@@ -34,6 +36,8 @@ const getIcon = (icon: IconName) => {
       return <GlobeIcon />;
     case 'user':
       return <UserIcon />;
+    case 'plus':
+      return <PlusIcon />;
   }
 };
 

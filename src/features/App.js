@@ -10,6 +10,7 @@ import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'
 import { transformFirebaseUsertoSodaUser } from '../models/user/UserModel'
+import { getUserById } from '../actions/user/getUser';
 
 const userInfo = {
   user: {
@@ -26,7 +27,8 @@ export const UserContext = React.createContext(userInfo);
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
   useEffect(() => {
-    Firebase.auth().onAuthStateChanged((user) => user?.uid && setCurrentUser(transformFirebaseUsertoSodaUser(user)))
+    Firebase.auth().onAuthStateChanged(
+      (user) => user?.uid && getUserById(user?.uid).then((user) => setCurrentUser(user)));
   }, [])
 
   return <FirestoreProvider firebase={Firebase} >

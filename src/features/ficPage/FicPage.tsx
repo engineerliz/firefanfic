@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getFicById, getFicBySlug } from '../../actions/fics/getFics';
 import { getUserById } from '../../actions/user/getUser';
-import { FlexCol, gapCss, View } from '../../components/layout/styles';
+import { FlexCol, FlexRow, gapCss, View } from '../../components/layout/styles';
 import FicModel from '../../models/fics/FicModel';
 import { SodaUser } from '../../models/user/UserModel';
 import { UserContext } from '../App';
@@ -15,6 +15,9 @@ import { getChaptersByFicId } from '../../actions/chapters/chapterActions';
 import ChapterRow from '../../components/chapterRow/ChapterRow';
 import { Paragraph, Subheading } from '../../components/styles/fonts';
 import { colorCss, Colors } from '../../components/styles/colors';
+import Icon from '../../components/icon/Icon';
+import { FlexCss } from '../../components/styles/flex';
+import { css } from '@emotion/css';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -25,7 +28,7 @@ const FicPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getFicBySlug(slug).then((value) => value && setFic(value));
+    slug && getFicBySlug(slug).then((value) => value && setFic(value));
   }, []);
 
   useEffect(() => {
@@ -61,11 +64,11 @@ const FicPage = () => {
         </View>
         <BottomBar>
           {isAuthor ? (
-            <Button
-              size="Medium"
-              onClick={() => navigate(`/add-chapter/${fic.ficId}`)}
-            >
-              Add Chapter
+            <Button onClick={() => navigate(`/add-chapter/${fic.ficId}`)}>
+              <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
+                <Icon icon="plus" />
+                Add Chapter
+              </FlexRow>
             </Button>
           ) : (
             <Button size="Medium">Subscribe</Button>

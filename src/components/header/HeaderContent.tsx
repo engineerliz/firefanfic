@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlexRow, gapCss } from '../../components/layout/styles';
 import { HeaderLink } from '../../firefly/styles/links';
 import { headerStyles } from './styles';
@@ -8,6 +8,7 @@ import LoveEmoji from '../../assets/illustrations/love-emoji.png';
 import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import { css } from '@emotion/css';
 import { useNavigate } from 'react-router';
+import { UserContext } from '../../features/App';
 
 interface HeaderContentProps {
   rightButton?: React.ReactNode;
@@ -15,6 +16,8 @@ interface HeaderContentProps {
 
 const HeaderContent = ({ rightButton }: HeaderContentProps) => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
   return (
     <FlexRow className={headerStyles.content}>
       <HeaderLink to="/">
@@ -39,7 +42,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
                 <img
                   src={CupcakePic}
                   className={headerStyles.userPicCss}
-                  onClick={() => navigate('/account')}
+                  onClick={() => navigate(`/profile/${user.username}`)}
                 />
               );
             } else {

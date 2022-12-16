@@ -21,7 +21,7 @@ const FicRow = ({ fic, withButton = true, className }: FicRowProps) => {
   const [user, setUser] = useState<SodaUser>();
   useEffect(() => {
     getUserById(fic.createdBy).then((value) => value && setUser(value));
-  });
+  }, []);
 
   const onClick = () => navigate(`/fic/${fic.slug}`);
 

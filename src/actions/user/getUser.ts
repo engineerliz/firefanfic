@@ -20,6 +20,22 @@ export const getCurrentUserId = (): Promise<string | undefined> => {
   });
 }
 
+export const getUserByUsername = (username?: string): Promise<SodaUser | void> => {
+  return Firebase.firestore()
+    .collection('users')
+    .where('username', '==', username)
+    .get()
+    .then(
+      (value) =>
+        ({
+          ...value.docs[0].data(),
+        } as SodaUser),
+    )
+    .catch((error) => {
+      console.log(`Whoops, couldn't get the user: ${error.message}`);
+    });
+}
+
 export const getCurrentUser = (): Promise<void | SodaUser> | undefined => {
   const currentUserId = getCurrentUserId()
   // if (currentUserId) {

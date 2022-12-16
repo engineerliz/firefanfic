@@ -7,7 +7,7 @@ export const profileStyles = {
   }),
   profilePic: css({
     borderRadius: '50%',
-    marginRight: 20,
+    width: 40,
   }),
   logoutButton: css({
     width: 'fit-content',

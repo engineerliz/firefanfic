@@ -3,17 +3,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FlexCol, FlexRow, gapCss, Page } from '../../components/layout/styles';
 import { signIn } from '../../actions/user/signIn';
 import { UserContext } from '../App';
-import ProfileCard from '../../components/profileCard/ProfileCard';
 import { accountStyles } from './account.styles';
 import { List } from 'immutable';
-import Tabs from '../../components/tabs/Tabs';
-import { profileStyles } from '../profile/styles';
 import { useNavigate } from 'react-router-dom';
 import FicModel from '../../models/fics/FicModel';
 import { getFicsByUserId } from '../../actions/fics/getFics';
 import FicList from '../../components/ficList/FicList';
-import AccountTab from './accountTab/AccountTab';
-import FicEditButton from '../ficEdit/ficEditButton/FicEditButton';
 import Header from '../../components/header/Header';
 import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import IconButton from '../../components/iconButton/IconButton';
@@ -22,7 +17,6 @@ import { Heading } from '../../components/styles/fonts';
 const Account = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<number>(0);
   const [userFics, setUserFics] = useState<List<FicModel>>();
 
   useEffect(() => {
