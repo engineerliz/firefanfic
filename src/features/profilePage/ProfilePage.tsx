@@ -67,7 +67,7 @@ const ProfilePage = () => {
           </FlexRow>
         </Page>
         <BottomBar>
-          <Button>
+          <Button onClick={() => navigate('/new-fic')}>
             <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
               <Icon icon="plus" />
               New Fic
