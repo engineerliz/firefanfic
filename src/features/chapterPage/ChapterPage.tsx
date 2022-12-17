@@ -25,6 +25,7 @@ const ChapterPage = () => {
   const [chapter, setChapter] = useState<ChapterModel>();
   const navigate = useNavigate();
 
+  const [test, setTest] = useState<Blob>();
   const index = chapterIndex ? parseInt(chapterIndex) : 1;
 
   useEffect(() => {
@@ -35,9 +36,14 @@ const ChapterPage = () => {
     fic?.ficId &&
       chapterIndex &&
       getChapterByIndex(fic?.ficId, index).then(
-        (chapters) => chapters && setChapter(chapters),
+        (chapter) => chapter && setChapter(chapter),
       );
   }, [fic]);
+
+  useEffect(() => {
+    const newBlob = new Blob([`${chapter?.content}`], { type: 'text/html' });
+    setTest(newBlob);
+  }, [chapter]);
 
   return (
     <>
@@ -51,7 +57,8 @@ const ChapterPage = () => {
             <Heading.H18>{chapter?.title}</Heading.H18>
           </FlexCol>
           <Paragraph.P12 className={chapterPageStyles.content}>
-            {chapter?.content}
+            {/* {test?.text().then((value) => value)} */}
+            {/* {chapter?.content} */}
           </Paragraph.P12>
         </FlexCol>
       </View>

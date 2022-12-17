@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import ChapterModel from '../../models/chapters/ChapterModel';
 import FicModel from '../../models/fics/FicModel';
@@ -15,6 +15,11 @@ interface ChapterRowProps {
 
 const ChapterRow = ({ chapter, fic }: ChapterRowProps) => {
   const navigate = useNavigate();
+  const [content, setContent] = useState<string>();
+
+  useEffect(() => {
+    // chapter.content.text().then((value) => setContent(value));
+  }, []);
   return (
     <FlexCol
       className={css(chapterRowStyles.container, gapCss(2))}
@@ -28,7 +33,7 @@ const ChapterRow = ({ chapter, fic }: ChapterRowProps) => {
         color={Colors.Gray.V3}
         className={chapterRowStyles.content}
       >
-        {chapter.content}
+        {content}
       </Paragraph.P12>
     </FlexCol>
   );

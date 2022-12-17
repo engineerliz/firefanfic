@@ -67,6 +67,7 @@ const AddChapterPage = () => {
               createChapter({
                 ficId,
                 title,
+                // content: new Blob([`${content}`], { type: 'text/html' }),
                 content,
               });
               navigate(`/fic/${fic?.slug}/${nextIndex}`);

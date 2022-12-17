@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import './index.css';
 import App from './features/App';
+import 'firebase/compat/storage';
 
 console.log('create-react-app env:', process.env.NODE_ENV);
 console.log('firefly project:', process.env.REACT_APP_ENV);

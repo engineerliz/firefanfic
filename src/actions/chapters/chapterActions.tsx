@@ -2,12 +2,8 @@ import Firebase from 'firebase/compat/app';
 import { List } from 'immutable';
 import { v4 as uuid_v4 } from 'uuid';
 import ChapterModel from '../../models/chapters/ChapterModel';
-
-interface ChapterCreateValues {
-  title: string;
-  ficId: string;
-  content: string;
-}
+import { uploadFile } from '../uploadFile/uploadFile';
+import { getChapterContentId } from './utils';
 
 export const getChaptersByFicId = (
   ficId?: string,
@@ -69,12 +65,22 @@ export const getNextChapterIndex = (ficId?: string): Promise<number> => {
   });
 };
 
+interface ChapterCreateValues {
+  title: string;
+  ficId: string;
+  content: string;
+}
+
 export const createChapter = async (values: ChapterCreateValues) => {
   if (Firebase.auth().currentUser?.uid) {
+    const chapterId = uuid_v4();
+    uploadFile(values.content, getChapterContentId(values.ficId, chapterId));
+
     getChaptersByFicId(values.ficId).then((chapters) => {
       const newChapter: ChapterModel = {
         ...values,
-        id: uuid_v4(),
+        // content: values.content.arrayBuffer,
+        id: chapterId,
         createdBy: Firebase.auth().currentUser!.uid,
         createdOn: Firebase.firestore.Timestamp.now(),
         chapterIndex: (chapters?.size ?? 1) + 1,

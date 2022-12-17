@@ -1,0 +1,1 @@
+export const getChapterContentId = (ficId: string, chapterId: string) => `${ficId}@${chapterId}`;
