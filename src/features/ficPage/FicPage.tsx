@@ -30,7 +30,7 @@ const FicPage = () => {
   }, []);
 
   useEffect(() => {
-    setIsAuthor(user?.userId === fic?.createdBy);
+    setIsAuthor(user?.userId === fic?.createdBy); 
     fic?.ficId &&
       getChaptersByFicId(fic?.ficId).then(
         (chapters) => chapters && setChapters(chapters),

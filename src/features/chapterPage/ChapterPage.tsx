@@ -25,7 +25,7 @@ const ChapterPage = () => {
   const [chapter, setChapter] = useState<ChapterModel>();
   const navigate = useNavigate();
 
-  const index = chapterIndex ? parseInt(chapterIndex) - 1 : 0;
+  const index = chapterIndex ? parseInt(chapterIndex) : 1;
 
   useEffect(() => {
     getFicBySlug(slug).then((value) => value && setFic(value));
@@ -46,7 +46,7 @@ const ChapterPage = () => {
         <FlexCol className={gapCss(15)}>
           <FlexCol className={gapCss(2)}>
             <Subheading.SH12 color={Colors.Gray.V3}>
-              Chapter {index + 1}
+              Chapter {index}
             </Subheading.SH12>
             <Heading.H18>{chapter?.title}</Heading.H18>
           </FlexCol>

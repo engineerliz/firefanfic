@@ -8,7 +8,7 @@ interface FicCreateValues {
   description?: string;
 }
 
-const createFic = (values: FicCreateValues) => {
+export const createFic = (values: FicCreateValues) => {
   const newFic: FicModel = {
     ...values,
     ficId: uuid_v4(),
@@ -26,5 +26,3 @@ const createFic = (values: FicCreateValues) => {
       alert(`Whoops, couldn't create the fic: ${error.message}`)
     })
 }
-
-export default createFic

@@ -13,8 +13,9 @@ export const getChaptersByFicId = (
   ficId?: string,
 ): Promise<List<ChapterModel> | void> => {
   return Firebase.firestore()
+    .collection('fics')
+    .doc(ficId)
     .collection('chapters')
-    .where('ficId', '==', ficId)
     .orderBy('chapterIndex', 'asc')
     .get()
     .then((chapters) => {
@@ -43,8 +44,9 @@ export const getChapterByIndex = (
   chapterIndex?: number,
 ): Promise<ChapterModel | void> => {
   return Firebase.firestore()
+    .collection('fics')
+    .doc(ficId)
     .collection('chapters')
-    .where('ficId', '==', ficId)
     .where('chapterIndex', '==', chapterIndex)
     .get()
     .then(
@@ -58,38 +60,40 @@ export const getChapterByIndex = (
     });
 };
 
-export const getNextChapterIndex = (ficId?: string): Promise<number | void> => {
-  return getChaptersByFicId(ficId).then((value) => {
-    if (value) {
-      return value.size + 1;
+export const getNextChapterIndex = (ficId?: string): Promise<number> => {
+  return getChaptersByFicId(ficId).then((chapters) => {
+    if (chapters) {
+      return chapters.size + 1;
     }
+    return 1;
   });
 };
 
 export const createChapter = async (values: ChapterCreateValues) => {
   if (Firebase.auth().currentUser?.uid) {
-    let chapterIndex = 0;
-    await getChaptersByFicId(values.ficId).then((value) => {
-      if (value?.last()?.chapterIndex) {
-        chapterIndex = value.last()!.chapterIndex! + 1;
-      }
-    });
+    getChaptersByFicId(values.ficId).then((chapters) => {
+      const newChapter: ChapterModel = {
+        ...values,
+        id: uuid_v4(),
+        createdBy: Firebase.auth().currentUser!.uid,
+        createdOn: Firebase.firestore.Timestamp.now(),
+        chapterIndex: (chapters?.size ?? 1) + 1,
+      };
 
-    const newChapter: ChapterModel = {
-      ...values,
-      id: uuid_v4(),
-      createdBy: Firebase.auth().currentUser!.uid,
-      createdOn: Firebase.firestore.Timestamp.now(),
-      chapterIndex,
-    };
-
-    return Firebase.firestore()
-      .collection('chapters')
-      .doc(newChapter.id)
-      .set(newChapter)
-      .then(() => newChapter)
-      .catch((error) => {
-        alert(`Whoops, couldn't create the chapter: ${error.message}`);
+      Firebase.firestore().collection('fics').doc(values.ficId).update({
+        lastUpdated: Firebase.firestore.Timestamp.now(),
       });
+
+      return Firebase.firestore()
+        .collection('fics')
+        .doc(values.ficId)
+        .collection('chapters')
+        .doc(newChapter.id)
+        .set(newChapter)
+        .then(() => newChapter)
+        .catch((error) => {
+          alert(`Whoops, couldn't create the chapter: ${error.message}`);
+        });
+    });
   }
 };

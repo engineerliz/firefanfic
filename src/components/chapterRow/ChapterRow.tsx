@@ -18,10 +18,10 @@ const ChapterRow = ({ chapter, fic }: ChapterRowProps) => {
   return (
     <FlexCol
       className={css(chapterRowStyles.container, gapCss(2))}
-      onClick={() => navigate(`/fic/${fic.slug}/${chapter.chapterIndex + 1}`)}
+      onClick={() => navigate(`/fic/${fic.slug}/${chapter.chapterIndex}`)}
     >
       <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
-        Chapter {chapter.chapterIndex + 1}
+        Chapter {chapter.chapterIndex}
       </Subheading.SH12>
       <Heading.H14>{chapter.title}</Heading.H14>
       <Paragraph.P12

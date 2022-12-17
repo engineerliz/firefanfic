@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import createFic from '../../actions/fics/createFic';
 import Button from '../../components/button/Button';
 import { Colors } from '../../components/styles/colors';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
@@ -8,6 +7,7 @@ import { FlexCol, FlexRow } from '../../components/layout/styles';
 import Portfolio from '../../models/portfolio/PortfolioModel';
 import { ficEditStyles } from './ficEdit.styles';
 import { FicEditType } from './ficEditButton/FicEditButton';
+import { createFic } from '../../actions/fics/createFic';
 
 interface FicEditProps {
   portfolio?: Portfolio;

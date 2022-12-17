@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import createFic from '../../actions/fics/createFic';
+import { createFic } from '../../actions/fics/createFic';
 import BottomBar from '../../components/bottomBar/BottomBar';
 import Button from '../../components/button/Button';
 import Header from '../../components/header/Header';
