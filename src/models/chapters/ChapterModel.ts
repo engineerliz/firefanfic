@@ -6,8 +6,8 @@ interface ChapterModel {
   createdBy: string;
   createdOn: Firebase.firestore.Timestamp;
   title: string;
-  content: string;
   chapterIndex: number;
+  preview?: string;
 }
 
 export default ChapterModel;

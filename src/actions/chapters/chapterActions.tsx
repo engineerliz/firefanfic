@@ -19,13 +19,7 @@ export const getChaptersByFicId = (
         chapters.docs.map(
           (chap) =>
             ({
-              id: chap.data()?.id,
-              title: chap.data()?.title,
-              content: chap.data()?.content,
-              ficId: chap.data()?.ficId,
-              createdBy: chap.data()?.createdBy,
-              createdOn: chap.data()?.createdOn,
-              chapterIndex: chap.data()?.chapterIndex,
+              ...chap.data(),
             } as ChapterModel),
         ),
       );
@@ -72,14 +66,15 @@ interface ChapterCreateValues {
 }
 
 export const createChapter = async (values: ChapterCreateValues) => {
-  if (Firebase.auth().currentUser?.uid) {
+  if (Firebase.auth().currentUser) {
     const chapterId = uuid_v4();
     uploadFile(values.content, getChapterContentId(values.ficId, chapterId));
 
     getChaptersByFicId(values.ficId).then((chapters) => {
       const newChapter: ChapterModel = {
-        ...values,
-        // content: values.content.arrayBuffer,
+        title: values.title,
+        ficId: values.ficId,
+        preview: values.content.slice(0, 500),
         id: chapterId,
         createdBy: Firebase.auth().currentUser!.uid,
         createdOn: Firebase.firestore.Timestamp.now(),

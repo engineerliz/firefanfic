@@ -1,16 +1,10 @@
-import { css } from '@emotion/css';
-import { List } from 'immutable';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import {
-  getChapterByIndex,
-  getChaptersByFicId,
-} from '../../actions/chapters/chapterActions';
+import { getChapterByIndex } from '../../actions/chapters/chapterActions';
 import { getFicBySlug } from '../../actions/fics/getFics';
 import BottomBar from '../../components/bottomBar/BottomBar';
-import Button from '../../components/button/Button';
 import Header from '../../components/header/Header';
-import { FlexCol, FlexRow, gapCss, View } from '../../components/layout/styles';
+import { FlexCol, gapCss, View } from '../../components/layout/styles';
 import { Colors } from '../../components/styles/colors';
 import { FlexCss } from '../../components/styles/flex';
 import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
@@ -18,14 +12,17 @@ import ChapterModel from '../../models/chapters/ChapterModel';
 import FicModel from '../../models/fics/FicModel';
 import { pointerCss } from '../../styles/common.styles';
 import { chapterPageStyles } from './chapterPage.styles';
+import 'firebase/compat/storage';
+import Firebase from 'firebase/compat/app';
+import { getChapterContentId } from '../../actions/chapters/utils';
 
 const ChapterPage = () => {
   const { slug, chapterIndex } = useParams();
   const [fic, setFic] = useState<FicModel>();
   const [chapter, setChapter] = useState<ChapterModel>();
+  const [content, setContent] = useState<string>();
   const navigate = useNavigate();
 
-  const [test, setTest] = useState<Blob>();
   const index = chapterIndex ? parseInt(chapterIndex) : 1;
 
   useEffect(() => {
@@ -41,8 +38,19 @@ const ChapterPage = () => {
   }, [fic]);
 
   useEffect(() => {
-    const newBlob = new Blob([`${chapter?.content}`], { type: 'text/html' });
-    setTest(newBlob);
+    if (fic?.ficId && chapter?.id) {
+      setTimeout(() => {
+        Firebase.storage()
+          .ref()
+          .child(`/content/${getChapterContentId(fic?.ficId, chapter?.id)}`)
+          .getDownloadURL()
+          .then((url) => {
+            fetch(url).then((r) => {
+              r.text().then((data) => setContent(data));
+            });
+          });
+      }, 500);
+    }
   }, [chapter]);
 
   return (
@@ -57,8 +65,7 @@ const ChapterPage = () => {
             <Heading.H18>{chapter?.title}</Heading.H18>
           </FlexCol>
           <Paragraph.P12 className={chapterPageStyles.content}>
-            {/* {test?.text().then((value) => value)} */}
-            {/* {chapter?.content} */}
+            {content}
           </Paragraph.P12>
         </FlexCol>
       </View>

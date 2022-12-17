@@ -17,9 +17,6 @@ const ChapterRow = ({ chapter, fic }: ChapterRowProps) => {
   const navigate = useNavigate();
   const [content, setContent] = useState<string>();
 
-  useEffect(() => {
-    // chapter.content.text().then((value) => setContent(value));
-  }, []);
   return (
     <FlexCol
       className={css(chapterRowStyles.container, gapCss(2))}
@@ -33,7 +30,7 @@ const ChapterRow = ({ chapter, fic }: ChapterRowProps) => {
         color={Colors.Gray.V3}
         className={chapterRowStyles.content}
       >
-        {content}
+        {chapter.preview}
       </Paragraph.P12>
     </FlexCol>
   );
