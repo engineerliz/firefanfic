@@ -54,7 +54,7 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<FicModel>>
 export const getAllFics = (): Promise<void | List<FicModel>> => {
   return Firebase.firestore()
     .collection('fics')
-    .orderBy('createdOn', 'desc')
+    .orderBy('lastUpdated', 'desc')
     .get()
     .then((fics) => List(fics.docs.map(fic => ({
       title: fic.data()?.title,
