@@ -1,3 +1,4 @@
+import { css } from '@emotion/css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
@@ -9,8 +10,14 @@ import { trackPageView } from '../../analytics/analytics';
 import BottomBar from '../../components/bottomBar/BottomBar';
 import Button from '../../components/button/Button';
 import Header from '../../components/header/Header';
-import { FlexCol, View } from '../../components/layout/styles';
+import {
+  FlexCol,
+  flexGrowCss,
+  heightCss,
+  View,
+} from '../../components/layout/styles';
 import { colorCss, Colors } from '../../components/styles/colors';
+import { FlexCss } from '../../components/styles/flex';
 import { Heading, Subheading } from '../../components/styles/fonts';
 import TextInput from '../../components/textInput/TextInput';
 import FicModel from '../../models/fics/FicModel';
@@ -42,11 +49,12 @@ const AddChapterPage = () => {
           {fic?.title}
         </Subheading.SH12>
       </Header>
-      <View>
-        <FlexCol>
+      <View className={FlexCss.flex}>
+        <FlexCol className={flexGrowCss(1)}>
           <TextInput
             label="Title"
             value={title}
+            className={flexGrowCss(1)}
             onChange={(value) => {
               setTitle(value);
             }}
@@ -54,8 +62,9 @@ const AddChapterPage = () => {
           <TextInput
             isMultiline
             label="Chapter"
-            height="200"
+            height="100%"
             value={content}
+            className={css(flexGrowCss(2), heightCss('100%'))}
             onChange={(value) => {
               setContent(value);
             }}

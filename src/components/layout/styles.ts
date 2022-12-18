@@ -92,6 +92,10 @@ export const heightCss = (height: number | string) => css({
   height,
 });
 
+export const preLineCss = css({
+  whiteSpace: 'pre-line',
+})
+
 export {
   HeaderFooterWrapper,
   Header,

@@ -18,6 +18,5 @@ export const ficRowStyles = {
     '-webkit-box-orient': 'vertical',
     width: '100%',
     textOverflow: 'ellipsis',
-
   })
 }

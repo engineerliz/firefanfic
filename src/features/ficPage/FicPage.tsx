@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getFicBySlug } from '../../actions/fics/getFics';
-import { FlexCol, FlexRow, gapCss, View } from '../../components/layout/styles';
+import {
+  FlexCol,
+  FlexRow,
+  gapCss,
+  preLineCss,
+  View,
+} from '../../components/layout/styles';
 import FicModel from '../../models/fics/FicModel';
 import { UserContext } from '../App';
 import FicHeader from './FicHeader';
@@ -50,7 +56,9 @@ const FicPage = () => {
               <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
                 Description
               </Subheading.SH12>
-              <Paragraph.P12>{fic.description}</Paragraph.P12>
+              <Paragraph.P12 className={preLineCss}>
+                {fic.description}
+              </Paragraph.P12>
             </FlexCol>
             <FlexCol className={gapCss(20)}>
               {chapters?.map((chapter) => {
