@@ -18,6 +18,7 @@ export const View = styled.div`
   margin: 0 auto;
   margin-bottom: 50px;
   max-width: 700px;
+  width: 100%;
 `;
 
 const HeaderFooterWrapper = styled.div`
@@ -81,6 +82,14 @@ const FlexCol = styled.div`
 
 export const gapCss = (gap: number) => css({
   gap,
+});
+
+export const flexGrowCss = (grow: number) => css({
+  flexGrow: grow,
+});
+
+export const heightCss = (height: number | string) => css({
+  height,
 });
 
 export {

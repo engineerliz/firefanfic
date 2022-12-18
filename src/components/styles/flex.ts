@@ -1,6 +1,9 @@
 import { css } from '@emotion/css';
 
 export const FlexCss = {
+  flex: css({
+    display: 'flex',
+  }),
   alignCenter: css({
     alignItems: 'center',
   }),

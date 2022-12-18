@@ -24,6 +24,6 @@ export const textInputStyles = {
     }
   }),
   textArea: (height?: number | string) => css({
-    height: `${height ?? 300}px`,
+    height: `${height ?? 300}`,
   }),
 }
