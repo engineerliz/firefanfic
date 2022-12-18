@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../../actions/user/signIn';
 import Button from '../../components/button/Button';
@@ -7,9 +7,13 @@ import { FlexCol, FlexRow, Page } from '../../components/layout/styles';
 import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
 import Header from '../../components/header/Header';
 import { FlexCss } from '../../components/styles/flex';
+import { trackPageView } from '../../analytics/analytics';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    trackPageView('Sign In');
+  }, []);
 
   return (
     <>

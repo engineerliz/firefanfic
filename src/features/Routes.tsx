@@ -3,9 +3,8 @@
 
 import React from 'react'
 import Account from './account/Account';
-import Splash from './splash/Splash'
-import { Route, Routes } from 'react-router-dom'
-import SignIn from './signIn/SignIn'
+import { Route, Routes } from 'react-router-dom';
+import SignIn from './signIn/SignIn';
 import PortfolioEdit from './portfolioEdit/PortfolioEdit';
 import EditProfile from './profilePage/editProfile/EditProfile';
 import FicPage from './ficPage/FicPage';
@@ -13,14 +12,13 @@ import AddChapterPage from './addChapterPage/AddChapterPage';
 import ChapterPage from './chapterPage/ChapterPage';
 import ProfilePage from './profilePage/ProfilePage';
 import AddFicPage from './addFicPage/AddFicPage';
+import HomeFeedPage from './homeFeedPage/HomeFeedPage';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<Splash />} />
+    <Route path="/" element={<HomeFeedPage />} />
     <Route path="/account" element={<Account />} />
     <Route path="/profile/:username" element={<ProfilePage />} />
-    <Route path="/signin" element={<SignIn />} />
-    <Route path="/edit-portfolio" element={<PortfolioEdit />} />
     <Route path="/signin" element={<SignIn />} />
     <Route path="/edit-profile" element={<EditProfile />} />
     <Route path="/fic/:slug" element={<FicPage />} />

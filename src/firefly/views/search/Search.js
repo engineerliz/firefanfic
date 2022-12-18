@@ -13,11 +13,11 @@ import '../../styles/search'
 import {
   Page,
 } from '../../styles/layout'
-import Splash from '../../../features/splash/Splash'
+import HomeFeedPage from '../../../features/HomeFeedPage/HomeFeedPage'
 
 const Search = () => (
   <Page>
-    <Splash />
+    <HomeFeedPage />
     {/* <InstantSearch
       appId={process.env.REACT_APP_ALGOLIA_APP_ID}
       apiKey={process.env.REACT_APP_ALGOLIA_SEARCH_KEY}

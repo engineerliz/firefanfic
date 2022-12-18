@@ -5,6 +5,7 @@ import {
   getNextChapterIndex,
 } from '../../actions/chapters/chapterActions';
 import { getFicById } from '../../actions/fics/getFics';
+import { trackPageView } from '../../analytics/analytics';
 import BottomBar from '../../components/bottomBar/BottomBar';
 import Button from '../../components/button/Button';
 import Header from '../../components/header/Header';
@@ -23,6 +24,8 @@ const AddChapterPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    trackPageView('Add Chapter');
+
     ficId && getFicById(ficId).then((value) => value && setFic(value));
   }, []);
 

@@ -16,6 +16,7 @@ import { colorCss, Colors } from '../../components/styles/colors';
 import Icon from '../../components/icon/Icon';
 import { FlexCss } from '../../components/styles/flex';
 import { css } from '@emotion/css';
+import { trackPageView } from '../../analytics/analytics';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -26,11 +27,13 @@ const FicPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    trackPageView('Fic Page');
+
     slug && getFicBySlug(slug).then((value) => value && setFic(value));
   }, []);
 
   useEffect(() => {
-    setIsAuthor(user?.userId === fic?.createdBy); 
+    setIsAuthor(user?.userId === fic?.createdBy);
     fic?.ficId &&
       getChaptersByFicId(fic?.ficId).then(
         (chapters) => chapters && setChapters(chapters),

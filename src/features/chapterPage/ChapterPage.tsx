@@ -15,6 +15,7 @@ import { chapterPageStyles } from './chapterPage.styles';
 import 'firebase/compat/storage';
 import Firebase from 'firebase/compat/app';
 import { getChapterContentId } from '../../actions/chapters/utils';
+import { trackPageView } from '../../analytics/analytics';
 
 const ChapterPage = () => {
   const { slug, chapterIndex } = useParams();
@@ -26,6 +27,7 @@ const ChapterPage = () => {
   const index = chapterIndex ? parseInt(chapterIndex) : 1;
 
   useEffect(() => {
+    trackPageView('Chapter Page');
     getFicBySlug(slug).then((value) => value && setFic(value));
   }, []);
 

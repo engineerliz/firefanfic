@@ -10,6 +10,8 @@ import ReactGA from 'react-ga';
 import './index.css';
 import App from './features/App';
 import 'firebase/compat/storage';
+import 'firebase/compat/analytics';
+import { getAnalytics } from 'firebase/analytics';
 
 console.log('create-react-app env:', process.env.NODE_ENV);
 console.log('firefly project:', process.env.REACT_APP_ENV);
@@ -20,12 +22,16 @@ const dbConfig = {
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 };
-Firebase.initializeApp(dbConfig);
+const app = Firebase.initializeApp(dbConfig);
+const analytics = getAnalytics(app);
 
 // Google Analytics
 // https://github.com/react-ga/react-ga#api
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID!);
+ReactGA.initialize(process.env.REACT_APP_FIREBASE_MEASUREMENT_ID!);
 
 // Sentry
 // https://docs.sentry.io/clients/javascript/integrations/react/

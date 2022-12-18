@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createFic } from '../../actions/fics/createFic';
+import { trackPageView } from '../../analytics/analytics';
 import BottomBar from '../../components/bottomBar/BottomBar';
 import Button from '../../components/button/Button';
 import Header from '../../components/header/Header';
@@ -12,6 +13,10 @@ const AddFicPage = () => {
   const [title, setTitle] = useState<string>('');
   const [description, setContent] = useState<string>('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    trackPageView('Add Fic');
+  }, []);
 
   return (
     <>

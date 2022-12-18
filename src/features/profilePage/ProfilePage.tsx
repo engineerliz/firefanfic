@@ -21,6 +21,7 @@ import BottomBar from '../../components/bottomBar/BottomBar';
 import Button from '../../components/button/Button';
 import { css } from '@emotion/css';
 import { FlexCss } from '../../components/styles/flex';
+import { trackPageView } from '../../analytics/analytics';
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
@@ -31,6 +32,7 @@ const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState<SodaUser>();
 
   useEffect(() => {
+    trackPageView('Profile');
     if (user?.username === username) {
       setIsMyProfile(true);
       setUserProfile(user);
