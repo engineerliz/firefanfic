@@ -25,7 +25,6 @@ import {
 const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>();
 
   useEffect(() => {
@@ -47,12 +46,6 @@ const SignIn = () => {
                 value={email}
                 onChange={(value: string) => setEmail(value)}
               />
-              <TextInput
-                label="Password"
-                value={password}
-                hideText
-                onChange={(value: string) => setPassword(value)}
-              />
               <Subheading.SH12 className={colorCss(Colors.Branding.Red)}>
                 {errorMessage}
               </Subheading.SH12>
@@ -67,7 +60,7 @@ const SignIn = () => {
                       },
                     );
                   } else {
-                    setErrorMessage('Missing email or password');
+                    setErrorMessage('Missing email');
                   }
                 }}
               >
@@ -75,7 +68,6 @@ const SignIn = () => {
               </Button>
               <hr className={backgroundCss(Colors.Gray.V7)} />
               <FlexCol className={gapCss(8)}>
-                <Button size="Medium">Sign In</Button>
                 <FirebaseAuth>
                   {({ isLoading, error, auth }: any) => {
                     if (isLoading) {
