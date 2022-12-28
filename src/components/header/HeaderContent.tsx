@@ -24,12 +24,12 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
 
   return (
     <FlexRow className={headerStyles.content}>
-      <Link to="/">
+      <HeaderLink to="/">
         <FlexRow className={css(headerStyles.logoContainer, gapCss(6))}>
           <img src={LoveEmoji} className={headerStyles.emoji} />
           <Title.T14 className={headerStyles.logoText}>FireFanFic</Title.T14>
         </FlexRow>
-      </Link>
+      </HeaderLink>
       {rightButton ?? (
         <FirebaseAuth>
           {({ isLoading, error, auth }: AuthState) => {
@@ -41,7 +41,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
             }
             if (auth) {
               return (
-                <Link to={`/profile/${user.username}`}>
+                <Link to={`/profile/${user?.username}`}>
                   <img src={CupcakePic} className={headerStyles.userPicCss} />
                 </Link>
               );
