@@ -41,9 +41,11 @@ const Shadows = {
 }
 
 const colorCss = (color: string) => css({ color: `${color} !important`, });
+const backgroundCss = (color: string) => css({ background: `${color}`, });
 
 export {
   Colors,
   Shadows,
   colorCss,
+  backgroundCss,
 }

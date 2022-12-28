@@ -3,11 +3,11 @@ import { Colors } from '../styles/colors';
 
 export const textInputStyles = {
   label: css({
-    marginBottom: 6,
+    marginBottom: 2,
   }),
   input: css({
-    background: 'rgba(0, 0, 0, 0.5)',
-    border: '0px',
+    background: Colors.Gray.V10,
+      border: `1px solid ${Colors.Gray.V10}`,
     borderRadius: 12,
     height: 52,
     fontSize: 14,
@@ -17,10 +17,10 @@ export const textInputStyles = {
     outline: 'none',
     transition: 'all .3s ease',
     ':focus': {
-      border: 'none',
+      border: `1px solid ${Colors.Gray.V7}`,
     },
     ':active': {
-      border: 'none',
+      border: `1px solid ${Colors.Gray.V7}`,
     }
   }),
   textArea: (height?: number | string) => css({

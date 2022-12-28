@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { FlexRow, gapCss } from '../../components/layout/styles';
 import { HeaderLink } from '../../firefly/styles/links';
 import { headerStyles } from './styles';
-import { Heading, Subheading } from '../styles/fonts';
-import FirebaseAuth from '../../firefly/views/misc/FirebaseAuth';
+import { Heading } from '../styles/fonts';
+import FirebaseAuth, { AuthState } from '../../firefly/views/misc/FirebaseAuth';
 import LoveEmoji from '../../assets/illustrations/love-emoji.png';
 import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import { css } from '@emotion/css';
@@ -33,7 +33,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
       </HeaderLink>
       {rightButton ?? (
         <FirebaseAuth>
-          {({ isLoading, error, auth }: any) => {
+          {({ isLoading, error, auth }: AuthState) => {
             if (isLoading) {
               return '...';
             }
@@ -45,7 +45,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
                 <img
                   src={CupcakePic}
                   className={headerStyles.userPicCss}
-                  onClick={() => navigate(`/profile/${user?.username}`)}
+                  onClick={() => navigate(`/profile/${user.username}`)}
                 />
               );
             } else {

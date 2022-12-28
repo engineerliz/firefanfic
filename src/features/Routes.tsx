@@ -13,6 +13,7 @@ import ChapterPage from './chapterPage/ChapterPage';
 import ProfilePage from './profilePage/ProfilePage';
 import AddFicPage from './addFicPage/AddFicPage';
 import HomeFeedPage from './homeFeedPage/HomeFeedPage';
+import CompleteOnboardingView from './onboarding/CompleteOnboardingView';
 
 const AppRoutes = () => (
   <Routes>
@@ -25,6 +26,7 @@ const AppRoutes = () => (
     <Route path="/add-chapter/:ficId" element={<AddChapterPage />} />
     <Route path="/fic/:slug/:chapterIndex" element={<ChapterPage />} />
     <Route path="/new-fic" element={<AddFicPage />} />
+    <Route path="/finish-signin" element={<CompleteOnboardingView />} />
   </Routes>
 );
 

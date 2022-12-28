@@ -9,7 +9,6 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
 import Layout from '../components/layout/Layout'
 import '../firefly/styles/global'
-import { transformFirebaseUsertoSodaUser } from '../models/user/UserModel'
 import { getUserById } from '../actions/user/getUser';
 
 const userInfo = {
@@ -23,30 +22,44 @@ const userInfo = {
   }, 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   clearUser: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  refreshUser: () => {},
 }
 export const UserContext = React.createContext(userInfo);
 
 const App = () => {
+  
   const [currentUser, setCurrentUser] = useState()
   const clearUser = () => setCurrentUser(undefined);
+  const refreshUser = () => {
+    getUserById(Firebase.auth().currentUser.uid).then((dbUser) => {
+      console.log('updateUser', dbUser);
+
+
+    if (dbUser.userId) {
+      setCurrentUser(dbUser);
+    } });
+  };
+
   useEffect(() => {
     Firebase.auth().onAuthStateChanged(
       (user) => {
         user?.uid && getUserById(user?.uid).then((dbUser) => {
+            console.log('dbUser', dbUser);
           if (dbUser.userId) {
             setCurrentUser(dbUser);
-          } else {
-            setCurrentUser(transformFirebaseUsertoSodaUser(user));
-          }
+          } 
         });
       }
       );
   }, [])
 
+
   return <FirestoreProvider firebase={Firebase} >
     <UserContext.Provider value={{
       user: currentUser,
       clearUser,
+      refreshUser,
     }}>
       <BrowserRouter>
         {/* <ErrorBoundary> */}
