@@ -7,7 +7,7 @@ import Header from '../../components/header/Header';
 import { FlexCol, gapCss, View } from '../../components/layout/styles';
 import { Colors } from '../../components/styles/colors';
 import { FlexCss } from '../../components/styles/flex';
-import { Heading, Paragraph, Subheading } from '../../components/styles/fonts';
+import { Paragraph, Subheading, Title } from '../../components/styles/fonts';
 import ChapterModel from '../../models/chapters/ChapterModel';
 import FicModel from '../../models/fics/FicModel';
 import { pointerCss } from '../../styles/common.styles';
@@ -64,7 +64,7 @@ const ChapterPage = () => {
             <Subheading.SH12 color={Colors.Gray.V3}>
               Chapter {index}
             </Subheading.SH12>
-            <Heading.H18>{chapter?.title}</Heading.H18>
+            <Title.T18>{chapter?.title}</Title.T18>
           </FlexCol>
           <Paragraph.P12 className={chapterPageStyles.content}>
             {content}

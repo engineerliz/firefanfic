@@ -4,6 +4,29 @@ import { Colors } from './colors';
 
 const headingFontWeight = 'font-weight: 700';
 
+const Title = {
+  T26: styled.h1`
+    ${headingFontWeight};
+    font-size: 26px;
+    color: ${props => props.color || Colors.White};
+  `,
+  T22: styled.h1`
+    ${headingFontWeight};
+    font-size: 22px;
+    color: ${props => props.color || Colors.White};
+  `,
+  T18: styled.h1`
+    ${headingFontWeight};
+    font-size: 18px;
+    color: ${props => props.color || Colors.White};
+  `,
+  T14: styled.h1`
+    ${headingFontWeight};
+    font-size: 14px;
+    color: ${props => props.color || Colors.White};
+  `,
+}
+
 const Heading = {
   H26: styled.div`
     ${headingFontWeight};
@@ -106,6 +129,7 @@ const Paragraph = {
 
 
 export {
+  Title,
   Heading,
   Subheading,
   Paragraph,

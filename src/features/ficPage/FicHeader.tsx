@@ -5,7 +5,7 @@ import { getUserById } from '../../actions/user/getUser';
 import Header from '../../components/header/Header';
 import { FlexCol, gapCss } from '../../components/layout/styles';
 import { colorCss, Colors } from '../../components/styles/colors';
-import { Heading, Subheading } from '../../components/styles/fonts';
+import { Subheading, Title } from '../../components/styles/fonts';
 import FicModel from '../../models/fics/FicModel';
 import { SodaUser } from '../../models/user/UserModel';
 import { pointerCss } from '../../styles/common.styles';
@@ -25,7 +25,7 @@ const FicHeader = ({ fic }: FicHeaderProps) => {
   return (
     <Header>
       <FlexCol className={gapCss(2)}>
-        <Heading.H18>{fic.title}</Heading.H18>
+        <Title.T18>{fic.title}</Title.T18>
         <Subheading.SH12
           className={css(colorCss(Colors.Gray.V3), pointerCss)}
           onClick={() => navigate(`/profile/${user?.username}`)}

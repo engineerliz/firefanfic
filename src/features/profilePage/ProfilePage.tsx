@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-
 import { FlexCol, FlexRow, gapCss, Page } from '../../components/layout/styles';
 import { signIn } from '../../actions/user/signIn';
 import { UserContext } from '../App';

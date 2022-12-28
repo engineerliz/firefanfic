@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FlexRow, gapCss } from '../../components/layout/styles';
 import { HeaderLink } from '../../firefly/styles/links';
 import { headerStyles } from './styles';
-import { Heading } from '../styles/fonts';
+import { Title } from '../styles/fonts';
 import FirebaseAuth, { AuthState } from '../../firefly/views/misc/FirebaseAuth';
 import LoveEmoji from '../../assets/illustrations/love-emoji.png';
 import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
@@ -26,9 +26,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
       <HeaderLink to="/">
         <FlexRow className={css(headerStyles.logoContainer, gapCss(6))}>
           <img src={LoveEmoji} className={headerStyles.emoji} />
-          <Heading.H14 className={headerStyles.logoText}>
-            FireFanFic
-          </Heading.H14>
+          <Title.T14 className={headerStyles.logoText}>FireFanFic</Title.T14>
         </FlexRow>
       </HeaderLink>
       {rightButton ?? (
