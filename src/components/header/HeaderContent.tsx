@@ -12,6 +12,7 @@ import { UserContext } from '../../features/App';
 import Button from '../button/Button';
 import Icon from '../icon/Icon';
 import { FlexCss } from '../styles/flex';
+import { Link } from 'react-router-dom';
 
 interface HeaderContentProps {
   rightButton?: React.ReactNode;
@@ -23,12 +24,12 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
 
   return (
     <FlexRow className={headerStyles.content}>
-      <HeaderLink to="/">
+      <Link to="/">
         <FlexRow className={css(headerStyles.logoContainer, gapCss(6))}>
           <img src={LoveEmoji} className={headerStyles.emoji} />
           <Title.T14 className={headerStyles.logoText}>FireFanFic</Title.T14>
         </FlexRow>
-      </HeaderLink>
+      </Link>
       {rightButton ?? (
         <FirebaseAuth>
           {({ isLoading, error, auth }: AuthState) => {
@@ -40,11 +41,9 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
             }
             if (auth) {
               return (
-                <img
-                  src={CupcakePic}
-                  className={headerStyles.userPicCss}
-                  onClick={() => navigate(`/profile/${user.username}`)}
-                />
+                <Link to={`/profile/${user.username}`}>
+                  <img src={CupcakePic} className={headerStyles.userPicCss} />
+                </Link>
               );
             } else {
               return (
