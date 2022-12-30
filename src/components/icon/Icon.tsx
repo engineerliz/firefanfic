@@ -7,6 +7,7 @@ import {
   SunIcon,
   UserIcon,
   PlusIcon,
+  HomeIcon,
 } from '@iconicicons/react';
 import { iconStyles } from './icon.styles';
 import React from 'react';
@@ -20,7 +21,8 @@ export type IconName =
   | 'folder'
   | 'globe'
   | 'user'
-  | 'plus';
+  | 'plus'
+  | 'home';
 
 const getIcon = (icon: IconName) => {
   switch (icon) {
@@ -38,6 +40,8 @@ const getIcon = (icon: IconName) => {
       return <UserIcon />;
     case 'plus':
       return <PlusIcon />;
+    case 'home':
+      return <HomeIcon />;
   }
 };
 

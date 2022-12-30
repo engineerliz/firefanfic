@@ -20,7 +20,7 @@ export const headerStyles = {
     height: 'fit-content',
   }),
   children: css({
-    marginTop: 15,
+    marginTop: 10,
   }),
   emoji: css({
     width: 20,

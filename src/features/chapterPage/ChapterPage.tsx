@@ -51,7 +51,7 @@ const ChapterPage = () => {
               r.text().then((data) => setContent(data));
             });
           });
-      }, 500);
+      }, 50);
     }
   }, [chapter]);
 

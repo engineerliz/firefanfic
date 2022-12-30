@@ -41,18 +41,21 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
             }
             if (auth) {
               return (
-                <Link to={`/profile/${user?.username}`}>
+                <Link
+                  to={`/profile/${user?.username}`}
+                  className={FlexCss.flex}
+                >
                   <img src={CupcakePic} className={headerStyles.userPicCss} />
                 </Link>
               );
             } else {
               return (
-                <Button onClick={() => navigate('/signin')}>
+                <Link to="/signin" className={FlexCss.flex}>
                   <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
                     <Icon icon="happyEmoji" />
                     Sign In
                   </FlexRow>
-                </Button>
+                </Link>
               );
             }
           }}

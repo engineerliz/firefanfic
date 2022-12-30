@@ -6,6 +6,7 @@ import FicModel from '../../models/fics/FicModel';
 import { getAllFics } from '../../actions/fics/getFics';
 import Header from '../../components/header/Header';
 import { trackPageView } from '../../analytics/analytics';
+import HomeBottomBar from '../../components/bottomBar/HomeBottomBar';
 
 const HomeFeedPage = () => {
   const [fics, setFics] = useState<List<FicModel>>();
@@ -22,6 +23,7 @@ const HomeFeedPage = () => {
           <FicList fics={fics} />
         </FlexRow>
       </View>
+      <HomeBottomBar />
     </>
   );
 };

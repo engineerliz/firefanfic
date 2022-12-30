@@ -28,6 +28,14 @@ injectGlobal`
     margin: 0 0 1rem;
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  H1 {
+    margin: 0;
+  }
+
   hr {
     border: none;
     height: 1px;

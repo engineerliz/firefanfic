@@ -5,7 +5,6 @@ import React from 'react'
 import Account from './account/Account';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './signIn/SignIn';
-import PortfolioEdit from './portfolioEdit/PortfolioEdit';
 import EditProfile from './profilePage/editProfile/EditProfile';
 import FicPage from './ficPage/FicPage';
 import AddChapterPage from './addChapterPage/AddChapterPage';
@@ -14,6 +13,7 @@ import ProfilePage from './profilePage/ProfilePage';
 import AddFicPage from './addFicPage/AddFicPage';
 import HomeFeedPage from './homeFeedPage/HomeFeedPage';
 import CompleteOnboardingView from './onboarding/CompleteOnboardingView';
+import NewsView from './news/NewsView';
 
 const AppRoutes = () => (
   <Routes>
@@ -27,6 +27,7 @@ const AppRoutes = () => (
     <Route path="/fic/:slug/:chapterIndex" element={<ChapterPage />} />
     <Route path="/new-fic" element={<AddFicPage />} />
     <Route path="/finish-signin" element={<CompleteOnboardingView />} />
+    <Route path="/news" element={<NewsView />} />
   </Routes>
 );
 

@@ -13,6 +13,9 @@ export const FlexCss = {
   alignStart: css({
     alignItems: 'start',
   }),
+  justifyStart: css({
+    justifyContent: 'start',
+  }),
   justifyContentCenter: css({
     justifyContent: 'center',
   }),

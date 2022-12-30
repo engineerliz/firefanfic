@@ -2,11 +2,11 @@ import React from 'react';
 import Header from './header/Header';
 import { View } from './layout/styles';
 
-interface ViewProps {
+interface ViewComponentProps {
   fic: number;
 }
 
-const ViewComponent = ({ fic }: ViewProps) => {
+const ViewComponent = ({ fic }: ViewComponentProps) => {
   return (
     <>
       <Header />
