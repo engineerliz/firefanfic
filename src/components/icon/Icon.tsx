@@ -9,6 +9,8 @@ import {
   PlusIcon,
   HomeIcon,
   CheckCircleIcon,
+  StarIcon,
+  RowsIcon,
 } from '@iconicicons/react';
 import { iconStyles } from './icon.styles';
 import React from 'react';
@@ -24,7 +26,9 @@ export type IconName =
   | 'user'
   | 'plus'
   | 'home'
-  | 'checkCircle';
+  | 'checkCircle'
+  | 'star'
+  | 'rows';
 
 const getIcon = (icon: IconName) => {
   switch (icon) {
@@ -46,6 +50,10 @@ const getIcon = (icon: IconName) => {
       return <HomeIcon />;
     case 'checkCircle':
       return <CheckCircleIcon />;
+    case 'star':
+      return <StarIcon />;
+    case 'rows':
+      return <RowsIcon />;
   }
 };
 

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getFicBySlug } from '../../actions/fics/getFics';
 import {
   FlexCol,
+  FlexRow,
   gapCss,
   preLineCss,
   View,
@@ -20,10 +21,12 @@ import { trackPageView } from '../../analytics/analytics';
 import {
   createSubscription,
   deleteSubscription,
+  getSubscribersByFicId,
   getSubscriptionByUserId,
 } from '../../actions/subscriptions/subscriptionStore';
 import SubscriptionModel from '../../actions/subscriptions/SubscriptionModel';
 import FicBottomBar from '../../components/bottomBar/FicBottomBar';
+import MetricsBadge from '../../components/badge/MetricsBadge';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -32,6 +35,7 @@ const FicPage = () => {
   const [isAuthor, setIsAuthor] = useState<boolean>();
   const [chapters, setChapters] = useState<List<ChapterModel>>();
   const [userSubscription, setUserSubscription] = useState<SubscriptionModel>();
+  const [subscribers, setSubscribers] = useState<List<SubscriptionModel>>();
 
   useEffect(() => {
     trackPageView('Fic Page');
@@ -41,10 +45,14 @@ const FicPage = () => {
 
   useEffect(() => {
     setIsAuthor(user?.userId === fic?.createdBy);
-    fic?.ficId &&
-      getChaptersByFicId(fic?.ficId).then(
+    if (fic) {
+      getChaptersByFicId(fic.ficId).then(
         (chapters) => chapters && setChapters(chapters),
       );
+      getSubscribersByFicId(fic.ficId).then(
+        (subs) => subs && setSubscribers(subs),
+      );
+    }
   }, [fic]);
 
   useEffect(() => {
@@ -85,6 +93,21 @@ const FicPage = () => {
         <FicHeader fic={fic} />
         <View>
           <FlexCol className={gapCss(30)}>
+            <FlexCol className={gapCss(2)}>
+              <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
+                About
+              </Subheading.SH12>
+              <FlexRow className={gapCss(8)}>
+                <MetricsBadge
+                  icon="rows"
+                  label={`${chapters?.size ?? 0} chapters`}
+                />
+                <MetricsBadge
+                  icon="star"
+                  label={`${subscribers?.size ?? 0} subs`}
+                />
+              </FlexRow>
+            </FlexCol>
             <FlexCol className={gapCss(2)}>
               <Subheading.SH12 className={colorCss(Colors.Gray.V3)}>
                 Description

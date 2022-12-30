@@ -1,6 +1,7 @@
 import SubscriptionModel from "./SubscriptionModel";
 import Firebase from 'firebase/compat/app'
 import { v4 as uuid_v4 } from 'uuid';
+import { List } from "immutable";
 
 interface CreateSubscriptionValues {
   userId: string;
@@ -8,7 +9,7 @@ interface CreateSubscriptionValues {
 }
 
 export const createSubscription = async (values: CreateSubscriptionValues) => {
-    console.log("createSubscription");
+  console.log("createSubscription");
 
   const newSubscription: SubscriptionModel = {
     ...values,
@@ -31,7 +32,7 @@ export const createSubscription = async (values: CreateSubscriptionValues) => {
 }
 
 export const getSubscriptionByUserId = (values: CreateSubscriptionValues) => {
-    console.log("getSubscription");
+  console.log("getSubscription");
 
   return Firebase.firestore()
     .collection('subscriptions')
@@ -46,8 +47,24 @@ export const getSubscriptionByUserId = (values: CreateSubscriptionValues) => {
     });
 }
 
+export const getSubscribersByFicId = (ficId: string) => {
+  console.log("getSubscribers");
+
+  return Firebase.firestore()
+    .collection('subscriptions')
+    .where('ficId', '==', ficId)
+    .get()
+    .then((subscribers) => List(subscribers.docs.map((subscriber) => ({
+      ...subscriber.data()
+    } as SubscriptionModel)))
+  ) 
+    .catch(error => {
+      alert(`Whoops, couldn't get the subscribers: ${error.message}`)
+    });
+}
+
 export const deleteSubscription = async (values: CreateSubscriptionValues) => {
-    console.log("deleteSubscription");
+  console.log("deleteSubscription");
 
   const subscription = await getSubscriptionByUserId(values).then((sub) => sub);
   if (subscription) {
