@@ -39,11 +39,7 @@ export const getFicsByUserId = (userId?: string): Promise<void | List<FicModel>>
     .orderBy('createdOn', 'desc')
     .get()
     .then((fics) => List(fics.docs.map(fic => ({
-      title: fic.data()?.title,
-      description: fic.data()?.description,
-      ficId: fic.data()?.ficId,
-      slug: fic.data()?.slug,
-      createdBy: fic.data().createdBy,
+      ...fic.data()
     } as FicModel))))
     .catch(error => {
       console.log(`Whoops, couldn't get the fics: ${error.message}`)
@@ -57,11 +53,7 @@ export const getAllFics = (): Promise<void | List<FicModel>> => {
     .orderBy('lastUpdated', 'desc')
     .get()
     .then((fics) => List(fics.docs.map(fic => ({
-      title: fic.data()?.title,
-      description: fic.data()?.description,
-      ficId: fic.data()?.ficId,
-      slug: fic.data()?.slug,
-      createdBy: fic.data().createdBy,
+      ...fic.data()
     } as FicModel))))
     .catch(error => {
       alert(`Whoops, couldn't get the fics: ${error.message}`)
