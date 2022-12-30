@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getFicBySlug } from '../../actions/fics/getFics';
 import {
   FlexCol,
-  FlexRow,
   gapCss,
   preLineCss,
   View,
@@ -11,18 +10,20 @@ import {
 import FicModel from '../../models/fics/FicModel';
 import { UserContext } from '../App';
 import FicHeader from './FicHeader';
-import BottomBar from '../../components/bottomBar/BottomBar';
-import Button from '../../components/button/Button';
 import ChapterModel from '../../models/chapters/ChapterModel';
 import { List } from 'immutable';
 import { getChaptersByFicId } from '../../actions/chapters/chapterActions';
 import ChapterRow from '../../components/chapterRow/ChapterRow';
 import { Paragraph, Subheading } from '../../components/styles/fonts';
 import { colorCss, Colors } from '../../components/styles/colors';
-import Icon from '../../components/icon/Icon';
-import { FlexCss } from '../../components/styles/flex';
-import { css } from '@emotion/css';
 import { trackPageView } from '../../analytics/analytics';
+import {
+  createSubscription,
+  deleteSubscription,
+  getSubscriptionByUserId,
+} from '../../actions/subscriptions/subscriptionStore';
+import SubscriptionModel from '../../actions/subscriptions/SubscriptionModel';
+import FicBottomBar from '../../components/bottomBar/FicBottomBar';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -30,7 +31,7 @@ const FicPage = () => {
   const [fic, setFic] = useState<FicModel>();
   const [isAuthor, setIsAuthor] = useState<boolean>();
   const [chapters, setChapters] = useState<List<ChapterModel>>();
-  const navigate = useNavigate();
+  const [userSubscription, setUserSubscription] = useState<SubscriptionModel>();
 
   useEffect(() => {
     trackPageView('Fic Page');
@@ -46,7 +47,39 @@ const FicPage = () => {
       );
   }, [fic]);
 
+  useEffect(() => {
+    if (!isAuthor) {
+      fic &&
+        user &&
+        getSubscriptionByUserId({
+          ficId: fic.ficId,
+          userId: user.userId,
+        }).then((sub) => {
+          console.log('ficpage getSubscriptionByUserId', sub);
+          sub && setUserSubscription(sub);
+        });
+    }
+  }, [isAuthor, fic]);
+
+  const onSubscribe = () => {
+    fic &&
+      createSubscription({
+        userId: user.userId,
+        ficId: fic.ficId,
+      }).then((sub) => sub && setUserSubscription(sub));
+  };
+
+  const onUnsubscribe = () => {
+    fic &&
+      deleteSubscription({
+        userId: user.userId,
+        ficId: fic.ficId,
+      });
+    setUserSubscription(undefined);
+  };
+
   if (fic) {
+    console.log('ficpage userSubscription', userSubscription);
     return (
       <>
         <FicHeader fic={fic} />
@@ -71,18 +104,13 @@ const FicPage = () => {
             </FlexCol>
           </FlexCol>
         </View>
-        <BottomBar>
-          {isAuthor ? (
-            <Button onClick={() => navigate(`/add-chapter/${fic.ficId}`)}>
-              <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
-                <Icon icon="plus" />
-                Add Chapter
-              </FlexRow>
-            </Button>
-          ) : (
-            <Button size="Medium">Subscribe</Button>
-          )}
-        </BottomBar>
+        <FicBottomBar
+          fic={fic}
+          isSubscribed={userSubscription !== undefined}
+          isAuthor={isAuthor}
+          onSubscribe={onSubscribe}
+          onUnsubscribe={onUnsubscribe}
+        />
       </>
     );
   }

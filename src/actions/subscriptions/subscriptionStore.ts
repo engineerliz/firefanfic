@@ -2,15 +2,14 @@ import SubscriptionModel from "./SubscriptionModel";
 import Firebase from 'firebase/compat/app'
 import { v4 as uuid_v4 } from 'uuid';
 
-const subscriptionsDb = Firebase.firestore()
-    .collection('subscriptions');
-
 interface CreateSubscriptionValues {
   userId: string;
   ficId: string;
 }
 
 export const createSubscription = async (values: CreateSubscriptionValues) => {
+    console.log("createSubscription");
+
   const newSubscription: SubscriptionModel = {
     ...values,
     id: uuid_v4(),
@@ -18,9 +17,11 @@ export const createSubscription = async (values: CreateSubscriptionValues) => {
   }
 
   const isSubscribed = await getSubscriptionByUserId(values).then((sub) => sub !== null);
+  
   if (!isSubscribed) {
-    return subscriptionsDb
-      .doc(newSubscription.ficId)
+    return Firebase.firestore()
+    .collection('subscriptions')
+      .doc(newSubscription.id)
       .set(newSubscription)
       .then(() => newSubscription)
       .catch(error => {
@@ -30,23 +31,28 @@ export const createSubscription = async (values: CreateSubscriptionValues) => {
 }
 
 export const getSubscriptionByUserId = (values: CreateSubscriptionValues) => {
-  return subscriptionsDb
+    console.log("getSubscription");
+
+  return Firebase.firestore()
+    .collection('subscriptions')
   .where('userId', '==', values.userId)
   .where('ficId', '==', values.ficId)
   .get()
-  .then((value) => ({
-      ...value.docs[0].data()
-    } as SubscriptionModel))
+  .then((value) => value.docs[0] ? ({
+      ...value.docs[0]?.data()
+    } as SubscriptionModel) : null)
     .catch(error => {
-      alert(`Whoops, couldn't get the fic: ${error.message}`)
+      alert(`Whoops, couldn't get the subscription: ${error.message}`)
     });
 }
 
 export const deleteSubscription = async (values: CreateSubscriptionValues) => {
-  const subscription = await getSubscriptionByUserId(values).then((sub) => sub);
+    console.log("deleteSubscription");
 
+  const subscription = await getSubscriptionByUserId(values).then((sub) => sub);
   if (subscription) {
-    subscriptionsDb.doc(subscription.id).delete().then(() => {
+    Firebase.firestore()
+    .collection('subscriptions').doc(subscription.id).delete().then(() => {
     console.log("Unsubscribed");
   }).catch((error) => {
       console.error("Error unsubscribing: ", error);
