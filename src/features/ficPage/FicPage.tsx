@@ -78,6 +78,7 @@ const FicPage = () => {
 
   const onSubscribe = () => {
     fic &&
+      user &&
       createSubscription({
         userId: user.userId,
         ficId: fic.ficId,
@@ -86,6 +87,7 @@ const FicPage = () => {
 
   const onUnsubscribe = () => {
     fic &&
+      user &&
       deleteSubscription({
         userId: user.userId,
         ficId: fic.ficId,

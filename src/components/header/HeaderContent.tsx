@@ -2,14 +2,12 @@ import React, { useContext } from 'react';
 import { FlexRow, gapCss } from '../../components/layout/styles';
 import { HeaderLink } from '../../firefly/styles/links';
 import { headerStyles } from './styles';
-import { Title } from '../styles/fonts';
+import { Subheading, Title } from '../styles/fonts';
 import FirebaseAuth, { AuthState } from '../../firefly/views/misc/FirebaseAuth';
 import LoveEmoji from '../../assets/illustrations/love-emoji.png';
 import CupcakePic from '../../assets/illustrations/cupcake_profile_pic.png';
 import { css } from '@emotion/css';
-import { useNavigate } from 'react-router';
 import { UserContext } from '../../features/App';
-import Button from '../button/Button';
 import Icon from '../icon/Icon';
 import { FlexCss } from '../styles/flex';
 import { Link } from 'react-router-dom';
@@ -19,7 +17,6 @@ interface HeaderContentProps {
 }
 
 const HeaderContent = ({ rightButton }: HeaderContentProps) => {
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
   return (
@@ -53,7 +50,7 @@ const HeaderContent = ({ rightButton }: HeaderContentProps) => {
                 <Link to="/signin" className={FlexCss.flex}>
                   <FlexRow className={css(gapCss(2), FlexCss.alignCenter)}>
                     <Icon icon="happyEmoji" />
-                    Sign In
+                    <Subheading.SH14>Sign In</Subheading.SH14>
                   </FlexRow>
                 </Link>
               );

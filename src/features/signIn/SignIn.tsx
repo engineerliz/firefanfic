@@ -64,7 +64,7 @@ const SignIn = () => {
                   }
                 }}
               >
-                Sign Up
+                Sign In
               </Button>
               <hr className={backgroundCss(Colors.Gray.V7)} />
               <FlexCol className={gapCss(8)}>
