@@ -11,6 +11,7 @@ import {
   CheckCircleIcon,
   StarIcon,
   RowsIcon,
+  TargetIcon,
 } from '@iconicicons/react';
 import { iconStyles } from './icon.styles';
 import React from 'react';
@@ -28,7 +29,8 @@ export type IconName =
   | 'home'
   | 'checkCircle'
   | 'star'
-  | 'rows';
+  | 'rows'
+  | 'target';
 
 const getIcon = (icon: IconName) => {
   switch (icon) {
@@ -54,6 +56,8 @@ const getIcon = (icon: IconName) => {
       return <StarIcon />;
     case 'rows':
       return <RowsIcon />;
+    case 'target':
+      return <TargetIcon />;
   }
 };
 

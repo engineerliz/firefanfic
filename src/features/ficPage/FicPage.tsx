@@ -27,6 +27,11 @@ import {
 import SubscriptionModel from '../../actions/subscriptions/SubscriptionModel';
 import FicBottomBar from '../../components/bottomBar/FicBottomBar';
 import MetricsBadge from '../../components/badge/MetricsBadge';
+import {
+  getViewsByFicId,
+  incrementFicView,
+} from '../../actions/views/viewActions';
+import { getViewsDisplay } from '../../components/badge/utils';
 
 const FicPage = () => {
   const { slug } = useParams();
@@ -36,22 +41,25 @@ const FicPage = () => {
   const [chapters, setChapters] = useState<List<ChapterModel>>();
   const [userSubscription, setUserSubscription] = useState<SubscriptionModel>();
   const [subscribers, setSubscribers] = useState<List<SubscriptionModel>>();
+  const [views, setViews] = useState<number>();
 
   useEffect(() => {
     trackPageView('Fic Page');
-
     slug && getFicBySlug(slug).then((value) => value && setFic(value));
   }, []);
 
   useEffect(() => {
     setIsAuthor(user?.userId === fic?.createdBy);
     if (fic) {
+      incrementFicView(fic.ficId);
+
       getChaptersByFicId(fic.ficId).then(
         (chapters) => chapters && setChapters(chapters),
       );
       getSubscribersByFicId(fic.ficId).then(
         (subs) => subs && setSubscribers(subs),
       );
+      getViewsByFicId(fic.ficId).then((views) => setViews(views));
     }
   }, [fic]);
 
@@ -63,7 +71,6 @@ const FicPage = () => {
           ficId: fic.ficId,
           userId: user.userId,
         }).then((sub) => {
-          console.log('ficpage getSubscriptionByUserId', sub);
           sub && setUserSubscription(sub);
         });
     }
@@ -87,7 +94,6 @@ const FicPage = () => {
   };
 
   if (fic) {
-    console.log('ficpage userSubscription', userSubscription);
     return (
       <>
         <FicHeader fic={fic} />
@@ -105,6 +111,10 @@ const FicPage = () => {
                 <MetricsBadge
                   icon="star"
                   label={`${subscribers?.size ?? 0} subs`}
+                />
+                <MetricsBadge
+                  icon="target"
+                  label={`${getViewsDisplay(views)} views`}
                 />
               </FlexRow>
             </FlexCol>
